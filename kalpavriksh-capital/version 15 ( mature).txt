@@ -1,0 +1,392 @@
+import React, { useState, useEffect } from 'react';
+
+const KalpavrikshCapital = () => {
+  const [currentPage, setCurrentPage] = useState('home');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Handle scroll effect for navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top when changing pages
+  const changePage = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Handle contact actions
+  const handleContactAction = (action) => {
+    switch(action) {
+      case 'email':
+        window.location.href = 'mailto:rakhi@kalpavrikshcapital.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
+        break;
+      case 'linkedin':
+        window.open('https://www.linkedin.com/in/rakhi-jain-7658328', '_blank');
+        break;
+      case 'calendar':
+        alert('Booking system integration coming soon! Please reach out via email or LinkedIn for now.');
+        break;
+      default:
+        break;
+    }
+  };
+
+  const companyStats = [
+    { label: 'Years Experience', value: '20+' },
+    { label: 'Families Served', value: '85+' },
+    { label: 'AUM (Crores)', value: '50+' },
+    { label: 'Founded', value: '2024' }
+  ];
+
+  const services = [
+    {
+      title: "Strategic Investment Planning",
+      description: "Structured, risk-managed investment strategies tailored to your financial goals and life stage.",
+      features: ["Portfolio Diversification", "Risk Assessment & Management", "Regular Portfolio Reviews", "Performance Tracking & Reporting"]
+    },
+    {
+      title: "Financial Roadmap Creation",
+      description: "Clear, actionable financial plans that guide you from your current position to your wealth goals.",
+      features: ["Goal-Based Planning", "Timeline Development", "Milestone Tracking", "Regular Strategy Reviews"]
+    },
+    {
+      title: "Family Wealth & Legacy Planning",
+      description: "Comprehensive planning to build, protect, and transfer wealth across generations.",
+      features: ["Estate Planning", "Insurance Optimization", "Tax-Efficient Strategies", "Succession Planning"]
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: "Amarja K Puranand",
+      role: "Clean Energy & Marketing Professional",
+      content: "I've known Rakhi since our 10+2 days, and one thing that has always stood out is how grounded, pragmatic, and practical she is. These same qualities now shine through in her work as a financial advisor. Reconnecting with her for financial advice has been a real blessing. What I value most is her transparent approach and her ability to balance portfolios with both caution and opportunity."
+    },
+    {
+      name: "Hynde El Kaysi",
+      role: "Strategic HR Leader | Organizational Transformation Expert",
+      content: "Working with Rakhi has been a truly rewarding experience. She guided me with patience and clarity on how and where to invest my savings, always taking time to explain my options. Rakhi's service is warm and highly personalized — she listens carefully, tailors her advice to individual goals, and stays close to her clients with regular check-ins."
+    },
+    {
+      name: "Sushma Manjunath",
+      role: "Director - Supply Chain Finance",
+      content: "Working with Rakhi has been truly transformative for me and my family. She helped me unlock my savings potential with clear strategies tailored to my goals, while also bringing full transparency to my net assets. For the first time, I have complete picture of my financial position, and that clarity has given me the confidence to plan for the future."
+    },
+    {
+      name: "Janani KN",
+      role: "Senior Plant Finance Manager - GE Vernova",
+      content: "I am highly grateful to her for reviewing my family finance portfolio and pointed all the grave mistakes that I was doing without realizing. This turned out to be a massive game changer for me as I have now started on the path of financial literacy and financial discipline. She is calm, composed and brings her points assertively in a way which forces you to think but without pressuring you!"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Navigation */}
+      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-lg' : 'bg-white shadow-md'
+      }`}>
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center">
+              <h1 className="text-2xl font-bold text-gray-800">Kalpavriksh Capital</h1>
+              <span className="ml-3 text-sm text-gray-500">Wealth Management</span>
+            </div>
+            <div className="flex gap-8">
+              {['home', 'services', 'testimonials'].map((page) => (
+                <button
+                  key={page}
+                  onClick={() => changePage(page)}
+                  className={`px-4 py-2 font-medium transition-all duration-200 ${
+                    currentPage === page
+                      ? 'text-emerald-700 border-b-2 border-emerald-700'
+                      : 'text-gray-600 hover:text-emerald-700'
+                  }`}
+                >
+                  {page.charAt(0).toUpperCase() + page.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="pt-20">
+        {/* Home Page */}
+        {currentPage === 'home' && (
+          <div>
+            {/* Hero Section */}
+            <section className="bg-white py-20">
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                  <div>
+                    <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
+                      Building Financial Security for Your Family's Future
+                    </h1>
+                    <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+                      With over 20 years of corporate finance experience, I help families create structured wealth-building strategies and achieve financial independence.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <button
+                        onClick={() => handleContactAction('calendar')}
+                        className="bg-emerald-700 text-white px-8 py-4 font-semibold hover:bg-emerald-800 transition-colors duration-200"
+                      >
+                        Schedule Consultation
+                      </button>
+                      <button
+                        onClick={() => changePage('services')}
+                        className="border border-emerald-700 text-emerald-700 px-8 py-4 font-semibold hover:bg-emerald-50 transition-colors duration-200"
+                      >
+                        Our Services
+                      </button>
+                    </div>
+                  </div>
+                  
+                  {/* Stats Section */}
+                  <div className="bg-gray-100 p-8">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">Track Record</h3>
+                    <div className="grid grid-cols-2 gap-8">
+                      {companyStats.map((stat, index) => (
+                        <div key={index} className="text-center">
+                          <div className="text-3xl font-bold text-emerald-700 mb-2">{stat.value}</div>
+                          <div className="text-sm text-gray-600">{stat.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Contact Info */}
+                    <div className="mt-8 pt-8 border-t border-gray-200">
+                      <div className="text-center space-y-2">
+                        <p className="text-sm text-gray-600">
+                          <strong>Email:</strong> rakhi@kalpavrikshcapital.com
+                        </p>
+                        <p className="text-sm text-gray-600">
+                          <strong>Phone:</strong> +91-XXXX-XXXXXX
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* About Section */}
+            <section className="py-20 bg-emerald-50">
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="max-w-4xl mx-auto">
+                  <div className="text-center mb-16">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-4">About Rakhi Jain</h2>
+                    <div className="w-20 h-1 bg-emerald-700 mx-auto"></div>
+                  </div>
+                  
+                  <div className="bg-white p-8 shadow-sm">
+                    <div className="mb-6">
+                      <div className="bg-emerald-700 text-white p-4 text-center mb-8">
+                        <p className="font-semibold">MBA Finance | 20+ Years Corporate Experience | M&A Expert</p>
+                      </div>
+                      
+                      <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                        For over 20 years, I've built financial strategies that drive billion-euro business transformations. From cost optimization to M&A integrations, I've helped MNCs create financial efficiency and long-term value.
+                      </p>
+                      
+                      <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                        Now, I'm applying this same strategic approach to personal wealth management. I've seen too many families struggle with financial planning—from losing savings to medical expenses to falling for high-return schemes. That's why I founded Kalpavriksh Capital: to empower 100 families to take charge of their financial future.
+                      </p>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-3 gap-8">
+                      <div className="text-center p-6 bg-gray-50">
+                        <h4 className="font-semibold text-emerald-700 mb-2">Strategic Investing</h4>
+                        <p className="text-sm text-gray-600">Structured, risk-managed approach tailored to individual goals</p>
+                      </div>
+                      <div className="text-center p-6 bg-gray-50">
+                        <h4 className="font-semibold text-emerald-700 mb-2">Financial Roadmaps</h4>
+                        <p className="text-sm text-gray-600">Clear, practical paths to building and growing wealth</p>
+                      </div>
+                      <div className="text-center p-6 bg-gray-50">
+                        <h4 className="font-semibold text-emerald-700 mb-2">Legacy Planning</h4>
+                        <p className="text-sm text-gray-600">Long-term security through structured wealth transfer</p>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-12 p-6 bg-emerald-100 text-center">
+                      <p className="text-lg font-medium text-emerald-800">
+                        "Financial independence isn't just about money—it's about having choices, control, and confidence in your future."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="py-16 bg-white">
+              <div className="max-w-4xl mx-auto px-6 text-center">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Take Control of Your Financial Future?</h2>
+                <p className="text-xl text-gray-600 mb-8">
+                  Let's discuss your goals and create a personalized wealth-building strategy.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button
+                    onClick={() => handleContactAction('email')}
+                    className="bg-emerald-700 text-white px-8 py-4 font-semibold hover:bg-emerald-800 transition-colors duration-200"
+                  >
+                    Email Consultation
+                  </button>
+                  <button
+                    onClick={() => handleContactAction('linkedin')}
+                    className="border border-emerald-700 text-emerald-700 px-8 py-4 font-semibold hover:bg-emerald-50 transition-colors duration-200"
+                  >
+                    Connect on LinkedIn
+                  </button>
+                </div>
+              </div>
+            </section>
+          </div>
+        )}
+
+        {/* Services Page */}
+        {currentPage === 'services' && (
+          <div className="py-16">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="text-center mb-16">
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h1>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                  Comprehensive wealth management solutions designed for professionals and families seeking financial security.
+                </p>
+              </div>
+              
+              <div className="grid lg:grid-cols-3 gap-8 mb-16">
+                {services.map((service, index) => (
+                  <div key={index} className="bg-white p-8 shadow-sm border-t-4 border-emerald-700">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+                    <ul className="space-y-2">
+                      {service.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="text-emerald-700 mr-2">•</span>
+                          <span className="text-gray-600 text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="bg-gray-100 p-12">
+                <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Our Process</h2>
+                <div className="grid md:grid-cols-4 gap-8">
+                  {[
+                    { step: '01', title: 'Initial Consultation', desc: 'Understanding your financial goals and current situation' },
+                    { step: '02', title: 'Strategy Development', desc: 'Creating a personalized financial roadmap' },
+                    { step: '03', title: 'Implementation', desc: 'Executing the plan with careful monitoring' },
+                    { step: '04', title: 'Ongoing Support', desc: 'Regular reviews and adjustments as needed' }
+                  ].map((item, index) => (
+                    <div key={index} className="text-center">
+                      <div className="bg-emerald-700 text-white text-2xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        {item.step}
+                      </div>
+                      <h4 className="font-semibold text-gray-900 mb-2">{item.title}</h4>
+                      <p className="text-sm text-gray-600">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Testimonials Page */}
+        {currentPage === 'testimonials' && (
+          <div className="py-16">
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="text-center mb-16">
+                <h1 className="text-4xl font-bold text-gray-900 mb-4">Client Testimonials</h1>
+                <p className="text-xl text-gray-600">
+                  What our clients say about their journey to financial independence
+                </p>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-8">
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="bg-white p-8 shadow-sm border-l-4 border-emerald-700">
+                    <div className="mb-4">
+                      <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-sm text-gray-500">{testimonial.role}</p>
+                    </div>
+                    <blockquote className="text-gray-700 italic leading-relaxed">
+                      "{testimonial.content}"
+                    </blockquote>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="font-bold text-xl mb-4">Kalpavriksh Capital</h3>
+              <p className="text-gray-400 text-sm mb-4">
+                Professional wealth management services for families seeking financial security and independence.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Services</h4>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>Strategic Investment Planning</li>
+                <li>Financial Roadmap Creation</li>
+                <li>Family Wealth Planning</li>
+                <li>Legacy Planning</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-sm">
+                {['Home', 'Services', 'Testimonials'].map((link) => (
+                  <li key={link}>
+                    <button
+                      onClick={() => changePage(link.toLowerCase())}
+                      className="text-gray-400 hover:text-white transition-colors duration-200"
+                    >
+                      {link}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <div className="space-y-2 text-sm text-gray-400">
+                <p>rakhi@kalpavrikshcapital.com</p>
+                <p>+91-XXXX-XXXXXX</p>
+                <button
+                  onClick={() => handleContactAction('linkedin')}
+                  className="text-emerald-400 hover:text-emerald-300 transition-colors duration-200"
+                >
+                  LinkedIn Profile
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 pt-8 text-center">
+            <p className="text-gray-400 text-sm">
+              © 2024 Kalpavriksh Capital. Founded by Rakhi Jain. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default KalpavrikshCapital;
