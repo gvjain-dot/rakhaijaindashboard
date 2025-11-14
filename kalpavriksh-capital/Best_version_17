@@ -1,0 +1,709 @@
+<img 
+                      src="data:image/jpeg;base64,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                    <img 
+                      src="data:image/jpeg;base64,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        {/* Contact Page */}
+        {currentPage === 'contact' && (
+          <div className="space-y-16 px-4 py-8">
+            <section className="text-center max-w-4xl mx-auto">
+              <h1 className="text-5xl font-bold text-green-800 mb-6 flex items-center justify-center gap-4">
+                <span>📧</span> Get In Touch
+              </h1>
+              <p className="text-xl text-gray-700">
+                Ready to start your journey towards financial independence? Let's connect!
+              </p>
+            </section>
+            
+            {/* Single Combined Contact Section */}
+            <div className="max-w-5xl mx-auto">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+                {/* Header with Rakhi's Photo */}
+                <div className="text-center mb-8">
+                  <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-yellow-400 shadow-lg">
+                    <img 
+                      src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFhUXFxcXFxgYGBcXFRcXFxgXFxcXFxcYHSggGBolHRcXITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGxAQGy0lICUtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIAMABBgMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAEAAIDBQYBBwj/xABCEAACAQIEAwUFBgUCBQUAAAABAgMAEQQSITEFQVEGEyJhcTKBkaGxBxTB0fAjQlLh8WJyFTOCkrIXJGTC4hZTY3T/xAAZAQADAQEBAAAAAAAAAAAAAAAAAQIDBAX/xAAkEQACAgICAgICAwAAAAAAAAAAAQIRAyESMQRBURNhMnGBkf/aAAwDAQACEQMRAD8A8lxfFpGJJOp5nqa2XZrhzS4SSTXKN8qzHZ3s2+MgN2uVGlhsKu+JRMiokWVmzE2Fr6+wD6XrSPGtkHOTfRixFhUgfWmMLb6VzDp/N6U7BqoR/wA28++ntVnwHgLYid41FwDfymrxuGRwRhGBZ2QhlBygHYb6VlnmjjY17GXJNRW2GYCGKyRzOZOdlsF9avMR9moVSzSKOdspqPge6n6EW7rKQUChirAhiVsb2IFzbraqTEftBOHxKYdTIVJ0d1+HQb8+lIp5JvTKhFNNGe4twDuyxDNlF9ANvfyo/hjJDGDlCDcXsOe9Zy6qdjz1ufGKzHa2HJHhwdwb/OtXjgmYRyz7RplxMcLktmI5KovV/wAO7YxzFIgmZ+n3XNa9bKjJgsPXqL2nj3LwO0NhsCH6H8Ksol1oWNxpOkVOWOWLCWxRq9wiQEgMBfzfWuGQVvAexHGxHMIGNlmFj5ONPjsfrWkO0k0C/wCXJ3i85F8LfEbnzt9K7Z8VS2jlWfJF/wCRuWgQ6W1PIc/Ku4I24hJ5Q2/vVoJp8RGqTOzR3uqnwk8+W/W9cg2vpppSyqooilNSTJDHpXc1Qa7lrNmxz3pmhJA5Gkxq2bHTdayJPqOOWNzYIq+gOYAcrC4t8KHmjzGy3OpH0typcQkuB6/IffUjppqNdagpz4SZS9eFSSWstuK48SxyRn81tr/1mwPzpzYxrWGp8yfnyrm8kJ4DZJIxpaxv8DTlxBa1hpzqKJK6Dap5gCyIb6hf2LqwawH70Kqmp8PFpfzpt8O+tCnJIJPYK6UrVYT4MEJAHxAbMqhLhQzW1N/CoY23N786qW4VPnaBoeZzSDwJGDzc/wDh5nXa5Otu8fVlGwt1vRVlJGzHhcmItQVvfhvYnEYn+ESEQcndRz8g3u3Hup+IlaONJ8NGHjOyGUSaHqo1JO1hnYk2ZrLWo7GdktjI1vF7yT9qGj4KpIkYiO+5YH6Kp+d66/xKTCLlLqJ6+F8a3gLrI0Dq2iRNYMbnk2/T1J91MfgUaZQI5vGy3Ea2BvbfKunLe1qZuMJi5FJJEJFwR7b8td8iCx9flQnCjmkVQ6O7Nyo+cZLWJfKr08W3OoklClTfQnQDoM5DF7HpECWMhPFyFFGJC6gQnDnQ5vHIzRHLd9cwNmOltN5cVhiMREGtmw7HKfFYxsunmQco2OttdKDmnxkZaRJBNDmMGZs0czO6Jl8MfgOXnzBB53BsKfD4dCYEgiaZnEiNJjQqMzySDOC3h8VjdT4lC2CkKBWWaXGm2y8cG5NJDp8ThCR4xILn+eYiPML3a5bID4bHbUjrpeM8KzIrFZDOHMKpJ/DZnYM0YPLI7Ell8OttzWmixEKkG0y3sUhaNhLbmQoOW9r6sGsdiay+H7TSYfvfEu85T6SNEhawUnKLHVrXuWuDyvXPLJhbplOE40Kfg8awx4h5FWJGClWZGGcFkKNKvOxQDUDZhrZU8Sgi7thJ3+FLxqzyWEcsjEsrkllCrbJJ4WzCzaIo1qz4hxg4jErNKLYbAKqFjqzqjAjwqNbKzX35DnfBV7K8S4hG7vC8MclwHuXUjlqb67aDz2FdmKUFCLj9nPKMpNpmqRyHEUKxFgPaLKZYgBc5TcHMVBsRocxFuVJ8VWLkwMmNx+HSOWyYWOYxFHRXdG8KgTCM2UBRJdGKzOLWYr5rhNFJh8VHJaxDuqr7SL4iouDc2N+d9ry7g5wTw1mL5CWCBHb3K97HRRlY/EAc6J8dxUgKNwkWRVkSSJoywKhGnUqCbhiFqPBJczJPlY5lBJWMHMxF1A8BuTYHUNfexrufA4nDYhUjUFT7WidQoJsRjOQ/2H4qy+HPm4LKHtPirTF75lixOIgkfTViCdudqc8fEcFIJVnVJV1KEoWA2I8RK/KgMYykgQb3Bse2cYgdPTdT0d1INULnKqiAa1eWWOlMwrI7MHNtg7m6nqSGVhqpzaH8amxFzEzIwyvkYX5qYe6BBxF7c+JEr8YlrMxLs92xFJJMbLaUQpnFgWCgqG1FrGrKLisauJDJGvmzxkMlwCBfQmzaEjzB2NIrb1AvKT2xfRg8SYKCUZYPHBiZJgQfyRlT4bnNJKVJcpE6Yj4fHCM8oHNdBtJh2BF7W1e2tMYgjOGJqCPE6UUMfbeVbRvkNwQeNwSWvuCqEb8xpUbYhmDXlDOzB5JdTJI6RmMMe8sBIYo8pQiwuSxNz3WGZUU8LhWfFYiSaQiWGTEyqGAK5I4nIDW/NAd+lKsNNO3+PsV17NdxzHxMkcRaVfvHcuGijkzFsrM5EYBJNjJG5I8v5q5h8AJuCwZHjjm+64dlaN2K3GclCp2NpHjPvboMNHHJHPJBLJ3eDmjAGZiqlYnyL4dOXs86s8JhFTg0xaRVb+HKI1xDNGHsI9Y11Ggym7Ek+2NLJf6F2WpAy/x5S0iCwCqwGJgWMZZGEcQdZxdGEhJIb2SbM4hKhiF/jYlLOvdq4ihOXwjJJJiQQdAzBGykhdVqzGHZosJhpZFOLgdW3OZhNiDMvdlrlr+xvyB3F8c0kCYeRGgdHa8eXEiNFLqZYXLQhwQxkz7g+RUq4W1uC2Suxv1szGOweEkleMxPJCwsFwkdnuF5RzR5LXvfzUHqV0TfEMHDLCXk/iMt3dJ8OYpXAFyFKTg3GhOtxR8PZ+WfKVEOIlzkRNLhzLGAHKw3WV8KVZgzXvHILAEGPCF4o/4OGGLwMBxCTRtjGCK95nSdXjlVo3Xw+D2pNAMylJBsrG70uP2q1cEZGzU4HjkOJLZJAJgC0qNlhfvAsrSsMSwOdw8gEOUz2ysEA1qxigjhjV4hJ5OBRW7x0VgySCNmYllaZCXGaw8SDla6u4JLIzwN3cyR3EgEcZkBaQ94yoSzFNBOQzZSSjJYkCqftQqYZWMkdmidBOy/dmhYKGkCiS9o1BYgqJc/tX0C1m3yKNLT+x74/siDG8cxPEJUhEfcoTJIyKY49GC5wPCvhZRa/mCb7XPC8LmPj11+FO/hgaBRfa1qWGxNm31HK9cnzSlLZ5cY1JFxHi8gvJrbQVLh8bHI2V0vbWqrGS6j1vTcFO4I8NqJZJxSpjcYydn4jjOJtF9+wSvGLZ8o66X+dQ8E7YRYjjOM4dHGpQfmBz3BBNulQHgMUqBZcGhJNvEoa17aad3Tc82bNjw2UtJOvUEjTz1Iq5Sq4mUd/IkfH8Kh4lLh/ERdVIJbwgE2aKY5rKveSZrEhVVhbKTajOI8Gw2Gw6yuHKxwEwgXzBfvO9ZmsALGJpL6Gwd9hVTwTtJhv8PLw0M95fGIHJjw8k7TMxC5YyUg7twl2dsrjQg3u3+3E3SRHJchmKS2mBaRjlL3Ow2KgA77aA1oaD+0LEiEzyWnBJI1Xs3nJy+0SbrmyC5GjEaeVUMc0MMM8U6SgvKskTgqZHsjkDJm1EeMkQoqC8Z7whcoHlnheLlg4kYhFaOYrMZI5s8k5kVJ8xZjDlCoqZXhYmQZbKQ2+R4A8EjT46J3Dq2fxzqsjRjwsrDKLyO6KWY3zR2QAK1z0GvB1Jdv2b8fjLUujQ8L4t97nKw2ijhEMhV2zPJHfMV8TZbnTa2hFjcEHFYHEQTyviZoEYqy5ElVjZT7JViLcrHT6n2DhSLLHgooZC63lEbYZ5U7tpO8hKRWKmyjP4r+HnvUmIx0PHJmw8kOFzLIiCOYs0SLGj3YJJnXxuSGO4sAL6A1XyxSpHnyx1F2Y7BYhWxksUZIXLMzXa5YjNY3Gu+vXeh8ShPEiCfZw8p8thSW1w4HKXcVXLKdtb/ACpNKKfJB8izSOxPxkq9Cy41vlQNMOOpVJNiJlHRo6bSzVfIlGKUjMrxsqR7o/hW/wBO4qPGq9hIx3LGTDU08KKzpODWUE8lI4+w9/ajGOqRjtD6nR/4dJJPX6UD3rAeI3plVEF2aDDHxCrTAYS6tU+FhRo9KuMPHlI2rnbKZl8cqhieF3qZFCyC3On2p0RsDU2tOhyOZK6Iq7lpp20hxLhQVNZg6g6jQg8iDyINPGHcdvgab+HL7AoxOKTKnNRSKrTp4DyH0qREzW66UzBplqGKalzN0uK4I6kEtFJxJTyUGn8JBL6AkW3IF7aamk6lh1FhfoBao4Y2QjOrq3+VIB48w9xFYx4m9sHiSir9mgiHjF+dgfhUbJprTsBMZcRgwfZ+9BvQo/xbUJx7tHFhOWG/vr1/+Yh/pKHf7fWPfZKpHRLhxVKjjFGYeItbf01trW4kxIjkJuoNxtpWq4LjMHPisKmJkEQhsWJOvhNlYXF8wtc9PLXJ6aHBkz+Y4WLCyPOY2BhRSyO2VGYsxQKQGa2VgSNLFJMZ2k4XBPC2GKTmR82ZbEAZ8wub+t9+QNWHDJo8dLNFAJVtidGxGZF7vD3xGiAeKyPe5GgGoJyEfh2KlwwDJPJFK6ZMPHOjySMCx3bwMF02tcaXNhRQDeJ9sH4ezyMFxKtmEOdQzKuR8pDOLrI5aRbG5zE+FlNcTtHPOkaYjB4Z0FxJdVUyKVJ8LaON8rdCBuBTOLfZrxFHixOLGJxoYvJI8wkkNsQ2a8p5oj2zALo3jOYm4qfCjhsYXD5cTEYlAALSKruSbtKW9pyCTubXOlrxqN1SHFqzWcHwUhOJhlaVvYYJiIGRy8gJ1dEOU2HtM2hyt0A9TJjcZCl0w7qN3jQNMVW6ssYAEhLvG2ZTGpJVzaw1VPgX7LxQI0sFsYO6kWRZfFK5kMQtKbBVzWKMpZmyNddb1pfU2rwWJBpJ+TKCCNyJtJLnKPB8aTQgNnzx8lc2H8ta8HjTRHPHAMNiZZFdC5L+JCe9hVxY3WMtZgRe19LSN4HBnhxZnxZT70FHd1RlGHZsxcqXfJdnKSKI7Kb3a9tbXPQHBdYJgGgRsQmSz5lCgIhYXe2Y2vc2+FCPGoScG7FSlJLopH7Q4qH+HjJJZI7FTEQ5lRWaV7ZgBIL5mJ50kO0oe7xqfhMWxF+8ckQ2AuXVdCqqvTU+W5qNGiuJo0aNNjI1ZOL1tujhSqXYRicWXMOc5GaFfGpjLaMBc3B91qb93bWQizKykE/lYEDxeXkegqEfv8AjXlL0ejd9iLu7F1FytiQeY6iupcGrm1c61VoRyuGlT1FhXvjHYfF27vCYO2uZ4jF8wLV6jw/7O8ZIhfHwqrciMoJ6aam27Lf5cOtdHAdjJOI4iEJGxV3YPcAqy5V2J3BvYg+tblJr7YKHIhwuCwOGGZISrdbE+vPaqH7WOGRf4fjGjUJllBtsDa4+laCXHcPkHhKxhLbsNdTYfOhv8PjdgJMQznqoJNhz1tWkpVyRmmzNJjWjN0YqfI7e7rSyX61pfsr4RHNjJcTCDPh4i1wcssYuMqgWNyLi45a7bj6P7DRuEKq2VeUzBSQTbUA7kXsQPdWGTpGkE7NFDY3sbKKJ4/wT7ziYsCy3hdyWB0Iuq6X5+dMjjO9LxzBSYLicWLOQhJP3NfCFzqfGBY+2pPsuSQOZHkrGFOa2I8bT+xjwKwmjhNLZx1B+orp2qcCxXJbzI5Uxrb1qNWpVjQoaHgD1v8AWue6lmiGNgKfm+tQZa4UqCdqnGBqnzGrHEcE9Q0EzGnXWtyVnOsSb3OzCz2qNpAKmzVzNUPJ32ZY3OHmhwcZDbXjUfEvHI7fyxg38dL8Ki7N8WmgiBjQlAchObKoFtO8IYm/lprT3n1P1rLHJKexZJNwaNL2O4k7jCLiMUJYZZkQ4lsxdHdGOGcMXJ7xiO8tbxlEK6lmtW+x8UrYrFRRosiZsYoWXMVKrh8Hh1BbKToRlB15GxqLgeHw8Cw4nCLh/wCJmCOA0soKRzKSsZDimport React, { useState, useEffect } from 'react';
+
+const KalpavrikshCapital = () => {
+  const [currentPage, setCurrentPage] = useState('home');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const [companyStats] = useState({
+    aum: '50+', // Crores - you can update this
+    clients: '85+',
+    experience: '20+',
+    founded: '2024'
+  });
+
+  // Handle scroll effect for navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Scroll to top when changing pages
+  const changePage = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Handle contact actions
+  const handleContactAction = (action) => {
+    switch(action) {
+      case 'email':
+        window.location.href = 'mailto:rakhi@kalpavrikshcapital.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
+        break;
+      case 'linkedin':
+        window.open('https://www.linkedin.com/in/rakhi-jain-7658328/', '_blank');
+        break;
+      case 'calendar':
+        window.open('https://calendly.com/rakhi-jain-fermatprime/30min', '_blank');
+        break;
+      default:
+        break;
+    }
+  };
+
+  const testimonials = [
+    {
+      name: "Amarja K Puranand",
+      role: "Clean Energy & Marketing Professional",
+      rating: 5,
+      content: [
+        "Promoting clean energy through empowering women as change makers for a greener planet are two sides of my climate coin! Super powers = marketing, strategic communications, & an open mind.",
+        "I've known Rakhi since our 10+2 days, and one thing that has always stood out is how grounded, pragmatic, and practical she is. These same qualities now shine through in her work as a financial advisor.",
+        "Reconnecting with her for financial advice has been a real blessing. She has a clear understanding of different life stages and the kind of financial support needed – both for the present and the future, in alignment with family goals.",
+        "What I value most is her transparent approach and her ability to balance portfolios with both caution and opportunity. With Rakhi, you know your financial planning is in steady, trustworthy hands."
+      ]
+    },
+    {
+      name: "Hynde El Kaysi",
+      role: "Strategic HR Leader | Organizational Transformation Expert",
+      rating: 5,
+      content: [
+        "Working with Rakhi has been a truly rewarding experience. Her mission to help families take charge of their financial future shines through in everything she does. She guided me with patience and clarity on how and where to invest my savings, always taking time to explain my options and ensure I felt confident about my decisions.",
+        "Rakhi's service is warm and highly personalized — she listens carefully, tailors her advice to individual goals, and stays close to her clients with regular check-ins. Her kindness and professionalism create a sense of trust that makes financial planning feel approachable and empowering.",
+        "I wholeheartedly recommend Rakhi to anyone looking for a financial advisor who combines expertise, integrity, and genuine care for her clients' success."
+      ]
+    },
+    {
+      name: "Sushma Manjunath",
+      role: "Director - Supply Chain Finance",
+      rating: 5,
+      content: [
+        "Working with Rakhi has been truly transformative for me and my family. She helped me unlock my savings potential with clear strategies tailored to my goals, while also bringing full transparency to my net assets.",
+        "For the first time, I have complete picture of my financial position, and that clarity has given me the confidence to plan for the future. I value her trust, professionalism, and insight she brings, and I would wholeheartedly recommend Rakhi Jain and her company to anyone looking for a dedicated and transparent wealth advisor."
+      ]
+    },
+    {
+      name: "Janani KN",
+      role: "Senior Plant Finance Manager - GE Vernova",
+      rating: 5,
+      content: [
+        "I am actually very lucky to have found Rakhi through LinkedIn. I am highly grateful to her for reviewing my family finance portfolio and pointed all the grave mistakes that I was doing without realizing.",
+        "This turned out to be a massive game changer for me as I have now started on the path of financial literacy and financial discipline and to do this alongside me. I have a solid partner in Rakhi. She is calm, composed and brings her points assertively in a way which forces you to think but without pressuring you!",
+        "Highly recommend her for her financial acumen and for everyone's wealth creation journey!"
+      ]
+    }
+  ];
+
+  const services = [
+    {
+      icon: "📈",
+      title: "Strategic Investing",
+      description: "A structured, risk-managed approach tailored to your individual goals and risk tolerance.",
+      features: ["Portfolio diversification", "Risk assessment", "Regular monitoring", "Performance tracking"]
+    },
+    {
+      icon: "🗺️",
+      title: "Personalized Financial Roadmap",
+      description: "A clear, practical path to building and growing your wealth based on your unique situation.",
+      features: ["Goal-based planning", "Timeline creation", "Milestone tracking", "Regular reviews"]
+    },
+    {
+      icon: "👨‍👩‍👧‍👦",
+      title: "Family Legacy Planning",
+      description: "Encouraging open financial conversations that create long-term security for generations.",
+      features: ["Estate planning", "Insurance optimization", "Tax efficiency", "Wealth transfer"]
+    }
+  ];
+
+  const processSteps = [
+    {
+      number: 1,
+      title: "Initial Consultation",
+      description: "Understanding your financial goals and current situation"
+    },
+    {
+      number: 2,
+      title: "Strategy Development",
+      description: "Creating a personalized financial roadmap"
+    },
+    {
+      number: 3,
+      title: "Implementation",
+      description: "Executing the plan with careful monitoring"
+    },
+    {
+      number: 4,
+      title: "Ongoing Support",
+      description: "Regular reviews and adjustments as needed"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-yellow-50 to-green-100">
+      {/* Navigation */}
+      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/98 shadow-lg' : 'bg-white/95 shadow-md'
+      } backdrop-blur-lg`}>
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3 text-2xl font-bold text-green-700">
+              <div className="w-10 h-10 flex items-center justify-center">
+                <svg viewBox="0 0 841.9 595.3" className="w-full h-full">
+                  <g fill="currentColor">
+                    <circle cx="420" cy="297" r="80" fill="#B8860B"/>
+                    <path d="M420 200 C380 220, 380 280, 420 297 C460 280, 460 220, 420 200 Z" fill="#228B22"/>
+                    <path d="M350 250 C370 260, 390 270, 420 297 C390 324, 370 334, 350 344 C320 320, 320 274, 350 250 Z" fill="#228B22"/>
+                    <path d="M490 250 C470 260, 450 270, 420 297 C450 324, 470 334, 490 344 C520 320, 520 274, 490 250 Z" fill="#228B22"/>
+                    <circle cx="420" cy="297" r="15" fill="#DAA520"/>
+                  </g>
+                </svg>
+              </div>
+              <span>Kalpavriksh Capital</span>
+            </div>
+            <div className="flex gap-6">
+              {['home', 'services', 'testimonials', 'blogs', 'contact'].map((page) => (
+                <button
+                  key={page}
+                  onClick={() => changePage(page)}
+                  className={`px-6 py-2 rounded-full font-medium transition-all duration-300 transform ${
+                    currentPage === page
+                      ? 'bg-gradient-to-r from-green-600 to-yellow-600 text-white shadow-lg scale-105'
+                      : 'text-gray-700 hover:bg-gradient-to-r hover:from-green-100 hover:to-yellow-100 hover:scale-105'
+                  }`}
+                >
+                  {page.charAt(0).toUpperCase() + page.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <div className="pt-20">
+        {/* Home Page */}
+        {currentPage === 'home' && (
+          <div className="space-y-16">
+            {/* Hero Section with Stats */}
+            <section className="bg-gradient-to-r from-green-100 via-yellow-100 to-green-200 py-20 px-4 rounded-3xl mx-4 mt-8 relative overflow-hidden">
+              <div className="max-w-4xl mx-auto text-center relative z-10">
+                <h1 className="text-6xl font-bold text-green-800 mb-6 animate-fade-in">
+                  Welcome to Kalpavriksh Capital
+                </h1>
+                <p className="text-2xl text-green-600 mb-4 animate-fade-in-delay">
+                  Empowering 100 families to take charge of their financial future
+                </p>
+                <p className="text-xl text-gray-700 mb-8 animate-fade-in-delay-2">
+                  From uncertainty to confidence, from delegation to independence
+                </p>
+                
+                {/* Company Stats */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 animate-fade-in-delay-3">
+                  <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl">
+                    <div className="text-3xl font-bold text-green-800">{companyStats.aum}</div>
+                    <div className="text-sm text-gray-600">AUM (In crores)</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl">
+                    <div className="text-3xl font-bold text-green-800">{companyStats.clients}</div>
+                    <div className="text-sm text-gray-600">Total Clients</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl">
+                    <div className="text-3xl font-bold text-green-800">{companyStats.experience}</div>
+                    <div className="text-sm text-gray-600">Years Experience</div>
+                  </div>
+                  <div className="bg-white/80 backdrop-blur-sm p-4 rounded-xl">
+                    <div className="text-3xl font-bold text-green-800">{companyStats.founded}</div>
+                    <div className="text-sm text-gray-600">Founded</div>
+                  </div>
+                </div>
+                
+                <button
+                  onClick={() => changePage('contact')}
+                  className="bg-gradient-to-r from-green-600 to-yellow-600 hover:from-green-700 hover:to-yellow-700 text-white px-8 py-4 rounded-full text-lg font-semibold 
+                           transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl
+                           flex items-center gap-3 mx-auto animate-fade-in-delay-3"
+                >
+                  <span>📊</span> Explore Our Services
+                </button>
+              </div>
+              
+              {/* Floating Elements */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/4 left-1/4 w-4 h-4 bg-green-300 rounded-full animate-bounce opacity-60"></div>
+                <div className="absolute top-3/4 right-1/4 w-6 h-6 bg-green-400 rounded-full animate-pulse opacity-50"></div>
+                <div className="absolute bottom-1/4 left-3/4 w-3 h-3 bg-green-500 rounded-full animate-ping opacity-40"></div>
+              </div>
+            </section>
+
+            {/* About Rakhi Section with Professional Credentials */}
+            <section className="max-w-6xl mx-auto px-4">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-green-800 mb-4 flex items-center justify-center gap-3">
+                  <span>👤</span> Meet Rakhi Jain
+                </h2>
+                <div className="w-24 h-1 bg-green-400 mx-auto rounded-full"></div>
+              </div>
+              
+              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+                {/* Professional Credentials Banner */}
+                <div className="bg-green-800 text-white p-4 rounded-xl mb-8 text-center">
+                  <div className="flex flex-wrap justify-center items-center gap-6 text-sm">
+                    <span className="flex items-center gap-2">
+                      <span>🎓</span> MBA Finance | 20+ Years Experience
+                    </span>
+                    <span>|</span>
+                    <span className="flex items-center gap-2">
+                      <span>🏢</span> MNC Financial Strategy Expert
+                    </span>
+                    <span>|</span>
+                    <span className="flex items-center gap-2">
+                      <span>💰</span> Billion-Euro Transaction Experience
+                    </span>
+                  </div>
+                </div>
+                
+                <h3 className="text-3xl font-bold text-green-700 text-center mb-6">
+                  Your Trusted Financial Partner
+                </h3>
+                <p className="text-xl text-center text-gray-700 mb-12 leading-relaxed">
+                  Founded by Rakhi Jain, Kalpavriksh Capital brings over 20 years of experience in building 
+                  financial strategies that drive billion-euro business transformations to personal wealth management.
+                </p>
+                
+                <div className="grid md:grid-cols-3 gap-8">
+                  {[
+                    { icon: "💼", title: "20+ Years Experience", desc: "Corporate finance and business transformation expertise" },
+                    { icon: "🤝", title: "M&A Integrations", desc: "Helping MNCs create financial efficiency and long-term value" },
+                    { icon: "📈", title: "Wealth Creation", desc: "Personal finance mastery and strategic family wealth building" }
+                  ].map((item, index) => (
+                    <div key={index} className="text-center p-6 bg-green-50 rounded-xl hover:bg-green-100 transition-all duration-300 transform hover:scale-105">
+                      <div className="text-4xl mb-4">{item.icon}</div>
+                      <h4 className="text-xl font-semibold text-green-800 mb-2">{item.title}</h4>
+                      <p className="text-gray-600">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            {/* My Story Section */}
+            <section className="max-w-6xl mx-auto px-4">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-green-800 mb-4 flex items-center justify-center gap-3">
+                  <span>📖</span> My Story
+                </h2>
+                <div className="w-24 h-1 bg-green-400 mx-auto rounded-full"></div>
+              </div>
+              
+              <div className="space-y-8">
+                <div className="bg-green-100 p-8 rounded-2xl">
+                  <p className="text-xl font-medium text-green-800 text-center leading-relaxed">
+                    For over 20 years, I've built financial strategies that drive billion-euro business transformations. 
+                    From cost optimization to M&A integrations, I've helped MNCs create financial efficiency and long-term value.
+                  </p>
+                </div>
+                
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8">
+                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                    But alongside my corporate journey, I've also been quietly mastering something equally impactful — 
+                    my family's personal finances and wealth. I've seen firsthand how smart, structured investing can create financial freedom.
+                  </p>
+                  
+                  <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                    I've also seen what happens when financial planning is neglected:
+                  </p>
+                  
+                  <div className="bg-red-50 border-l-4 border-red-300 p-6 rounded-r-xl mb-8">
+                    <div className="space-y-4">
+                      {[
+                        "A family losing their entire savings to medical expenses, with no insurance to fall back on.",
+                        "A friend's husband investing everything in a \"guaranteed high-return\" scheme—only to lose it all, leaving behind debt and devastation.",
+                        "A successful professional keeping all her money in a savings account earning 2%, unaware of how inflation is silently eroding her hard-earned wealth."
+                      ].map((story, index) => (
+                        <div key={index} className="flex items-start gap-3">
+                          <span className="text-red-500 text-xl">⚠️</span>
+                          <p className="text-gray-700">{story}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="bg-green-100 border-l-4 border-green-500 p-6 rounded-r-xl mb-8">
+                    <p className="text-lg font-medium text-green-800 leading-relaxed">
+                      These stories are not rare—they're everywhere. That's why I have decided to be part of the solution. 
+                      I am on a mission to empower 100 families to take charge of their financial future—helping them move 
+                      from uncertainty to confidence, from delegation to independence.
+                    </p>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-3 gap-6 mb-8">
+                    {[
+                      { icon: "💡", title: "Strategic Investing", desc: "A structured, risk-managed approach tailored to individual goals" },
+                      { icon: "🗺️", title: "Personalized Financial Roadmap", desc: "A clear, practical path to building and growing wealth" },
+                      { icon: "👨‍👩‍👧‍👦", title: "Family Legacy Planning", desc: "Encouraging open financial conversations that create long-term security" }
+                    ].map((item, index) => (
+                      <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                        <div className="text-3xl mb-3">{item.icon}</div>
+                        <h4 className="text-lg font-semibold text-green-800 mb-2">{item.title}</h4>
+                        <p className="text-gray-600 text-sm">{item.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="bg-gradient-to-r from-green-100 to-green-200 p-8 rounded-2xl text-center">
+                    <p className="text-xl font-semibold text-green-800 leading-relaxed">
+                      Financial independence isn't just about money—it's about having choices, control, and confidence in your future.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        )}
+
+        {/* Services Page */}
+        {currentPage === 'services' && (
+          <div className="space-y-16 px-4 py-8">
+            <section className="text-center max-w-4xl mx-auto">
+              <h1 className="text-5xl font-bold text-green-800 mb-6 flex items-center justify-center gap-4">
+                <span>⚙️</span> Our Services
+              </h1>
+              <p className="text-xl text-gray-700">
+                Comprehensive wealth management solutions tailored for your success
+              </p>
+            </section>
+            
+            <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <div key={index} className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                  <div className="text-6xl mb-6 text-center">{service.icon}</div>
+                  <h3 className="text-2xl font-bold text-green-800 mb-4 text-center">{service.title}</h3>
+                  <p className="text-gray-700 mb-6 leading-relaxed">{service.description}</p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <span className="text-green-500">✓</span>
+                        <span className="text-gray-600">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            
+            <section className="max-w-6xl mx-auto text-center">
+              <h2 className="text-4xl font-bold text-green-800 mb-12">Our Process</h2>
+              <div className="grid md:grid-cols-4 gap-8">
+                {processSteps.map((step, index) => (
+                  <div key={index} className="bg-white/80 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                    <div className="w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                      {step.number}
+                    </div>
+                    <h4 className="text-xl font-semibold text-green-800 mb-2">{step.title}</h4>
+                    <p className="text-gray-600">{step.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        )}
+
+        {/* Testimonials Page */}
+        {currentPage === 'testimonials' && (
+          <div className="space-y-16 px-4 py-8">
+            <section className="text-center max-w-4xl mx-auto">
+              <h1 className="text-5xl font-bold text-green-800 mb-6 flex items-center justify-center gap-4">
+                <span>💬</span> Client Testimonials
+              </h1>
+              <p className="text-xl text-gray-700">
+                See what our clients say about their journey to financial independence
+              </p>
+            </section>
+            
+            <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="bg-white/90 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-t-4 border-green-400">
+                  <div className="flex justify-between items-start mb-6 flex-wrap gap-4">
+                    <div>
+                      <h4 className="text-xl font-bold text-green-800">{testimonial.name}</h4>
+                      <p className="text-gray-600 text-sm">{testimonial.role}</p>
+                    </div>
+                    <div className="flex gap-1">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <span key={i} className="text-yellow-400 text-xl">⭐</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    {testimonial.content.map((paragraph, idx) => (
+                      <p key={idx} className="text-gray-700 italic leading-relaxed">
+                        "{paragraph}"
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Blogs Page */}
+        {currentPage === 'blogs' && (
+          <div className="space-y-16 px-4 py-8">
+            <section className="text-center max-w-4xl mx-auto">
+              <h1 className="text-5xl font-bold text-green-800 mb-6 flex items-center justify-center gap-4">
+                <span>📝</span> Financial Insights & Blogs
+              </h1>
+              <p className="text-xl text-gray-700">
+                Stay informed with our latest thoughts on financial planning and wealth management
+              </p>
+            </section>
+            
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-12 text-center shadow-lg">
+                <div className="text-6xl mb-8">🚧</div>
+                <h2 className="text-3xl font-bold text-green-800 mb-6">Coming Soon</h2>
+                <p className="text-xl text-gray-700 mb-8">
+                  We're working on bringing you valuable financial insights and expert advice. 
+                  Our blog section will feature articles on investment strategies, financial planning tips, 
+                  market insights, and wealth management guidance.
+                </p>
+                <div className="bg-green-100 p-6 rounded-xl">
+                  <p className="text-lg text-green-800 font-medium">
+                    Stay tuned for expert content that will help you make informed financial decisions!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Contact Page */}
+        {currentPage === 'contact' && (
+          <div className="space-y-16 px-4 py-8">
+            <section className="text-center max-w-4xl mx-auto">
+              <h1 className="text-5xl font-bold text-green-800 mb-6 flex items-center justify-center gap-4">
+                <span>📧</span> Get In Touch
+              </h1>
+              <p className="text-xl text-gray-700">
+                Ready to start your journey towards financial independence? Let's connect!
+              </p>
+            </section>
+            
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+              {/* Contact Information */}
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+                <h2 className="text-3xl font-bold text-green-800 mb-6 flex items-center gap-3">
+                  <span>💬</span> Let's Talk
+                </h2>
+                <p className="text-lg text-gray-700 mb-8">
+                  I'm here to help you take control of your financial future. Whether you're just starting 
+                  your investment journey or looking to optimize your existing portfolio, let's discuss 
+                  how we can work together.
+                </p>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center gap-4 p-4 bg-green-50 rounded-xl hover:bg-green-100 transition-all duration-300">
+                    <span className="text-2xl">📧</span>
+                    <div>
+                      <p className="font-semibold text-green-800">Email</p>
+                      <a href="mailto:rakhi@kalpavrikshcapital.com" className="text-gray-600 hover:text-green-600">
+                        rakhi@kalpavrikshcapital.com
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 p-4 bg-green-50 rounded-xl hover:bg-green-100 transition-all duration-300">
+                    <span className="text-2xl">💼</span>
+                    <div>
+                      <p className="font-semibold text-green-800">LinkedIn</p>
+                      <a 
+                        href="https://www.linkedin.com/in/rakhi-jain-7658328" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-600 hover:text-green-600"
+                      >
+                        Connect with Rakhi Jain
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 p-4 bg-green-50 rounded-xl hover:bg-green-100 transition-all duration-300">
+                    <span className="text-2xl">🏢</span>
+                    <div>
+                      <p className="font-semibold text-green-800">Company</p>
+                      <p className="text-gray-600">Kalpavriksh Capital</p>
+                      <p className="text-sm text-gray-500">Investment Advisory Services</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Call to Action */}
+              <div className="bg-gradient-to-br from-green-100 to-green-200 rounded-2xl p-8 shadow-lg">
+                <h2 className="text-3xl font-bold text-green-800 mb-6 flex items-center gap-3">
+                  <span>🚀</span> Ready to Begin?
+                </h2>
+                <p className="text-lg text-gray-700 mb-8">
+                  Book a free 30-minute consultation to discuss your financial goals and 
+                  explore how we can help you achieve them.
+                </p>
+                
+                <div className="space-y-4">
+                  <button
+                    onClick={() => handleContactAction('calendar')}
+                    className="w-full bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-xl text-lg font-semibold 
+                             transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl
+                             flex items-center justify-center gap-3"
+                  >
+                    <span>📅</span> Book Free Consultation
+                  </button>
+                  
+                  <button
+                    onClick={() => handleContactAction('email')}
+                    className="w-full bg-white hover:bg-gray-50 text-green-600 px-8 py-4 rounded-xl text-lg font-semibold 
+                             transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg
+                             flex items-center justify-center gap-3 border-2 border-green-200"
+                  >
+                    <span>✉️</span> Send Email
+                  </button>
+                  
+                  <button
+                    onClick={() => handleContactAction('linkedin')}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl text-lg font-semibold 
+                             transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl
+                             flex items-center justify-center gap-3"
+                  >
+                    <span>💼</span> Connect on LinkedIn
+                  </button>
+                </div>
+                
+                <div className="mt-8 p-6 bg-white/80 rounded-xl">
+                  <h3 className="text-xl font-bold text-green-800 mb-3">What to Expect:</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-500">✓</span>
+                      Comprehensive financial health assessment
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-500">✓</span>
+                      Personalized investment strategy discussion
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-500">✓</span>
+                      Clear roadmap for your financial goals
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="text-green-500">✓</span>
+                      No obligations or pressure
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Footer with Professional Information */}
+      <footer className="bg-gradient-to-r from-green-800 to-green-900 text-white py-12 mt-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+                <span>🌱</span> Kalpavriksh Capital
+              </h3>
+              <p className="text-green-200 mb-4">Empowering families towards financial independence</p>
+              <div className="text-sm text-green-300">
+                <p>📧 rakhi@kalpavrikshcapital.com</p>
+                <p>📞 +91-XXXX-XXXXXX</p>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-xl font-semibold mb-4">Quick Links</h4>
+              <div className="space-y-2">
+                {['Home', 'Services', 'Testimonials', 'Blogs', 'Contact'].map((link) => (
+                  <button
+                    key={link}
+                    onClick={() => changePage(link.toLowerCase())}
+                    className="block text-green-200 hover:text-white transition-colors duration-200"
+                  >
+                    {link}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h4 className="text-xl font-semibold mb-4">Services</h4>
+              <div className="space-y-2 text-green-200 text-sm">
+                <p>• Strategic Investing</p>
+                <p>• Financial Roadmap</p>
+                <p>• Legacy Planning</p>
+                <p>• Wealth Management</p>
+              </div>
+            </div>
+            <div>
+              <h4 className="text-xl font-semibold mb-4">Professional Info</h4>
+              <div className="space-y-2 text-green-200 text-sm">
+                <p>• 20+ Years Experience</p>
+                <p>• MBA Finance</p>
+                <p>• MNC Background</p>
+                <p>• M&A Expert</p>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-green-700 pt-8 text-center text-green-200">
+            <p className="mb-2">
+              <strong>Kalpavriksh Capital</strong> | Founded 2024 by Rakhi Jain
+            </p>
+            <p className="text-sm">
+              Investment Advisory Services | &copy; 2024 Kalpavriksh Capital. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      {/* Custom Styles */}
+      <style jsx>{`
+        .animate-fade-in {
+          animation: fadeIn 1s ease-out;
+        }
+        .animate-fade-in-delay {
+          animation: fadeIn 1s ease-out 0.3s both;
+        }
+        .animate-fade-in-delay-2 {
+          animation: fadeIn 1s ease-out 0.6s both;
+        }
+        .animate-fade-in-delay-3 {
+          animation: fadeIn 1s ease-out 0.9s both;
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default KalpavrikshCapital;
