@@ -451,31 +451,41 @@ const KalpavrikshCapital = () => {
                   specializing in business finance, performance management, and transformational programs.
                 </p>
                 
-                {/* My Story Section */}
+                {/* From Corporate Finance to Family Wealth */}
                 <div className="rounded-lg sm:rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)', animationDelay: '0.3s' }}>
-                  <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center px-2" style={{ color: '#1E5631' }}>My Story</h4>
-                  <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed px-2">
-                    <p>
-                      My journey began in 2002 as a Business Leadership Trainee at Hindustan Unilever, where I
-                      progressively grew through diverse roles across business finance, controlling, and strategic
-                      program management. Over 18+ years, I've had the privilege of leading transformational
-                      initiatives—from managing €3.8bn businesses across Middle East and North Africa to directing
-                      the Fuel for Growth program delivering €2bn annual savings globally.
-                    </p>
-                    <p>
-                      Throughout my corporate career, I witnessed a recurring theme: financial complexity often
-                      creates barriers rather than clarity. Whether managing billion-euro budgets or negotiating
-                      strategic supplier deals, I learned that sound financial principles remain the same—it's
-                      about discipline, planning, and making informed decisions. This insight inspired me to
-                      democratize wealth management for families who deserve the same strategic approach.
-                    </p>
-                    <p>
-                      I founded Kalpavriksh Capital to bring corporate finance discipline to personal wealth
-                      management. My mission is simple: empower every family with clarity, confidence, and control
-                      over their financial future. Whether you're planning your child's education, securing
-                      retirement, or simply seeking financial peace of mind, I bring the same rigor and care I
-                      applied to billion-euro programs—now dedicated to your family's success.
-                    </p>
+                  <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center px-2" style={{ color: '#1E5631' }}>From Corporate Finance to Family Wealth</h4>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed px-2 text-center mb-4">
+                    Rakhi Jain blends global finance leadership with a passion for empowering families. She brings corporate discipline, strategic insight, and personal care to every wealth journey.
+                  </p>
+                  <div className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-700 px-2">
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-base sm:text-lg flex-shrink-0 mt-0.5" style={{ color: '#1E5631' }}>•</span>
+                      <span>Gold Medalist Chartered Accountant</span>
+                    </div>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-base sm:text-lg flex-shrink-0 mt-0.5" style={{ color: '#1E5631' }}>•</span>
+                      <span>Chartered Wealth Manager (CWM®)</span>
+                    </div>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-base sm:text-lg flex-shrink-0 mt-0.5" style={{ color: '#1E5631' }}>•</span>
+                      <span>20+ years of finance leadership at Unilever India & Middle East</span>
+                    </div>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-base sm:text-lg flex-shrink-0 mt-0.5" style={{ color: '#1E5631' }}>•</span>
+                      <span>Former Finance Director, Unilever Middle East</span>
+                    </div>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-base sm:text-lg flex-shrink-0 mt-0.5" style={{ color: '#1E5631' }}>•</span>
+                      <span>Expertise in Strategy, Corporate Finance, and Business Performance</span>
+                    </div>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-base sm:text-lg flex-shrink-0 mt-0.5" style={{ color: '#1E5631' }}>•</span>
+                      <span>Proven ability to identify high-performing asset managers and investment opportunities</span>
+                    </div>
+                    <div className="flex items-start gap-2 sm:gap-3">
+                      <span className="text-base sm:text-lg flex-shrink-0 mt-0.5" style={{ color: '#1E5631' }}>•</span>
+                      <span>Passionate about Investor education - on a mission to guide 100+ families to financial freedom</span>
+                    </div>
                   </div>
                 </div>
 
