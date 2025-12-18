@@ -377,7 +377,7 @@ const KalpavrikshCapital = () => {
         {currentPage === 'home' && (
           <div className="space-y-16">
             {/* Hero Section with Stats */}
-            <section className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 rounded-2xl sm:rounded-3xl mx-2 sm:mx-4 mt-6 sm:mt-8 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0, #F0EBE5)' }}>
+            <section className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 rounded-2xl sm:rounded-3xl mx-2 sm:mx-4 mt-6 sm:mt-8 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3, #F5F2ED)' }}>
               <div className="max-w-4xl mx-auto text-center relative z-10">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 px-2 animate-fade-in-up leading-tight" style={{ color: '#1E5631' }}>
                   Welcome to Kalpavriksh Capital
@@ -452,7 +452,7 @@ const KalpavrikshCapital = () => {
                 </p>
                 
                 {/* From Corporate Finance to Family Wealth */}
-                <div className="rounded-lg sm:rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)', animationDelay: '0.3s' }}>
+                <div className="rounded-lg sm:rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)', animationDelay: '0.3s' }}>
                   <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center px-2" style={{ color: '#1E5631' }}>From Corporate Finance to Family Wealth</h4>
                   <p className="text-sm sm:text-base text-gray-700 leading-relaxed px-2 text-center mb-4">
                     Rakhi Jain blends global finance leadership with a passion for empowering families. She brings corporate discipline, strategic insight, and personal care to every wealth journey.
@@ -511,11 +511,11 @@ const KalpavrikshCapital = () => {
                       key={index}
                       className="text-center p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 shadow-sm hover:shadow-xl animate-fade-in-up cursor-pointer"
                       style={{
-                        background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)',
+                        background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)',
                         animationDelay: `${0.4 + index * 0.1}s`
                       }}
-                      onMouseEnter={(e) => e.currentTarget.style.background = 'linear-gradient(to bottom right, #E8DED0, #D9CBC0)'}
-                      onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)'}
+                      onMouseEnter={(e) => e.currentTarget.style.background = 'linear-gradient(to bottom right, #EFE9E3, #E5DDD5)'}
+                      onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)'}
                     >
                       <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 transform transition-transform duration-300 hover:scale-125 hover:rotate-12">{item.icon}</div>
                       <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2 px-1" style={{ color: '#1E5631' }}>{item.title}</h4>
@@ -602,7 +602,7 @@ const KalpavrikshCapital = () => {
             </section>
 
             {/* Why Attend Section - Simplified */}
-            <section className="rounded-3xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)' }}>
+            <section className="rounded-3xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)' }}>
               <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center" style={{ color: '#1E5631' }}>Why Attend?</h2>
               <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
                 {[
@@ -707,7 +707,7 @@ const KalpavrikshCapital = () => {
                   <div
                     key={index}
                     className="text-center p-4 rounded-2xl animate-fade-in-up"
-                    style={{ animationDelay: `${index * 0.1}s`, background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)' }}
+                    style={{ animationDelay: `${index * 0.1}s`, background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)' }}
                   >
                     <div className="w-12 h-12 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3" style={{ backgroundColor: '#1E5631' }}>
                       {item.step}
@@ -720,7 +720,7 @@ const KalpavrikshCapital = () => {
             </section>
 
             {/* Delivery Options - Compact */}
-            <section className="rounded-3xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #E8DED0, #D9CBC0)' }}>
+            <section className="rounded-3xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #EFE9E3, #E5DDD5)' }}>
               <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center" style={{ color: '#1E5631' }}>Flexible Options</h2>
               <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
                 {[
@@ -834,7 +834,7 @@ const KalpavrikshCapital = () => {
 
             {/* CTA Section */}
             <section className="max-w-4xl mx-auto text-center animate-fade-in-up">
-              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 shadow-lg" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)' }}>
+              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 shadow-lg" style={{ background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)' }}>
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 px-2" style={{ color: '#1E5631' }}>
                   Ready to begin your journey?
                 </h2>
@@ -988,7 +988,7 @@ const KalpavrikshCapital = () => {
               </div>
 
               <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="aspect-video bg-gray-100 rounded-xl mb-6 flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)' }}>
+                <div className="aspect-video bg-gray-100 rounded-xl mb-6 flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)' }}>
                   <div className="text-center">
                     <svg className="w-24 h-24 mx-auto mb-4" style={{ color: '#1E5631' }} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -1070,7 +1070,7 @@ const KalpavrikshCapital = () => {
               </h1>
               <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#D4AF37' }}></div>
 
-              <div className="mt-6 sm:mt-8 p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-md transform hover:scale-[1.02] transition-all duration-500 animate-fade-in-up" style={{ animationDelay: '0.2s', background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)' }}>
+              <div className="mt-6 sm:mt-8 p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-md transform hover:scale-[1.02] transition-all duration-500 animate-fade-in-up" style={{ animationDelay: '0.2s', background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)' }}>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-serif italic mb-2 sm:mb-3 px-2" style={{ color: '#1E5631' }}>
                   "Clarity is the most underrated form of financial confidence."
                 </p>
