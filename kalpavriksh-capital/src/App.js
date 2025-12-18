@@ -296,9 +296,9 @@ const KalpavrikshCapital = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 sm:gap-3">
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-Zu2tWbW165XhozteWwC8CUlZ47YzcuNmcJyGkCKXnrs0bv2DHCNxcQ178Mg5YcsoP1fOy521rjHSVXFwf-eBmK-TAWjy8FRXXI2gf1mjAiqmdJo_s4ec3am5jdhg_ImuJXhWrTJm8JH1W-YKnLvdfvFJpap1XkLF4tUgy11pLuZfidLsXQzFHJdmnP85JhL7sAvjboK-A8ifa8Tl4xfPEiKBMWwyNYC42R_3Ekq0H5EzYJsq5i2sBNNrF95G0xihHc96mdVIYHo"
+                src="/logo.png"
                 alt="Kalpavriksh Capital Logo"
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain transition-transform duration-300 hover:scale-110 rounded-full"
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-10 sm:w-12 md:w-14 lg:w-16 object-cover transition-transform duration-300 hover:scale-110 rounded-full"
                 loading="lazy"
                 decoding="async"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -314,8 +314,8 @@ const KalpavrikshCapital = () => {
                   onClick={() => changePage(page)}
                   className={`px-6 py-2 rounded-full font-medium transition-all duration-300 transform border-2 ${
                     currentPage === page
-                      ? 'bg-white shadow-lg scale-105 border-[#D4AF37]'
-                      : 'text-white hover:bg-white/20 hover:scale-105 border-[#D4AF37] hover:border-[#D4AF37]'
+                      ? 'bg-white shadow-lg scale-105 border-[#C4A747]'
+                      : 'text-white hover:bg-white/20 hover:scale-105 border-[#C4A747] hover:border-[#C4A747]'
                   }`}
                   style={currentPage === page ? { color: '#1E5631' } : {}}
                 >
@@ -377,16 +377,16 @@ const KalpavrikshCapital = () => {
         {currentPage === 'home' && (
           <div className="space-y-16">
             {/* Hero Section with Stats */}
-            <section className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 rounded-2xl sm:rounded-3xl mx-2 sm:mx-4 mt-6 sm:mt-8 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3, #F5F2ED)' }}>
+            <section className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 rounded-2xl sm:rounded-3xl mx-2 sm:mx-4 mt-6 sm:mt-8 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #f7f7f7ff, #f7f7f7ff, #f7f7f7ff)' }}>
               <div className="max-w-4xl mx-auto text-center relative z-10">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 px-2 animate-fade-in-up leading-tight" style={{ color: '#1E5631' }}>
-                  Welcome to Kalpavriksh Capital
+                  Welcome to <br className="block" />Kalpavriksh Capital
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-3 sm:mb-4 px-2 animate-fade-in-up" style={{ color: '#4E3629', animationDelay: '0.2s' }}>
                   Empowering families to take charge of their financial future
                 </p>
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 mb-6 sm:mb-8 px-2 animate-fade-in-up leading-relaxed" style={{ animationDelay: '0.4s' }}>
-                  From uncertainty to confidence—structured wealth frameworks that protect, grow, and preserve your legacy.
+                  From uncertainty to confidence—structured wealth frameworks that protect, grow, and preserve your legacy
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-2">
@@ -415,9 +415,9 @@ const KalpavrikshCapital = () => {
               
               {/* Animated Floating Elements */}
               <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                <div className="absolute top-1/4 left-1/4 w-4 h-4 rounded-full animate-float opacity-60" style={{ backgroundColor: '#D4AF37' }}></div>
+                <div className="absolute top-1/4 left-1/4 w-4 h-4 rounded-full animate-float opacity-60" style={{ backgroundColor: '#C4A747' }}></div>
                 <div className="absolute top-3/4 right-1/4 w-6 h-6 rounded-full animate-float-delayed opacity-50" style={{ backgroundColor: '#1E5631' }}></div>
-                <div className="absolute bottom-1/4 left-3/4 w-3 h-3 rounded-full animate-float-slow opacity-40" style={{ backgroundColor: '#D4AF37' }}></div>
+                <div className="absolute bottom-1/4 left-3/4 w-3 h-3 rounded-full animate-float-slow opacity-40" style={{ backgroundColor: '#C4A747' }}></div>
                 <div className="absolute top-1/2 left-1/3 w-5 h-5 rounded-full animate-float opacity-30" style={{ backgroundColor: '#4E3629' }}></div>
               </div>
 
@@ -432,14 +432,14 @@ const KalpavrikshCapital = () => {
                   <img
                     src="/profile-rakhi.png"
                     alt="Rakhi Jain"
-                    className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full object-cover border-2 animate-fade-in-scale"
+                    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 rounded-full object-cover border-2 animate-fade-in-scale"
                     style={{ borderColor: '#1E5631' }}
                     loading="lazy"
                     decoding="async"
                     onError={(e) => { e.currentTarget.style.display = 'none'; }}
                   /> <span>Meet Rakhi Jain</span>
                 </h2>
-                <div className="w-20 sm:w-24 h-1 mx-auto rounded-full animate-expand-width" style={{ backgroundColor: '#D4AF37' }}></div>
+                <div className="w-20 sm:w-24 h-1 mx-auto rounded-full animate-expand-width" style={{ backgroundColor: '#C4A747' }}></div>
               </div>
 
               <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02]">
@@ -447,12 +447,12 @@ const KalpavrikshCapital = () => {
                   Founder & Principal Advisor
                 </h3>
                 <p className="text-base sm:text-lg md:text-xl text-center text-gray-700 mb-6 sm:mb-8 leading-relaxed animate-fade-in-up px-2" style={{ animationDelay: '0.2s' }}>
-                  Gold Medalist Chartered Accountant with 18+ years of strategic finance leadership at Unilever,
-                  specializing in business finance, performance management, and transformational programs.
+                  Gold Medalist Chartered Accountant with 20+ years of strategic finance leadership at Unilever,
+                  specializing in strategy, corporate finance and business performance.
                 </p>
                 
                 {/* From Corporate Finance to Family Wealth */}
-                <div className="rounded-lg sm:rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)', animationDelay: '0.3s' }}>
+                <div className="rounded-lg sm:rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #f3e9dfff, #f3e9dfff)', animationDelay: '0.3s' }}>
                   <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center px-2" style={{ color: '#1E5631' }}>From Corporate Finance to Family Wealth</h4>
                   <p className="text-sm sm:text-base text-gray-700 leading-relaxed px-2 text-center mb-4">
                     Rakhi Jain blends global finance leadership with a passion for empowering families. She brings corporate discipline, strategic insight, and personal care to every wealth journey.
@@ -489,40 +489,6 @@ const KalpavrikshCapital = () => {
                   </div>
                 </div>
 
-                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
-                  {[
-                    { 
-                      icon: "🏆", 
-                      title: "Award-Winning Excellence", 
-                      desc: "Global Olympiad Gold Medal & Finance Hall of Fame Winner" 
-                    },
-                    { 
-                      icon: "💼", 
-                      title: "Proven Leadership", 
-                      desc: "Led €2bn+ strategic programs and business transformations" 
-                    },
-                    { 
-                      icon: "🎯", 
-                      title: "Your Partner", 
-                      desc: "Bringing corporate finance rigor to your family's wealth journey" 
-                    }
-                  ].map((item, index) => (
-                    <div
-                      key={index}
-                      className="text-center p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 shadow-sm hover:shadow-xl animate-fade-in-up cursor-pointer"
-                      style={{
-                        background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)',
-                        animationDelay: `${0.4 + index * 0.1}s`
-                      }}
-                      onMouseEnter={(e) => e.currentTarget.style.background = 'linear-gradient(to bottom right, #EFE9E3, #E5DDD5)'}
-                      onMouseLeave={(e) => e.currentTarget.style.background = 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)'}
-                    >
-                      <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 transform transition-transform duration-300 hover:scale-125 hover:rotate-12">{item.icon}</div>
-                      <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2 px-1" style={{ color: '#1E5631' }}>{item.title}</h4>
-                      <p className="text-xs sm:text-sm md:text-base text-gray-600 px-1">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
               </div>
             </section>
           </div>
@@ -535,7 +501,7 @@ const KalpavrikshCapital = () => {
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-2" style={{ color: '#1E5631' }}>
                 <span className="animate-bounce-slow text-3xl sm:text-4xl">💼</span> <span>Our Services</span>
               </h1>
-              <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#D4AF37' }}></div>
+              <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#C4A747' }}></div>
               <p className="text-base sm:text-lg md:text-xl text-gray-700 px-2">
                 Comprehensive wealth management solutions tailored for your success
               </p>
@@ -546,7 +512,7 @@ const KalpavrikshCapital = () => {
                 <div
                   key={index}
                   className="bg-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 border-t-4 animate-fade-in-up cursor-pointer"
-                  style={{ animationDelay: `${index * 0.1}s`, borderColor: '#D4AF37' }}
+                  style={{ animationDelay: `${index * 0.1}s`, borderColor: '#C4A747' }}
                 >
                   <div className="text-center mb-4 sm:mb-6">
                     <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4 transform transition-transform duration-300 hover:scale-125 hover:rotate-12">{service.icon}</div>
@@ -575,9 +541,9 @@ const KalpavrikshCapital = () => {
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white rounded-full flex items-center justify-center text-lg sm:text-xl md:text-2xl font-bold mx-auto mb-3 sm:mb-4 transform transition-all duration-300 hover:rotate-360"
-                         style={{ backgroundColor: '#1E5631' }}
+                         style={{ backgroundColor: '#163822' }}
                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#163822'}
-                         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1E5631'}>
+                         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#163822'}>
                       {step.number}
                     </div>
                     <h4 className="text-base sm:text-lg md:text-xl font-semibold mb-2 px-1" style={{ color: '#1E5631' }}>{step.title}</h4>
@@ -591,175 +557,171 @@ const KalpavrikshCapital = () => {
         {/* Workshops Page */}
         {currentPage === 'workshops' && (
           <div className="space-y-12 px-4 py-8 max-w-7xl mx-auto">
-            <section className="text-center max-w-3xl mx-auto animate-fade-in-up">
+            {/* Hero Section */}
+            <section className="text-center max-w-4xl mx-auto animate-fade-in-up">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ color: '#1E5631' }}>
-                Financial Literacy Workshops
+                Beyond Returns – The Art of Building Wealth with Intention
               </h1>
-              <div className="w-24 h-1 mx-auto rounded-full mb-6 animate-expand-width" style={{ backgroundColor: '#D4AF37' }}></div>
-              <p className="text-lg sm:text-xl text-gray-700">
-                Empowering you with knowledge to make confident financial decisions
-              </p>
-            </section>
-
-            {/* Why Attend Section - Simplified */}
-            <section className="rounded-3xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)' }}>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center" style={{ color: '#1E5631' }}>Why Attend?</h2>
-              <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
-                {[
-                  { title: "Expert Guidance", desc: "20+ years experience" },
-                  { title: "Practical Knowledge", desc: "Actionable strategies" },
-                  { title: "Interactive Learning", desc: "Q&A and case studies" }
-                ].map((item, index) => (
-                  <div 
-                    key={index}
-                    className="bg-white p-4 sm:p-6 rounded-2xl text-center transform hover:scale-105 transition-all duration-300 shadow-sm animate-fade-in-up"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <h3 className="text-lg font-bold mb-2" style={{ color: '#1E5631' }}>{item.title}</h3>
-                    <p className="text-sm text-gray-600">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Workshop Offerings - Clean Cards */}
-            <section>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center animate-fade-in-up" style={{ color: '#1E5631' }}>Workshop Topics</h2>
-              <div className="space-y-6">
-                {workshops.map((workshop, index) => (
-                  <div 
-                    key={workshop.id}
-                    className="bg-white rounded-3xl shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden animate-fade-in-up"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <div className="p-6 sm:p-8">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-                        <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0" style={{ background: 'linear-gradient(to bottom right, #1E5631, #163822)' }}>
-                            {workshop.icon}
-                          </div>
-                          <div>
-                            <h3 className="text-xl sm:text-2xl font-bold" style={{ color: '#1E5631' }}>{workshop.title}</h3>
-                            <p className="text-sm text-gray-600">{workshop.duration} • {workshop.level}</p>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <p className="text-gray-700 mb-6">{workshop.description}</p>
-                      
-                      <div className="grid sm:grid-cols-2 gap-6">
-                        <div>
-                          <h4 className="font-bold mb-3" style={{ color: '#1E5631' }}>What You'll Learn:</h4>
-                          <ul className="space-y-2">
-                            {workshop.topics.slice(0, 3).map((topic, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                                <span className="mt-0.5" style={{ color: '#1E5631' }}>✓</span>
-                                <span>{topic}</span>
-                              </li>
-                            ))}
-                            {workshop.topics.length > 3 && (
-                              <li className="text-sm text-gray-500 italic">+ {workshop.topics.length - 3} more topics</li>
-                            )}
-                          </ul>
-                        </div>
-                        
-                        <div>
-                          <h4 className="font-bold mb-3" style={{ color: '#1E5631' }}>Key Benefits:</h4>
-                          <ul className="space-y-2">
-                            {workshop.benefits.map((benefit, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-sm text-gray-700">
-                                <span className="mt-0.5" style={{ color: '#D4AF37' }}>★</span>
-                                <span>{benefit}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                      
-                      <button
-                        onClick={() => {
-                          setSelectedWorkshop(workshop);
-                          handleContactAction('calendar');
-                        }}
-                        className="mt-6 w-full sm:w-auto text-white px-8 py-3 rounded-2xl font-semibold transform hover:scale-105 transition-all duration-300 shadow-md"
-                        style={{ backgroundColor: '#1E5631' }}
-                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#163822'}
-                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1E5631'}
-                      >
-                        Register Your Interest
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Workshop Format - Horizontal Flow */}
-            <section className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm animate-fade-in-up">
-              <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center" style={{ color: '#1E5631' }}>How It Works</h2>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                {[
-                  { step: "1", title: "Register", desc: "Book your spot" },
-                  { step: "2", title: "Prepare", desc: "Get materials" },
-                  { step: "3", title: "Attend", desc: "Live session" },
-                  { step: "4", title: "Follow-up", desc: "Resources & support" }
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    className="text-center p-4 rounded-2xl animate-fade-in-up"
-                    style={{ animationDelay: `${index * 0.1}s`, background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)' }}
-                  >
-                    <div className="w-12 h-12 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-3" style={{ backgroundColor: '#1E5631' }}>
-                      {item.step}
-                    </div>
-                    <h4 className="font-semibold mb-1 text-sm sm:text-base" style={{ color: '#1E5631' }}>{item.title}</h4>
-                    <p className="text-xs sm:text-sm text-gray-600">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* Delivery Options - Compact */}
-            <section className="rounded-3xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #EFE9E3, #E5DDD5)' }}>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center" style={{ color: '#1E5631' }}>Flexible Options</h2>
-              <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
-                {[
-                  { title: "Corporate", desc: "Customized for teams" },
-                  { title: "Group", desc: "8-12 participants" },
-                  { title: "Online", desc: "Attend anywhere" }
-                ].map((option, index) => (
-                  <div
-                    key={index}
-                    className="bg-white p-4 sm:p-6 rounded-2xl text-center shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in-up"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <h3 className="text-lg font-bold mb-2" style={{ color: '#1E5631' }}>{option.title}</h3>
-                    <p className="text-sm text-gray-600">{option.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* CTA - Streamlined */}
-            <section className="rounded-3xl p-6 sm:p-10 text-white text-center shadow-lg animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #1E5631, #163822)' }}>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4">Ready to Get Started?</h2>
-              <p className="text-lg sm:text-xl mb-6" style={{ color: '#F0EBE5' }}>
-                Schedule a consultation or inquire about workshops
+              <div className="w-24 h-1 mx-auto rounded-full mb-6 animate-expand-width" style={{ backgroundColor: '#C4A747' }}></div>
+              <p className="text-lg sm:text-xl text-gray-700 mb-8">
+                A signature workshop that helps families and professionals move beyond chasing returns to building wealth with clarity, discipline, and purpose.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button
-                  onClick={() => handleContactAction('calendar')}
-                  className="bg-white px-6 py-3 rounded-2xl font-semibold transform hover:scale-105 transition-all duration-300 shadow-md"
-                  style={{ color: '#1E5631' }}
+                  onClick={() => window.open('https://forms.gle/YOUR_GOOGLE_FORM_ID', '_blank')}
+                  className="text-white px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
+                  style={{ backgroundColor: '#1E5631' }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#163822'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1E5631'}
                 >
-                  📅 Schedule a Call
+                  📅 Book Your Spot
                 </button>
                 <button
-                  onClick={() => handleContactAction('email')}
-                  className="px-6 py-3 rounded-2xl font-semibold transform hover:scale-105 transition-all duration-300 shadow-md"
-                  style={{ backgroundColor: '#D4AF37', color: '#1E5631' }}
+                  onClick={() => handleContactAction('calendar')}
+                  className="px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl border-2"
+                  style={{ backgroundColor: 'white', color: '#1E5631', borderColor: '#1E5631' }}
                 >
-                  📧 Get Info
+                  Schedule a 30-Minute Discovery Call
+                </button>
+              </div>
+            </section>
+
+            {/* Workshop Overview */}
+            <section className="rounded-3xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #f3e9dfff, #f3e9dfff)' }}>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-center" style={{ color: '#1E5631' }}>Workshop Overview</h2>
+              <p className="text-gray-700 text-center max-w-3xl mx-auto leading-relaxed">
+                This interactive session reframes wealth as purchasing power and freedom of choice. Using real-life scenarios, asset allocation frameworks, and the power of compounding, Rakhi Jain guides you to design a financial journey that reflects your goals and values.
+              </p>
+            </section>
+
+            {/* Key Outcomes */}
+            <section>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center animate-fade-in-up" style={{ color: '#1E5631' }}>Key Outcomes</h2>
+              <div className="grid sm:grid-cols-3 gap-6">
+                {[
+                  {
+                    icon: "🎯",
+                    title: "Redefine Wealth with Intention",
+                    desc: "Understand wealth as purchasing power and freedom of choice—beyond chasing returns—so every financial decision aligns with your life goals and values."
+                  },
+                  {
+                    icon: "📊",
+                    title: "Master Asset Allocation & Compounding",
+                    desc: "Learn how to balance equities, debt, gold, and real estate to beat inflation, diversify risk, and harness the power of compounding for long-term growth."
+                  },
+                  {
+                    icon: "🛡️",
+                    title: "Secure Your Family's Future",
+                    desc: "Gain practical tools for estate planning, risk management, and disciplined investing—ensuring clarity, confidence, and peace of mind across generations."
+                  }
+                ].map((outcome, index) => (
+                  <div
+                    key={index}
+                    className="bg-white p-6 rounded-3xl shadow-md hover:shadow-xl transition-all duration-500 transform hover:scale-105 animate-fade-in-up"
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    <div className="text-5xl mb-4 text-center">{outcome.icon}</div>
+                    <h3 className="text-xl font-bold mb-3 text-center" style={{ color: '#1E5631' }}>{outcome.title}</h3>
+                    <p className="text-gray-700 text-sm leading-relaxed text-center">{outcome.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Workshop Flow */}
+            <section className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm animate-fade-in-up">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center" style={{ color: '#1E5631' }}>Workshop Flow</h2>
+              <div className="space-y-4 max-w-3xl mx-auto">
+                {[
+                  { title: "What is Wealth?", desc: "Purchasing power & inflation awareness" },
+                  { title: "Levers of Wealth Creation", desc: "Income, savings, compounding" },
+                  { title: "Asset Classes & Allocation", desc: "Equity, debt, gold, real estate" },
+                  { title: "Behavioural Pitfalls", desc: "What not to invest in" },
+                  { title: "Estate Planning", desc: "Protecting family legacy" },
+                  { title: "Action Step", desc: "Define one key move towards your wealth journey" }
+                ].map((step, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-4 p-4 rounded-2xl animate-fade-in-up"
+                    style={{ animationDelay: `${index * 0.1}s`, background: 'linear-gradient(to right, #F0EBE5, #E8DED0)' }}
+                  >
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold" style={{ backgroundColor: '#1E5631' }}>
+                      {index + 1}
+                    </div>
+                    <div>
+                      <h4 className="font-bold mb-1" style={{ color: '#1E5631' }}>{step.title}</h4>
+                      <p className="text-sm text-gray-600">{step.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Watch & Learn Section */}
+            <section className="animate-fade-in-up">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4" style={{ color: '#1E5631' }}>
+                  🎥 Watch & Learn
+                </h2>
+                <p className="text-lg text-gray-700">
+                  Complement your workshop experience with video insights
+                </p>
+              </div>
+
+              <div className="bg-white rounded-3xl p-8 shadow-lg">
+                <div className="aspect-video bg-gray-100 rounded-xl mb-6 flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)' }}>
+                  <div className="text-center">
+                    <svg className="w-24 h-24 mx-auto mb-4" style={{ color: '#1E5631' }} fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    <p className="text-lg font-semibold mb-2" style={{ color: '#1E5631' }}>YouTube Channel</p>
+                    <p className="text-gray-600">Watch insights on financial planning & wealth building</p>
+                  </div>
+                </div>
+                <div className="text-center flex flex-col sm:flex-row gap-4 justify-center">
+                  <button
+                    onClick={() => window.open('http://www.youtube.com/@RakhiJain-i59', '_blank')}
+                    className="text-white px-6 py-3 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-md inline-flex items-center justify-center gap-2"
+                    style={{ backgroundColor: '#FF0000' }}
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    Visit Our YouTube Channel
+                  </button>
+                  <button
+                    onClick={() => {
+                      alert('Subscription feature coming soon! We will notify you when it\'s ready.');
+                    }}
+                    className="px-6 py-3 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-md border-2"
+                    style={{ backgroundColor: '#C4A747', color: '#1E5631', borderColor: '#C4A747' }}
+                  >
+                    📘 Subscribe for Weekly Insights
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            {/* CTA Strip */}
+            <section className="rounded-3xl p-8 sm:p-10 text-white text-center shadow-lg animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #1E5631, #163822)' }}>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4">Ready to design your wealth with intention?</h2>
+              <p className="text-lg mb-8" style={{ color: '#F0EBE5' }}>
+                Join Beyond Returns or create a custom workshop for your team or family
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={() => window.open('https://forms.gle/YOUR_GOOGLE_FORM_ID', '_blank')}
+                  className="bg-white px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-md"
+                  style={{ color: '#1E5631' }}
+                >
+                  📅 Book Your Spot
+                </button>
+                <button
+                  onClick={() => handleContactAction('calendar')}
+                  className="px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-md"
+                  style={{ backgroundColor: '#C4A747', color: '#1E5631' }}
+                >
+                  Schedule a 30-Minute Discovery Call
                 </button>
               </div>
             </section>
@@ -772,7 +734,7 @@ const KalpavrikshCapital = () => {
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2" style={{ color: '#1E5631' }}>
                 Real Stories. Real Impact.
               </h1>
-              <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#D4AF37' }}></div>
+              <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#C4A747' }}></div>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed px-2">
                 Our clients come from diverse backgrounds—but they share one thing in common: a desire for clarity, confidence, and control over their financial future. Here's what they say about working with Rakhi.
               </p>
@@ -783,7 +745,7 @@ const KalpavrikshCapital = () => {
                 <div
                   key={index}
                   className="bg-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 transform hover:scale-[1.02] animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s`, borderColor: '#D4AF37' }}
+                  style={{ animationDelay: `${index * 0.1}s`, borderColor: '#C4A747' }}
                 >
                   <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
                     <div className="flex-shrink-0 mx-auto sm:mx-0">
@@ -810,7 +772,7 @@ const KalpavrikshCapital = () => {
                             <span
                               key={i}
                               className="text-lg sm:text-xl md:text-2xl animate-fade-in-scale"
-                              style={{ animationDelay: `${i * 0.1}s`, color: '#D4AF37' }}
+                              style={{ animationDelay: `${i * 0.1}s`, color: '#C4A747' }}
                             >⭐</span>
                           ))}
                         </div>
@@ -834,7 +796,7 @@ const KalpavrikshCapital = () => {
 
             {/* CTA Section */}
             <section className="max-w-4xl mx-auto text-center animate-fade-in-up">
-              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 shadow-lg" style={{ background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)' }}>
+              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 shadow-lg" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #fbfbfbff)' }}>
                 <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 px-2" style={{ color: '#1E5631' }}>
                   Ready to begin your journey?
                 </h2>
@@ -861,9 +823,9 @@ const KalpavrikshCapital = () => {
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2" style={{ color: '#1E5631' }}>
                 📚 Learn With Kalpavriksh
               </h1>
-              <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#D4AF37' }}></div>
+              <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#C4A747' }}></div>
               <p className="text-base sm:text-lg md:text-xl text-gray-700 px-2">
-                Timeless lessons from classic books on wealth building and financial independence
+                Timeless lessons on wealth building and financial independence
               </p>
             </section>
             
@@ -981,14 +943,14 @@ const KalpavrikshCapital = () => {
                 <h2 className="text-3xl sm:text-4xl font-bold mb-4" style={{ color: '#1E5631' }}>
                   🎥 Watch & Learn
                 </h2>
-                <div className="w-24 h-1 mx-auto rounded-full mb-6 animate-expand-width" style={{ backgroundColor: '#D4AF37' }}></div>
+                <div className="w-24 h-1 mx-auto rounded-full mb-6 animate-expand-width" style={{ backgroundColor: '#C4A747' }}></div>
                 <p className="text-xl text-gray-700">
                   Explore our video insights on financial planning, investor behavior, and wealth frameworks
                 </p>
               </div>
 
               <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <div className="aspect-video bg-gray-100 rounded-xl mb-6 flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)' }}>
+                <div className="aspect-video bg-gray-100 rounded-xl mb-6 flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)' }}>
                   <div className="text-center">
                     <svg className="w-24 h-24 mx-auto mb-4" style={{ color: '#1E5631' }} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -1024,38 +986,17 @@ const KalpavrikshCapital = () => {
                   Get exclusive financial wisdom, tips, and updates delivered to your inbox
                 </p>
 
-                <form className="max-w-md mx-auto space-y-4" onSubmit={(e) => {
-                  e.preventDefault();
-                  alert('Thank you for subscribing! We will be in touch soon.');
-                  e.target.reset();
-                }}>
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    required
-                    className="w-full px-6 py-3 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    required
-                    className="w-full px-6 py-3 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Your Phone Number"
-                    required
-                    className="w-full px-6 py-3 rounded-full text-lg focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
-                  />
-                  <button
-                    type="submit"
-                    className="w-full px-8 py-4 rounded-full text-lg font-semibold
-                             transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl border-2"
-                    style={{ backgroundColor: '#D4AF37', color: '#1E5631', borderColor: '#D4AF37' }}
-                  >
-                    Subscribe Now
-                  </button>
-                </form>
+                <button
+                  onClick={() => {
+                    // This will be linked to Google Sheet later
+                    alert('Subscription feature coming soon! We will notify you when it\'s ready.');
+                  }}
+                  className="px-8 py-4 rounded-full text-lg font-semibold
+                           transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl border-2"
+                  style={{ backgroundColor: '#C4A747', color: '#1E5631', borderColor: '#C4A747' }}
+                >
+                  Subscribe for Latest Insights
+                </button>
               </div>
             </section>
           </div>
@@ -1066,11 +1007,11 @@ const KalpavrikshCapital = () => {
           <div className="space-y-12 sm:space-y-16 px-3 sm:px-4 py-6 sm:py-8">
             <section className="text-center max-w-4xl mx-auto animate-fade-in-up">
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 px-2 leading-tight" style={{ color: '#1E5631' }}>
-                Start Your Journey to Clarity and Confidence
+                Start Your Journey today !
               </h1>
-              <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#D4AF37' }}></div>
+              <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#C4A747' }}></div>
 
-              <div className="mt-6 sm:mt-8 p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-md transform hover:scale-[1.02] transition-all duration-500 animate-fade-in-up" style={{ animationDelay: '0.2s', background: 'linear-gradient(to bottom right, #F5F2ED, #EFE9E3)' }}>
+              <div className="mt-6 sm:mt-8 p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-md transform hover:scale-[1.02] transition-all duration-500 animate-fade-in-up" style={{ animationDelay: '0.2s', background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)' }}>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-serif italic mb-2 sm:mb-3 px-2" style={{ color: '#1E5631' }}>
                   "Clarity is the most underrated form of financial confidence."
                 </p>
@@ -1104,11 +1045,10 @@ const KalpavrikshCapital = () => {
                 </div>
 
                 {/* Secondary CTAs */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10">
+                <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10">
                   {[
                     { action: 'email', icon: '📧', text: 'Send Email' },
                     { action: 'linkedin', icon: 'linkedin', text: 'LinkedIn' },
-                    { action: 'youtube', icon: 'youtube', text: 'YouTube' },
                     { action: 'whatsapp', icon: 'whatsapp', text: 'WhatsApp' }
                   ].map((btn, index) => (
                     <button
@@ -1126,10 +1066,6 @@ const KalpavrikshCapital = () => {
                         <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" style={{ color: '#0077B5' }} fill="currentColor" viewBox="0 0 24 24">
                           <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                         </svg>
-                      ) : btn.icon === 'youtube' ? (
-                        <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" style={{ color: '#FF0000' }} fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                        </svg>
                       ) : btn.icon === 'whatsapp' ? (
                         <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" style={{ color: '#25D366' }} fill="currentColor" viewBox="0 0 24 24">
                           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
@@ -1142,21 +1078,6 @@ const KalpavrikshCapital = () => {
                   ))}
                 </div>
 
-                <div className="text-center mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-gray-200 animate-fade-in-up" style={{ animationDelay: '1s' }}>
-                  <div className="flex items-center justify-center gap-3 mb-2">
-                    <img
-                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-Zu2tWbW165XhozteWwC8CUlZ47YzcuNmcJyGkCKXnrs0bv2DHCNxcQ178Mg5YcsoP1fOy521rjHSVXFwf-eBmK-TAWjy8FRXXI2gf1mjAiqmdJo_s4ec3am5jdhg_ImuJXhWrTJm8JH1W-YKnLvdfvFJpap1XkLF4tUgy11pLuZfidLsXQzFHJdmnP85JhL7sAvjboK-A8ifa8Tl4xfPEiKBMWwyNYC42R_3Ekq0H5EzYJsq5i2sBNNrF95G0xihHc96mdVIYHo"
-                      alt="Kalpavriksh Capital Logo"
-                      className="h-24 w-auto object-contain transform transition-transform duration-300 hover:scale-110 rounded-full"
-                      loading="lazy"
-                      decoding="async"
-                      onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                    />
-                    <span className="text-2xl font-bold" style={{ color: '#1E5631' }}>Kalpavriksh Capital</span>
-                  </div>
-                  <p className="text-gray-600">Investment Advisory Services</p>
-                  <p className="text-sm text-gray-500 mt-2">Founded 2024 by Rakhi Jain • 20+ Years Experience • Chartered Accountant</p>
-                </div>
               </div>
             </div>
           </div>
@@ -1170,9 +1091,9 @@ const KalpavrikshCapital = () => {
             <div className="animate-fade-in-up text-center sm:text-left">
               <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4 justify-center sm:justify-start">
                 <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-Zu2tWbW165XhozteWwC8CUlZ47YzcuNmcJyGkCKXnrs0bv2DHCNxcQ178Mg5YcsoP1fOy521rjHSVXFwf-eBmK-TAWjy8FRXXI2gf1mjAiqmdJo_s4ec3am5jdhg_ImuJXhWrTJm8JH1W-YKnLvdfvFJpap1XkLF4tUgy11pLuZfidLsXQzFHJdmnP85JhL7sAvjboK-A8ifa8Tl4xfPEiKBMWwyNYC42R_3Ekq0H5EzYJsq5i2sBNNrF95G0xihHc96mdVIYHo"
+                  src="/logo.png"
                   alt="Kalpavriksh Capital Logo"
-                  className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto object-contain transform transition-transform duration-300 hover:scale-110 rounded-full"
+                  className="h-14 sm:h-16 md:h-18 lg:h-20 w-14 sm:w-16 md:w-18 lg:w-20 object-cover transform transition-transform duration-300 hover:scale-110 rounded-full"
                   loading="lazy"
                   decoding="async"
                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -1185,7 +1106,7 @@ const KalpavrikshCapital = () => {
               </div>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#D4AF37' }}>Quick Links</h4>
+              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#C4A747' }}>Quick Links</h4>
               <div className="space-y-2 text-center sm:text-left">
                 {['Home', 'Services', 'Workshops', 'Testimonials', 'Blogs', 'Contact'].map((link) => (
                   <button
@@ -1193,7 +1114,7 @@ const KalpavrikshCapital = () => {
                     onClick={() => changePage(link.toLowerCase())}
                     className="block text-white text-sm sm:text-base transition-all duration-200 hover:translate-x-2 mx-auto sm:mx-0"
                     style={{ cursor: 'pointer' }}
-                    onMouseEnter={(e) => e.currentTarget.style.color = '#D4AF37'}
+                    onMouseEnter={(e) => e.currentTarget.style.color = '#C4A747'}
                     onMouseLeave={(e) => e.currentTarget.style.color = 'white'}
                   >
                     {link}
@@ -1202,7 +1123,7 @@ const KalpavrikshCapital = () => {
               </div>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#D4AF37' }}>Services</h4>
+              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#C4A747' }}>Services</h4>
               <div className="space-y-2 text-white text-xs sm:text-sm text-center sm:text-left">
                 <p className="hover:translate-x-2 transition-transform duration-200">• Investments & Mutual Funds</p>
                 <p className="hover:translate-x-2 transition-transform duration-200">• Goal Based Solutions</p>
@@ -1212,7 +1133,7 @@ const KalpavrikshCapital = () => {
               </div>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#D4AF37' }}>Professional Info</h4>
+              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#C4A747' }}>Professional Info</h4>
               <div className="space-y-2 text-white text-xs sm:text-sm text-center sm:text-left">
                 <p className="hover:translate-x-2 transition-transform duration-200">• Gold Medalist CA</p>
                 <p className="hover:translate-x-2 transition-transform duration-200">• Chartered Wealth Manager</p>
@@ -1223,7 +1144,7 @@ const KalpavrikshCapital = () => {
           </div>
           <div className="border-t pt-6 sm:pt-8 text-center text-white" style={{ borderColor: '#163822' }}>
             <p className="mb-2 text-sm sm:text-base">
-              <strong style={{ color: '#D4AF37' }}>KalpaVriksh Capital</strong>
+              <strong style={{ color: '#C4A747' }}>KalpaVriksh Capital</strong>
             </p>
             <p className="text-xs sm:text-sm text-white px-2">
               Boutique Wealth Advisory | Founded 2024 | Led by Rakhi Jain, Gold Medalist CA & Strategic Finance Leader
