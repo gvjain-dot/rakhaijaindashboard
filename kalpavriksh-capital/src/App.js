@@ -7,13 +7,6 @@ const KalpavrikshCapital = () => {
   // eslint-disable-next-line no-unused-vars
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
 
-  const [companyStats] = useState({
-    aum: '50 Crores+',
-    clients: '25+', 
-    experience: '20+ Years',
-    founded: '2024'
-  });
-
   // Handle scroll effect for navbar
   useEffect(() => {
     const handleScroll = () => {
@@ -147,23 +140,23 @@ const KalpavrikshCapital = () => {
   const processSteps = [
     {
       number: 1,
-      title: "Discover",
-      description: "Understand your goals, values, and current financial landscape"
+      title: "Initial Consultation",
+      description: "Understanding your unique financial goals, current situation, and future aspirations to build a strong foundation"
     },
     {
       number: 2,
-      title: "Design",
-      description: "Build a customized roadmap aligned with your aspirations"
+      title: "Strategy Development",
+      description: "Crafting a personalized financial roadmap that aligns with your objectives, risk tolerance, and long-term vision"
     },
     {
       number: 3,
-      title: "Deploy",
-      description: "Execute with discipline and transparent tracking"
+      title: "Implementation",
+      description: "Executing the strategic plan with careful monitoring and selection of appropriate investment vehicles and solutions"
     },
     {
       number: 4,
-      title: "Deliver",
-      description: "Monitor progress and refine as life evolves"
+      title: "Ongoing Support",
+      description: "Providing regular reviews, necessary adjustments, and proactive advice to keep you on track towards your goals"
     }
   ];
 
