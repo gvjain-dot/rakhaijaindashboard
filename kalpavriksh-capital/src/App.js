@@ -298,7 +298,8 @@ const KalpavrikshCapital = () => {
               <img
                 src="/logo.png"
                 alt="Kalpavriksh Capital Logo"
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-10 sm:w-12 md:w-14 lg:w-16 object-cover transition-transform duration-300 hover:scale-110 rounded-full"
+                className="h-10 sm:h-12 md:h-14 lg:h-16 w-10 sm:w-12 md:w-14 lg:w-16 transition-transform duration-300 hover:scale-110 rounded-full ml-2 sm:ml-3"
+                style={{ objectFit: 'cover', objectPosition: '65% 70%', transform: 'scale(1.1)' }}
                 loading="lazy"
                 decoding="async"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -380,7 +381,7 @@ const KalpavrikshCapital = () => {
             <section className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 rounded-2xl sm:rounded-3xl mx-2 sm:mx-4 mt-6 sm:mt-8 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #f7f7f7ff, #f7f7f7ff, #f7f7f7ff)' }}>
               <div className="max-w-4xl mx-auto text-center relative z-10">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 px-2 animate-fade-in-up leading-tight" style={{ color: '#1E5631' }}>
-                  Welcome to <br className="block" />Kalpavriksh Capital
+                  Welcome To <br className="block" />Kalpavriksh Capital
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-3 sm:mb-4 px-2 animate-fade-in-up" style={{ color: '#4E3629', animationDelay: '0.2s' }}>
                   Empowering families to take charge of their financial future
@@ -444,7 +445,7 @@ const KalpavrikshCapital = () => {
 
               <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02]">
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-4 animate-fade-in-up px-2" style={{ color: '#1E5631' }}>
-                  Founder & Principal Advisor
+                  Founder & CEO
                 </h3>
                 <p className="text-base sm:text-lg md:text-xl text-center text-gray-700 mb-6 sm:mb-8 leading-relaxed animate-fade-in-up px-2" style={{ animationDelay: '0.2s' }}>
                   Gold Medalist Chartered Accountant with 20+ years of strategic finance leadership at Unilever,
@@ -453,7 +454,7 @@ const KalpavrikshCapital = () => {
                 
                 {/* From Corporate Finance to Family Wealth */}
                 <div className="rounded-lg sm:rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 animate-fade-in-up" style={{ background: 'linear-gradient(to bottom right, #f3e9dfff, #f3e9dfff)', animationDelay: '0.3s' }}>
-                  <h4 className="text-lg sm:text-xl md:text-2xl font-bold mb-3 sm:mb-4 text-center px-2" style={{ color: '#1E5631' }}>From Corporate Finance to Family Wealth</h4>
+                  <h4 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-center px-2" style={{ color: '#1E5631' }}>From Corporate Finance to Family Wealth</h4>
                   <p className="text-sm sm:text-base text-gray-700 leading-relaxed px-2 text-center mb-4">
                     Rakhi Jain blends global finance leadership with a passion for empowering families. She brings corporate discipline, strategic insight, and personal care to every wealth journey.
                   </p>
@@ -1019,7 +1020,7 @@ const KalpavrikshCapital = () => {
               </div>
 
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 mt-6 sm:mt-8 leading-relaxed px-2">
-                Whether you're just starting your financial journey or refining an existing plan, I help families move from uncertainty to clarity—with structured frameworks, disciplined execution, and transparent tracking.
+                Whether you're just starting your financial journey or refining an existing plan, We help families move from uncertainty to clarity—with structured frameworks, disciplined execution, and transparent tracking.
               </p>
             </section>
             
@@ -1093,15 +1094,16 @@ const KalpavrikshCapital = () => {
                 <img
                   src="/logo.png"
                   alt="Kalpavriksh Capital Logo"
-                  className="h-14 sm:h-16 md:h-18 lg:h-20 w-14 sm:w-16 md:w-18 lg:w-20 object-cover transform transition-transform duration-300 hover:scale-110 rounded-full"
+                  className="h-14 sm:h-16 md:h-18 lg:h-20 w-14 sm:w-16 md:w-18 lg:w-20 transition-transform duration-300 hover:scale-110 rounded-full"
+                  style={{ objectFit: 'cover', objectPosition: '65% 70%', transform: 'scale(1.1)' }}
                   loading="lazy"
                   decoding="async"
                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
                 />
-                <span className="text-lg sm:text-xl md:text-2xl font-bold text-white">Kalpavriksh Capital</span>
+                <span className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#F5EDE4' }}>Kalpavriksh Capital</span>
               </div>
-              <p className="text-sm sm:text-base text-white mb-3 sm:mb-4">Empowering families towards financial independence</p>
-              <div className="text-xs sm:text-sm text-white">
+              <p className="text-sm sm:text-base mb-3 sm:mb-4" style={{ color: '#F5EDE4' }}>Empowering families towards financial independence</p>
+              <div className="text-xs sm:text-sm" style={{ color: '#F5EDE4' }}>
                 <p>📧 rakhi@kalpavrikshcapital.com</p>
               </div>
             </div>
@@ -1112,10 +1114,10 @@ const KalpavrikshCapital = () => {
                   <button
                     key={link}
                     onClick={() => changePage(link.toLowerCase())}
-                    className="block text-white text-sm sm:text-base transition-all duration-200 hover:translate-x-2 mx-auto sm:mx-0"
-                    style={{ cursor: 'pointer' }}
+                    className="block text-sm sm:text-base transition-all duration-200 hover:translate-x-2 mx-auto sm:mx-0"
+                    style={{ cursor: 'pointer', color: '#F5EDE4' }}
                     onMouseEnter={(e) => e.currentTarget.style.color = '#C4A747'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = 'white'}
+                    onMouseLeave={(e) => e.currentTarget.style.color = '#F5EDE4'}
                   >
                     {link}
                   </button>
@@ -1124,7 +1126,7 @@ const KalpavrikshCapital = () => {
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#C4A747' }}>Services</h4>
-              <div className="space-y-2 text-white text-xs sm:text-sm text-center sm:text-left">
+              <div className="space-y-2 text-xs sm:text-sm text-center sm:text-left" style={{ color: '#F5EDE4' }}>
                 <p className="hover:translate-x-2 transition-transform duration-200">• Investments & Mutual Funds</p>
                 <p className="hover:translate-x-2 transition-transform duration-200">• Goal Based Solutions</p>
                 <p className="hover:translate-x-2 transition-transform duration-200">• Insurance Planning</p>
@@ -1134,7 +1136,7 @@ const KalpavrikshCapital = () => {
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#C4A747' }}>Professional Info</h4>
-              <div className="space-y-2 text-white text-xs sm:text-sm text-center sm:text-left">
+              <div className="space-y-2 text-xs sm:text-sm text-center sm:text-left" style={{ color: '#F5EDE4' }}>
                 <p className="hover:translate-x-2 transition-transform duration-200">• Gold Medalist CA</p>
                 <p className="hover:translate-x-2 transition-transform duration-200">• Chartered Wealth Manager</p>
                 <p className="hover:translate-x-2 transition-transform duration-200">• 20+ Years Experience</p>
@@ -1142,14 +1144,14 @@ const KalpavrikshCapital = () => {
               </div>
             </div>
           </div>
-          <div className="border-t pt-6 sm:pt-8 text-center text-white" style={{ borderColor: '#163822' }}>
+          <div className="border-t pt-6 sm:pt-8 text-center" style={{ borderColor: '#163822' }}>
             <p className="mb-2 text-sm sm:text-base">
               <strong style={{ color: '#C4A747' }}>KalpaVriksh Capital</strong>
             </p>
-            <p className="text-xs sm:text-sm text-white px-2">
+            <p className="text-xs sm:text-sm px-2" style={{ color: '#F5EDE4' }}>
               Boutique Wealth Advisory | Founded 2024 | Led by Rakhi Jain, Gold Medalist CA & Strategic Finance Leader
             </p>
-            <p className="text-xs text-white mt-2">
+            <p className="text-xs mt-2" style={{ color: '#F5EDE4' }}>
               © 2024 Kalpavriksh Capital. All rights reserved.
             </p>
           </div>
