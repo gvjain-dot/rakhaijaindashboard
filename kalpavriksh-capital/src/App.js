@@ -48,8 +48,8 @@ const KalpavrikshCapital = () => {
 
   const testimonials = [
     {
-      name: "Amarja K Puranand",
-      role: "Clean Energy & Marketing Professional",
+      name: "Amarja K Puranam,",
+      role: "Founder & Chief Storyteller - Coconut Thinking",
       rating: 5,
       image: "/testimonials/amarja.jpg",
       content: [
@@ -304,7 +304,7 @@ const KalpavrikshCapital = () => {
                 decoding="async"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
-              <span className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold text-white whitespace-nowrap">Kalpavriksh Capital</span>
+              <span className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold whitespace-nowrap" style={{ color: '#F5EDE4' }}>Kalpavriksh Capital</span>
             </div>
             
             {/* Desktop Menu */}
@@ -316,9 +316,9 @@ const KalpavrikshCapital = () => {
                   className={`px-6 py-2 rounded-full font-medium transition-all duration-300 transform border-2 ${
                     currentPage === page
                       ? 'bg-white shadow-lg scale-105 border-[#C4A747]'
-                      : 'text-white hover:bg-white/20 hover:scale-105 border-[#C4A747] hover:border-[#C4A747]'
+                      : 'hover:bg-white/20 hover:scale-105 border-[#C4A747] hover:border-[#C4A747]'
                   }`}
-                  style={currentPage === page ? { color: '#1E5631' } : {}}
+                  style={currentPage === page ? { color: '#1E5631' } : { color: '#F5EDE4' }}
                 >
                   {page.charAt(0).toUpperCase() + page.slice(1)}
                 </button>
@@ -328,7 +328,8 @@ const KalpavrikshCapital = () => {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setNavOpen(!navOpen)}
-              className="lg:hidden text-white p-2 rounded-lg hover:bg-white/20 transition-all duration-300 transform active:scale-95"
+              className="lg:hidden p-2 rounded-lg hover:bg-white/20 transition-all duration-300 transform active:scale-95"
+              style={{ color: '#F5EDE4' }}
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6 transition-transform duration-300" style={{ transform: navOpen ? 'rotate(90deg)' : 'rotate(0deg)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -353,13 +354,14 @@ const KalpavrikshCapital = () => {
                   className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2 ${
                     currentPage === page
                       ? 'bg-white shadow-md'
-                      : 'text-white hover:bg-white/20'
+                      : 'hover:bg-white/20'
                   }`}
                   style={currentPage === page ? {
                     color: '#1E5631',
                     animationDelay: `${index * 50}ms`,
                     animation: navOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none'
                   } : {
+                    color: '#F5EDE4',
                     animationDelay: `${index * 50}ms`,
                     animation: navOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none'
                   }}
@@ -567,23 +569,33 @@ const KalpavrikshCapital = () => {
               <p className="text-lg sm:text-xl text-gray-700 mb-8">
                 A signature workshop that helps families and professionals move beyond chasing returns to building wealth with clarity, discipline, and purpose.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => window.open('https://forms.gle/YOUR_GOOGLE_FORM_ID', '_blank')}
-                  className="text-white px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl"
-                  style={{ backgroundColor: '#1E5631' }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#163822'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1E5631'}
-                >
-                  📅 Book Your Spot
-                </button>
-                <button
-                  onClick={() => handleContactAction('calendar')}
-                  className="px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl border-2"
-                  style={{ backgroundColor: 'white', color: '#1E5631', borderColor: '#1E5631' }}
-                >
-                  Schedule a 30-Minute Discovery Call
-                </button>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-start max-w-5xl mx-auto">
+                <div className="flex-1 text-center">
+                  <button
+                    onClick={() => window.open('https://forms.gle/YOUR_GOOGLE_FORM_ID', '_blank')}
+                    className="text-white px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl w-full sm:w-auto"
+                    style={{ backgroundColor: '#1E5631' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#163822'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1E5631'}
+                  >
+                    📅 Book Your Spot
+                  </button>
+                  <p className="text-sm text-gray-600 mt-3 px-4">
+                    Join one of our upcoming webinar sessions and learn with other families on their wealth-building journey
+                  </p>
+                </div>
+                <div className="flex-1 text-center">
+                  <button
+                    onClick={() => handleContactAction('calendar')}
+                    className="px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl border-2 w-full sm:w-auto"
+                    style={{ backgroundColor: 'white', color: '#1E5631', borderColor: '#1E5631' }}
+                  >
+                    Schedule a 30-Minute Discovery Call
+                  </button>
+                  <p className="text-sm text-gray-600 mt-3 px-4">
+                    Interested in a custom workshop for your organization or team? Let's discuss how we can tailor it to your needs
+                  </p>
+                </div>
               </div>
             </section>
 
@@ -660,26 +672,26 @@ const KalpavrikshCapital = () => {
 
             {/* Watch & Learn Section */}
             <section className="animate-fade-in-up">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-4" style={{ color: '#1E5631' }}>
-                  🎥 Watch & Learn
-                </h2>
-                <p className="text-lg text-gray-700">
-                  Complement your workshop experience with video insights
-                </p>
-              </div>
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg max-w-2xl mx-auto">
+                <div className="text-center">
+                  <h2 className="text-xl sm:text-2xl font-bold mb-2" style={{ color: '#1E5631' }}>
+                    🎥 Watch & Learn
+                  </h2>
+                  <p className="text-sm sm:text-base text-gray-600 mb-6">
+                    Complement your workshop experience with video insights
+                  </p>
 
-              <div className="bg-white rounded-3xl p-8 shadow-lg">
-                <div className="aspect-video bg-gray-100 rounded-xl mb-6 flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)' }}>
-                  <div className="text-center">
-                    <svg className="w-24 h-24 mx-auto mb-4" style={{ color: '#1E5631' }} fill="currentColor" viewBox="0 0 24 24">
+                  <div className="mb-6">
+                    <svg className="w-20 h-20 mx-auto" style={{ color: '#1E5631' }} fill="currentColor" viewBox="0 0 24 24">
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                     </svg>
-                    <p className="text-lg font-semibold mb-2" style={{ color: '#1E5631' }}>YouTube Channel</p>
-                    <p className="text-gray-600">Watch insights on financial planning & wealth building</p>
                   </div>
-                </div>
-                <div className="text-center flex flex-col sm:flex-row gap-4 justify-center">
+
+                  <p className="font-semibold mb-1" style={{ color: '#1E5631' }}>YouTube Channel</p>
+                  <p className="text-sm text-gray-600 mb-6">
+                    Watch insights on financial planning & wealth building
+                  </p>
+
                   <button
                     onClick={() => window.open('http://www.youtube.com/@RakhiJain-i59', '_blank')}
                     className="text-white px-6 py-3 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-md inline-flex items-center justify-center gap-2"
@@ -689,15 +701,6 @@ const KalpavrikshCapital = () => {
                       <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                     </svg>
                     Visit Our YouTube Channel
-                  </button>
-                  <button
-                    onClick={() => {
-                      alert('Subscription feature coming soon! We will notify you when it\'s ready.');
-                    }}
-                    className="px-6 py-3 rounded-full font-semibold transform hover:scale-105 transition-all duration-300 shadow-md border-2"
-                    style={{ backgroundColor: '#C4A747', color: '#1E5631', borderColor: '#C4A747' }}
-                  >
-                    📘 Subscribe for Weekly Insights
                   </button>
                 </div>
               </div>
