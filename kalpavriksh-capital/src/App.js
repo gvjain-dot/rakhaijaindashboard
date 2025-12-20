@@ -7,14 +7,54 @@ const KalpavrikshCapital = () => {
   // eslint-disable-next-line no-unused-vars
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
 
-  // Handle scroll effect for navbar
+  // Page order for infinite scrolling
+  const pageOrder = ['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact'];
+
+  // Handle scroll effect for navbar and infinite scroll
   useEffect(() => {
+    let scrollTimeout;
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Clear previous timeout to debounce
+      clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+        const scrollPosition = window.innerHeight + window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight;
+        const currentScrollY = window.scrollY;
+
+        // Scroll down to next page (within 50px threshold from bottom)
+        if (scrollPosition >= documentHeight - 50) {
+          const currentIndex = pageOrder.indexOf(currentPage);
+          if (currentIndex < pageOrder.length - 1) {
+            const nextPage = pageOrder[currentIndex + 1];
+            setCurrentPage(nextPage);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }
+
+        // Scroll up to previous page (when at top)
+        if (currentScrollY <= 50 && currentScrollY >= 0) {
+          const currentIndex = pageOrder.indexOf(currentPage);
+          if (currentIndex > 0) {
+            const prevPage = pageOrder[currentIndex - 1];
+            setCurrentPage(prevPage);
+            // Scroll to bottom of previous page
+            setTimeout(() => {
+              window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+            }, 100);
+          }
+        }
+      }, 100);
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => {
+      clearTimeout(scrollTimeout);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [currentPage, pageOrder]);
 
   // Scroll to top when changing pages
   const changePage = (page) => {
@@ -1087,6 +1127,34 @@ const KalpavrikshCapital = () => {
           </div>
         )}
       </div>
+
+      {/* Next Page Indicator - Shows at bottom of each page except last */}
+      {currentPage !== 'contact' && (
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 animate-bounce-slow">
+          <div className="bg-white rounded-full px-6 py-3 shadow-lg flex items-center gap-2 border-2" style={{ borderColor: '#1E5631' }}>
+            <span className="text-sm font-semibold" style={{ color: '#1E5631' }}>
+              Scroll for {pageOrder[pageOrder.indexOf(currentPage) + 1].charAt(0).toUpperCase() + pageOrder[pageOrder.indexOf(currentPage) + 1].slice(1)}
+            </span>
+            <svg className="w-4 h-4" style={{ color: '#1E5631' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      )}
+
+      {/* Previous Page Indicator - Shows at top when not on first page */}
+      {currentPage !== 'home' && (
+        <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-40 opacity-50 hover:opacity-100 transition-opacity">
+          <div className="bg-white rounded-full px-6 py-3 shadow-lg flex items-center gap-2 border-2" style={{ borderColor: '#1E5631' }}>
+            <svg className="w-4 h-4" style={{ color: '#1E5631' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+            </svg>
+            <span className="text-sm font-semibold" style={{ color: '#1E5631' }}>
+              Back to {pageOrder[pageOrder.indexOf(currentPage) - 1].charAt(0).toUpperCase() + pageOrder[pageOrder.indexOf(currentPage) - 1].slice(1)}
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="text-white py-8 sm:py-10 md:py-12 mt-12 sm:mt-16" style={{ paddingBottom: 'env(safe-area-inset-bottom)', backgroundColor: '#1E5631'}}>
