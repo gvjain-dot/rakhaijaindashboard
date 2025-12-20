@@ -13,6 +13,8 @@ const KalpavrikshCapital = () => {
   // Handle scroll effect for navbar and infinite scroll
   useEffect(() => {
     let scrollTimeout;
+    let hasTransitioned = false;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
@@ -20,24 +22,28 @@ const KalpavrikshCapital = () => {
       clearTimeout(scrollTimeout);
 
       scrollTimeout = setTimeout(() => {
+        if (hasTransitioned) return;
+
         const scrollPosition = window.innerHeight + window.scrollY;
         const documentHeight = document.documentElement.scrollHeight;
         const currentScrollY = window.scrollY;
 
-        // Scroll down to next page (within 50px threshold from bottom)
-        if (scrollPosition >= documentHeight - 50) {
+        // Scroll down to next page (within 10px threshold from bottom - very bottom)
+        if (scrollPosition >= documentHeight - 10) {
           const currentIndex = pageOrder.indexOf(currentPage);
           if (currentIndex < pageOrder.length - 1) {
+            hasTransitioned = true;
             const nextPage = pageOrder[currentIndex + 1];
             setCurrentPage(nextPage);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         }
 
-        // Scroll up to previous page (when at top)
-        if (currentScrollY <= 50 && currentScrollY >= 0) {
+        // Scroll up to previous page (when at very top)
+        if (currentScrollY <= 5 && currentScrollY >= 0) {
           const currentIndex = pageOrder.indexOf(currentPage);
           if (currentIndex > 0) {
+            hasTransitioned = true;
             const prevPage = pageOrder[currentIndex - 1];
             setCurrentPage(prevPage);
             // Scroll to bottom of previous page
@@ -46,7 +52,7 @@ const KalpavrikshCapital = () => {
             }, 100);
           }
         }
-      }, 100);
+      }, 150);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -838,25 +844,6 @@ const KalpavrikshCapital = () => {
               ))}
             </div>
 
-            {/* CTA Section */}
-            <section className="max-w-4xl mx-auto text-center animate-fade-in-up">
-              <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 shadow-lg" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #fbfbfbff)' }}>
-                <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 px-2" style={{ color: '#1E5631' }}>
-                  Ready to begin your journey?
-                </h2>
-                <button
-                  onClick={() => handleContactAction('calendar')}
-                  className="text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg md:text-xl font-semibold
-                           transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl
-                           flex items-center justify-center gap-2 sm:gap-3 mx-auto w-full sm:w-auto"
-                  style={{ backgroundColor: '#1E5631' }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#163822'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1E5631'}
-                >
-                  <span className="text-xl sm:text-2xl">📅</span> <span className="whitespace-nowrap">Book a Discovery Call</span>
-                </button>
-              </div>
-            </section>
           </div>
         )}
 
@@ -1127,34 +1114,6 @@ const KalpavrikshCapital = () => {
           </div>
         )}
       </div>
-
-      {/* Next Page Indicator - Shows at bottom of each page except last */}
-      {currentPage !== 'contact' && (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 animate-bounce-slow">
-          <div className="bg-white rounded-full px-6 py-3 shadow-lg flex items-center gap-2 border-2" style={{ borderColor: '#1E5631' }}>
-            <span className="text-sm font-semibold" style={{ color: '#1E5631' }}>
-              Scroll for {pageOrder[pageOrder.indexOf(currentPage) + 1].charAt(0).toUpperCase() + pageOrder[pageOrder.indexOf(currentPage) + 1].slice(1)}
-            </span>
-            <svg className="w-4 h-4" style={{ color: '#1E5631' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        </div>
-      )}
-
-      {/* Previous Page Indicator - Shows at top when not on first page */}
-      {currentPage !== 'home' && (
-        <div className="fixed top-24 left-1/2 transform -translate-x-1/2 z-40 opacity-50 hover:opacity-100 transition-opacity">
-          <div className="bg-white rounded-full px-6 py-3 shadow-lg flex items-center gap-2 border-2" style={{ borderColor: '#1E5631' }}>
-            <svg className="w-4 h-4" style={{ color: '#1E5631' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-            </svg>
-            <span className="text-sm font-semibold" style={{ color: '#1E5631' }}>
-              Back to {pageOrder[pageOrder.indexOf(currentPage) - 1].charAt(0).toUpperCase() + pageOrder[pageOrder.indexOf(currentPage) - 1].slice(1)}
-            </span>
-          </div>
-        </div>
-      )}
 
       {/* Footer */}
       <footer className="text-white py-8 sm:py-10 md:py-12 mt-12 sm:mt-16" style={{ paddingBottom: 'env(safe-area-inset-bottom)', backgroundColor: '#1E5631'}}>
