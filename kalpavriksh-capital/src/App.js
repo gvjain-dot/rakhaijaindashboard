@@ -6,14 +6,19 @@ const KalpavrikshCapital = () => {
   const [navOpen, setNavOpen] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
+  const isTransitioning = React.useRef(false);
 
   // Page order for infinite scrolling
   const pageOrder = ['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact'];
 
+  // Reset transition flag when page changes
+  useEffect(() => {
+    isTransitioning.current = false;
+  }, [currentPage]);
+
   // Handle scroll effect for navbar and infinite scroll
   useEffect(() => {
     let scrollTimeout;
-    let hasTransitioned = false;
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -22,17 +27,17 @@ const KalpavrikshCapital = () => {
       clearTimeout(scrollTimeout);
 
       scrollTimeout = setTimeout(() => {
-        if (hasTransitioned) return;
+        if (isTransitioning.current) return;
 
         const scrollPosition = window.innerHeight + window.scrollY;
         const documentHeight = document.documentElement.scrollHeight;
         const currentScrollY = window.scrollY;
 
-        // Scroll down to next page (within 10px threshold from bottom - very bottom)
-        if (scrollPosition >= documentHeight - 10) {
+        // Scroll down to next page (within 5px threshold from bottom - very bottom)
+        if (scrollPosition >= documentHeight - 5) {
           const currentIndex = pageOrder.indexOf(currentPage);
           if (currentIndex < pageOrder.length - 1) {
-            hasTransitioned = true;
+            isTransitioning.current = true;
             const nextPage = pageOrder[currentIndex + 1];
             setCurrentPage(nextPage);
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -40,10 +45,10 @@ const KalpavrikshCapital = () => {
         }
 
         // Scroll up to previous page (when at very top)
-        if (currentScrollY <= 5 && currentScrollY >= 0) {
+        if (currentScrollY <= 3 && currentScrollY >= 0) {
           const currentIndex = pageOrder.indexOf(currentPage);
           if (currentIndex > 0) {
-            hasTransitioned = true;
+            isTransitioning.current = true;
             const prevPage = pageOrder[currentIndex - 1];
             setCurrentPage(prevPage);
             // Scroll to bottom of previous page
@@ -52,7 +57,7 @@ const KalpavrikshCapital = () => {
             }, 100);
           }
         }
-      }, 150);
+      }, 200);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
