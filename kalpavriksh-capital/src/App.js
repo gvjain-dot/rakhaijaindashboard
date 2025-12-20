@@ -27,7 +27,7 @@ const KalpavrikshCapital = () => {
   const handleContactAction = (action) => {
     switch(action) {
       case 'email':
-        window.location.href = 'mailto:rakhi@kalpavrikshcapital.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
+        window.location.href = 'mailto:rakhi@kalpavrikshglobal.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
         break;
       case 'linkedin':
         window.open('https://www.linkedin.com/in/rakhi-jain-7658328/', '_blank');
@@ -297,14 +297,14 @@ const KalpavrikshCapital = () => {
             <div className="flex items-center gap-2 sm:gap-3">
               <img
                 src="/logo.png"
-                alt="Kalpavriksh Capital Logo"
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-10 sm:w-12 md:w-14 lg:w-16 transition-transform duration-300 hover:scale-110 rounded-full ml-2 sm:ml-3"
-                style={{ objectFit: 'cover', objectPosition: '65% 70%', transform: 'scale(1.1)' }}
+                alt="Kalpavriksh Global Logo"
+                className="h-12 sm:h-14 md:h-16 lg:h-18 w-12 sm:w-14 md:w-16 lg:w-18 transition-transform duration-300 hover:scale-110 rounded-full"
+                style={{ objectFit: 'cover', objectPosition: '85% center', transform: 'scale(0.8)' }}
                 loading="lazy"
                 decoding="async"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
-              <span className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold whitespace-nowrap" style={{ color: '#F5EDE4' }}>Kalpavriksh Capital</span>
+              <span className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold whitespace-nowrap" style={{ color: '#F5EDE4' }}>Kalpavriksh Global</span>
             </div>
             
             {/* Desktop Menu */}
@@ -383,7 +383,7 @@ const KalpavrikshCapital = () => {
             <section className="py-12 sm:py-16 md:py-20 px-3 sm:px-4 rounded-2xl sm:rounded-3xl mx-2 sm:mx-4 mt-6 sm:mt-8 relative overflow-hidden" style={{ background: 'linear-gradient(to bottom right, #f7f7f7ff, #f7f7f7ff, #f7f7f7ff)' }}>
               <div className="max-w-4xl mx-auto text-center relative z-10">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 px-2 animate-fade-in-up leading-tight" style={{ color: '#1E5631' }}>
-                  Welcome To <br className="block" />Kalpavriksh Capital
+                  Welcome To <br className="block" />Kalpavriksh Global
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-3 sm:mb-4 px-2 animate-fade-in-up" style={{ color: '#4E3629', animationDelay: '0.2s' }}>
                   Empowering families to take charge of their financial future
@@ -825,7 +825,7 @@ const KalpavrikshCapital = () => {
           <div className="space-y-12 sm:space-y-16 px-3 sm:px-4 py-6 sm:py-8">
             <section className="text-center max-w-4xl mx-auto animate-fade-in-up">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2" style={{ color: '#1E5631' }}>
-                📚 Learn With Kalpavriksh
+                📚 Learn With Kalpavriksh Global
               </h1>
               <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#C4A747' }}></div>
               <p className="text-base sm:text-lg md:text-xl text-gray-700 px-2">
@@ -1096,18 +1096,18 @@ const KalpavrikshCapital = () => {
               <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4 justify-center sm:justify-start">
                 <img
                   src="/logo.png"
-                  alt="Kalpavriksh Capital Logo"
+                  alt="Kalpavriksh Global Logo"
                   className="h-14 sm:h-16 md:h-18 lg:h-20 w-14 sm:w-16 md:w-18 lg:w-20 transition-transform duration-300 hover:scale-110 rounded-full"
-                  style={{ objectFit: 'cover', objectPosition: '65% 70%', transform: 'scale(1.1)' }}
+                  style={{ objectFit: 'cover', objectPosition: '85% center', transform: 'scale(0.8)' }}
                   loading="lazy"
                   decoding="async"
                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
                 />
-                <span className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#F5EDE4' }}>Kalpavriksh Capital</span>
+                <span className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#F5EDE4' }}>Kalpavriksh Global</span>
               </div>
               <p className="text-sm sm:text-base mb-3 sm:mb-4" style={{ color: '#F5EDE4' }}>Empowering families towards financial independence</p>
               <div className="text-xs sm:text-sm" style={{ color: '#F5EDE4' }}>
-                <p>📧 rakhi@kalpavrikshcapital.com</p>
+                <p>📧 rakhi@kalpavrikshglobal.com</p>
               </div>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
@@ -1149,13 +1149,13 @@ const KalpavrikshCapital = () => {
           </div>
           <div className="border-t pt-6 sm:pt-8 text-center" style={{ borderColor: '#163822' }}>
             <p className="mb-2 text-sm sm:text-base">
-              <strong style={{ color: '#C4A747' }}>KalpaVriksh Capital</strong>
+              <strong style={{ color: '#C4A747' }}>KalpaVriksh Global</strong>
             </p>
             <p className="text-xs sm:text-sm px-2" style={{ color: '#F5EDE4' }}>
               Boutique Wealth Advisory | Founded 2024 | Led by Rakhi Jain, Gold Medalist CA & Strategic Finance Leader
             </p>
             <p className="text-xs mt-2" style={{ color: '#F5EDE4' }}>
-              © 2024 Kalpavriksh Capital. All rights reserved.
+              © 2024 Kalpavriksh Global. All rights reserved.
             </p>
           </div>
         </div>
