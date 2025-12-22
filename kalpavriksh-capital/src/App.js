@@ -103,7 +103,7 @@ const KalpavrikshCapital = () => {
     },
     {
       name: "Hynde El Kaysi",
-      role: "Strategic HR Leader | Organizational Transformation Expert",
+      role: "Strategic HR Leader | Ex Unilever",
       rating: 5,
       image: "/testimonials/hynde.jpg",
       content: [
@@ -114,7 +114,7 @@ const KalpavrikshCapital = () => {
     },
     {
       name: "Sushma Manjunath",
-      role: "Director - Supply Chain Finance",
+      role: "Supply Chain Finance Director, Unilever",
       rating: 5,
       image: "/testimonials/sushma.jpg",
       content: [
@@ -1498,7 +1498,7 @@ const KalpavrikshCapital = () => {
                   For questions regarding these disclosures, please write to:
                 </p>
                 <p className="text-base sm:text-lg font-semibold mt-3" style={{ color: '#1E5631' }}>
-                  📧 info@kalpvrikshcapital.com
+                  📧 info@kalpvrikshglobal.com
                 </p>
               </div>
             </div>
@@ -1543,6 +1543,15 @@ const KalpavrikshCapital = () => {
                     {link}
                   </button>
                 ))}
+                <button
+                  onClick={() => changePage('disclosures')}
+                  className="block text-sm sm:text-base transition-all duration-200 hover:translate-x-2 mx-auto sm:mx-0"
+                  style={{ cursor: 'pointer', color: '#F5EDE4' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#C4A747'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#F5EDE4'}
+                >
+                  Disclosures
+                </button>
               </div>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
@@ -1572,17 +1581,6 @@ const KalpavrikshCapital = () => {
             <p className="text-xs sm:text-sm px-2" style={{ color: '#F5EDE4' }}>
             Led by Rakhi Jain, Gold Medalist Chartered Accountant & Strategic Finance Leader
             </p>
-
-            <div className="mt-4">
-              <button
-                onClick={() => changePage('disclosures')}
-                className="text-xs hover:underline transition-all duration-200"
-                style={{ color: '#C4A747' }}
-              >
-                Disclosures
-              </button>
-            </div>
-
             <p className="text-xs mt-4" style={{ color: '#F5EDE4' }}>
               © 2024 Kalpvriksh Global. All rights reserved.
             </p>
