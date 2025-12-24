@@ -549,7 +549,7 @@ const KalpavrikshCapital = () => {
                     <div className="relative mb-4 p-4 sm:p-5 border-l-2" style={{borderColor: '#C4A747'}}>
                       <span className="absolute -left-3 top-0 text-4xl opacity-20" style={{color: '#C4A747'}}>"</span>
                       <p className="text-lg sm:text-xl md:text-2xl font-light italic leading-relaxed" style={{color: '#1E5631'}}>
-                        Your wealth is more than numbers—it's the security of your family, the education of your children, and the freedom to live with purpose.
+                        Your wealth is more than numbers, it's the security of your family, the education of your children, and the freedom to live with purpose.
                       </p>
                       <span className="absolute -left-3 bottom-0 text-4xl opacity-20" style={{color: '#C4A747'}}>"</span>
                     </div>
@@ -560,7 +560,7 @@ const KalpavrikshCapital = () => {
                     </p>
 
                     <p className="text-xs sm:text-sm text-gray-600 italic leading-relaxed">
-                      Every recommendation we make follows the same standards we apply to our own portfolios—because your trust deserves nothing less.
+                      Every recommendation we make follows the same standards we apply to our own portfolios because your trust deserves nothing less.
                     </p>
                   </div>
                 </div>
@@ -884,14 +884,14 @@ const KalpavrikshCapital = () => {
                 <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
                   <h3 className="text-lg font-bold mb-3" style={{ color: '#1E5631' }}>The Psychology of Money</h3>
                   <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                    Profound timeless concepts on personal finance—higher savings, buying freedom, and the power of patience in wealth generation.
+                    Profound timeless concepts on personal finance higher savings, buying freedom, and the power of patience in wealth generation.
                   </p>
                   <p className="text-xs text-gray-500 italic">by Morgan Housel</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
                   <h3 className="text-lg font-bold mb-3" style={{ color: '#1E5631' }}>The Richest Man in Babylon</h3>
                   <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                    Timeless financial wisdom through ancient stories—the seven laws of wealth that remain relevant across millennia.
+                    Timeless financial wisdom through ancient stories the seven laws of wealth that remain relevant across millennia.
                   </p>
                   <p className="text-xs text-gray-500 italic">by George S. Clason</p>
                 </div>
@@ -1000,7 +1000,7 @@ const KalpavrikshCapital = () => {
                   {
                     icon: "🎯",
                     title: "Redefine Wealth with Intention",
-                    desc: "Understand wealth as purchasing power and freedom of choice—beyond chasing returns—so every financial decision aligns with your life goals and values."
+                    desc: "Understand wealth as purchasing power and freedom of choice, beyond chasing returns—so every financial decision aligns with your life goals and values."
                   },
                   {
                     icon: "📊",
@@ -1118,7 +1118,7 @@ const KalpavrikshCapital = () => {
               </h1>
               <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-4 sm:mb-6 animate-expand-width" style={{ backgroundColor: '#C4A747' }}></div>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 leading-relaxed px-2">
-                Our clients come from diverse backgrounds—but they share one thing in common: a desire for clarity, confidence, and control over their financial future. Here's what they say about working with Rakhi.
+                Our clients come from diverse backgrounds but they share one thing in common: a desire for clarity, confidence, and control over their financial future. Here's what they say about working with Rakhi.
               </p>
             </section>
 
@@ -1431,7 +1431,7 @@ const KalpavrikshCapital = () => {
               </div>
 
               <p className="text-sm sm:text-base md:text-lg text-gray-700 mt-6 sm:mt-8 leading-relaxed px-2">
-                Whether you're beginning your wealth journey or seeking to refine your current strategy, we're here to listen. Every financial plan begins with understanding—your goals, your values, and your vision for the future.
+                Whether you're beginning your wealth journey or seeking to refine your current strategy, we're here to listen. Every financial plan begins with us understanding your goals, your values, and your vision for the future.
               </p>
             </section>
             
@@ -1442,7 +1442,7 @@ const KalpavrikshCapital = () => {
                     Schedule a complimentary consultation to explore your financial goals
                   </h2>
                   <p className="text-sm sm:text-base text-gray-600 mb-6 px-2 leading-relaxed">
-                    No pressure, no obligation—just a thoughtful conversation about your future
+                    No pressure, no obligation, just a thoughtful conversation about your future
                   </p>
                 </div>
 
