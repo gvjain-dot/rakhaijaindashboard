@@ -1688,7 +1688,7 @@ const KalpavrikshCapital = () => {
       </div>
 
       {/* Footer */}
-      <footer className="text-white py-8 sm:py-10 md:py-12 mt-12 sm:mt-16 pb-36 sm:pb-8" style={{ paddingBottom: 'max(9rem, env(safe-area-inset-bottom))', backgroundColor: '#1E5631'}}>
+      <footer className="text-white py-8 sm:py-10 md:py-12 mt-12 sm:mt-16 pb-24 sm:pb-8" style={{ paddingBottom: 'max(6rem, env(safe-area-inset-bottom))', backgroundColor: '#1E5631'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div className="animate-fade-in-up text-center sm:text-left">
