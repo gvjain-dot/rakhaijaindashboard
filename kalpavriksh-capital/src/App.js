@@ -6,6 +6,7 @@ const KalpavrikshCapital = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
   const isTransitioning = React.useRef(false);
@@ -62,14 +63,25 @@ const KalpavrikshCapital = () => {
 
   // Auto-play testimonials carousel on home page
   useEffect(() => {
-    if (currentPage === 'home') {
+    if (currentPage === 'home' && !isAutoScrollPaused) {
       const interval = setInterval(() => {
         setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
       }, 5000); // Change every 5 seconds
 
       return () => clearInterval(interval);
     }
-  }, [currentPage, currentTestimonial]);
+  }, [currentPage, currentTestimonial, isAutoScrollPaused]);
+
+  // Auto-restart after pause (5 seconds after user interaction)
+  useEffect(() => {
+    if (isAutoScrollPaused) {
+      const timer = setTimeout(() => {
+        setIsAutoScrollPaused(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isAutoScrollPaused]);
 
   // Handle browser back button - go to home instead of closing
   useEffect(() => {
@@ -96,6 +108,18 @@ const KalpavrikshCapital = () => {
     window.scrollTo(0, 0);
     // Push state for browser navigation
     window.history.pushState({ page: page }, '', '');
+  };
+
+  // Handle testimonial navigation with pause/restart
+  const handleTestimonialNav = (direction) => {
+    setIsAutoScrollPaused(true);
+    if (direction === 'prev') {
+      setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    } else if (direction === 'next') {
+      setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    } else {
+      setCurrentTestimonial(direction); // Direct index
+    }
   };
 
   // Handle contact actions
@@ -746,7 +770,7 @@ const KalpavrikshCapital = () => {
 
                 {/* Navigation Buttons */}
                 <button
-                  onClick={() => setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+                  onClick={() => handleTestimonialNav('prev')}
                   className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
                   style={{ color: '#1E5631' }}
                   aria-label="Previous testimonial"
@@ -756,7 +780,7 @@ const KalpavrikshCapital = () => {
                   </svg>
                 </button>
                 <button
-                  onClick={() => setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+                  onClick={() => handleTestimonialNav('next')}
                   className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
                   style={{ color: '#1E5631' }}
                   aria-label="Next testimonial"
@@ -771,7 +795,7 @@ const KalpavrikshCapital = () => {
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => setCurrentTestimonial(index)}
+                      onClick={() => handleTestimonialNav(index)}
                       className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                         currentTestimonial === index ? 'w-6 sm:w-8' : ''
                       }`}
@@ -1161,7 +1185,7 @@ const KalpavrikshCapital = () => {
 
               {/* Navigation Buttons */}
               <button
-                onClick={() => setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+                onClick={() => handleTestimonialNav('prev')}
                 className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
                 style={{ color: '#1E5631' }}
                 aria-label="Previous testimonial"
@@ -1171,7 +1195,7 @@ const KalpavrikshCapital = () => {
                 </svg>
               </button>
               <button
-                onClick={() => setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+                onClick={() => handleTestimonialNav('next')}
                 className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
                 style={{ color: '#1E5631' }}
                 aria-label="Next testimonial"
@@ -1186,7 +1210,7 @@ const KalpavrikshCapital = () => {
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => setCurrentTestimonial(index)}
+                    onClick={() => handleTestimonialNav(index)}
                     className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                       currentTestimonial === index ? 'w-6 sm:w-8' : ''
                     }`}
