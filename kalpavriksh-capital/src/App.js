@@ -76,7 +76,7 @@ const KalpavrikshCapital = () => {
     const handlePopState = (event) => {
       event.preventDefault();
       setCurrentPage('home');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo(0, 0);
     };
 
     // Push initial state
@@ -93,7 +93,7 @@ const KalpavrikshCapital = () => {
   const changePage = (page) => {
     setCurrentPage(page);
     setNavOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
     // Push state for browser navigation
     window.history.pushState({ page: page }, '', '');
   };
@@ -129,7 +129,7 @@ const KalpavrikshCapital = () => {
       image: "/testimonials/amarja.jpg",
       content: [
         "I've known Rakhi since our 10+2 days, and one thing that has always stood out is how grounded, pragmatic, and practical she is. These same qualities now shine through in her work as a financial advisor.",
-        "Reconnecting with her for financial advice has been a real blessing. She has a clear understanding of different life stages and the kind of financial support needed — both for the present and the future, in alignment with family goals.",
+        "Reconnecting with her for financial advice has been a real blessing. She has a clear understanding of different life stages and the kind of financial support needed both for the present and the future, in alignment with family goals.",
         "What I value most is her transparent approach and her ability to balance portfolios with both caution and opportunity. With Rakhi, you know your financial planning is in steady, trustworthy hands."
       ]
     },
@@ -140,7 +140,7 @@ const KalpavrikshCapital = () => {
       image: "/testimonials/hynde.jpg",
       content: [
         "Working with Rakhi has been a truly rewarding experience. Her mission to help families take charge of their financial future shines through in everything she does. She guided me with patience and clarity on how and where to invest my savings, always taking time to explain my options and ensure I felt confident about my decisions.",
-        "Rakhi's service is warm and highly personalized — she listens carefully, tailors her advice to individual goals, and stays close to her clients with regular check-ins. Her kindness and professionalism create a sense of trust that makes financial planning feel approachable and empowering.",
+        "Rakhi's service is warm and highly personalized. She listens carefully, tailors her advice to individual goals, and stays close to her clients with regular check-ins. Her kindness and professionalism create a sense of trust that makes financial planning feel approachable and empowering.",
         "I wholeheartedly recommend Rakhi to anyone looking for a financial advisor who combines expertise, integrity, and genuine care for her clients' success."
       ]
     },
@@ -1237,16 +1237,16 @@ const KalpavrikshCapital = () => {
                 <div className="p-6 sm:p-8">
                   <p className="text-sm sm:text-base text-gray-700 mb-6 leading-relaxed">
                     A great book on personal finance which has gained popularity for all the right reasons.
-                    Profound timeless concepts explained beautifully — this one is going to be around for a while.
+                    Profound timeless concepts explained beautifully! This one is going to be around for a while.
                   </p>
 
                   <h4 className="text-lg sm:text-xl font-bold mb-4" style={{ color: '#1E5631' }}>Key Takeaways:</h4>
                   <div className="space-y-3 sm:space-y-4">
                     {[
                       { title: "Savings > Income:", desc: "Higher savings is more important than higher income for wealth generation." },
-                      { title: "Buy Freedom, Not Things:", desc: "Money can buy possessions or freedom — choose wisely." },
+                      { title: "Buy Freedom, Not Things:", desc: "Money can buy possessions or freedom, choose wisely." },
                       { title: "Time is Everything:", desc: "The single most powerful thing for wealth is maximizing your time horizon." },
-                      { title: "Margin of Safety:", desc: "Historical returns are no guarantee — keep a margin of safety when estimating future returns." },
+                      { title: "Margin of Safety:", desc: "Historical returns are no guarantee, keep a margin of safety when estimating future returns." },
                       { title: "Patience Pays:", desc: "Sometimes doing nothing is the hardest but pays the highest dividends." }
                     ].map((item, index) => (
                       <div
@@ -1289,7 +1289,7 @@ const KalpavrikshCapital = () => {
                 <div className="p-6 sm:p-8">
                   <p className="text-sm sm:text-base text-gray-700 mb-6 leading-relaxed">
                     A timeless gem that imparts essential financial wisdom through captivating stories set in ancient Babylon.
-                    The rules of wealth generation are simple and timeless — relevant from 4000 years ago to today.
+                    The rules of wealth generation are simple and timeless, relevant from 4000 years ago to today.
                   </p>
 
                   <h4 className="text-lg sm:text-xl font-bold mb-4" style={{ color: '#1E5631' }}>The Seven Laws of Wealth:</h4>
