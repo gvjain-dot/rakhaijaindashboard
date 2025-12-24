@@ -5,6 +5,7 @@ const KalpavrikshCapital = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   // eslint-disable-next-line no-unused-vars
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
   const isTransitioning = React.useRef(false);
@@ -59,11 +60,42 @@ const KalpavrikshCapital = () => {
     };
   }, [currentPage, pageOrder]);
 
+  // Auto-play testimonials carousel on home page
+  useEffect(() => {
+    if (currentPage === 'home') {
+      const interval = setInterval(() => {
+        setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+      }, 5000); // Change every 5 seconds
+
+      return () => clearInterval(interval);
+    }
+  }, [currentPage, currentTestimonial]);
+
+  // Handle browser back button - go to home instead of closing
+  useEffect(() => {
+    const handlePopState = (event) => {
+      event.preventDefault();
+      setCurrentPage('home');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Push initial state
+    window.history.pushState({ page: currentPage }, '', '');
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
   // Scroll to top when changing pages
   const changePage = (page) => {
     setCurrentPage(page);
     setNavOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Push state for browser navigation
+    window.history.pushState({ page: page }, '', '');
   };
 
   // Handle contact actions
@@ -412,6 +444,31 @@ const KalpavrikshCapital = () => {
                   {page.charAt(0).toUpperCase() + page.slice(1)}
                 </button>
               ))}
+
+              {/* Disclosures at bottom of mobile menu */}
+              <div className="border-t pt-2 mt-2" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
+                <button
+                  onClick={() => changePage('disclosures')}
+                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2 ${
+                    currentPage === 'disclosures'
+                      ? 'bg-white shadow-md'
+                      : 'hover:bg-white/20'
+                  }`}
+                  style={currentPage === 'disclosures' ? {
+                    color: '#1E5631',
+                    animationDelay: '300ms',
+                    animation: navOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none'
+                  } : {
+                    color: '#F5EDE4',
+                    animationDelay: '300ms',
+                    animation: navOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none',
+                    fontSize: '0.9rem',
+                    opacity: '0.8'
+                  }}
+                >
+                  Disclosures
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -434,46 +491,81 @@ const KalpavrikshCapital = () => {
         {/* Home Page */}
         {currentPage === 'home' && (
           <div className="space-y-16">
-            {/* Welcome Section */}
-            <section className="py-8 sm:py-12 px-4 sm:px-6 mx-auto mt-4 sm:mt-6 max-w-6xl">
-              <div className="text-center relative z-10 px-6 py-10 sm:px-10 sm:py-12 md:px-16 md:py-16">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-5 animate-fade-in-up leading-tight" style={{ color: '#1E5631' }}>
-                  Welcome To Kalpvriksh Global
-                </h1>
-                <p className="text-lg sm:text-xl md:text-2xl text-gray-800 mb-4 animate-fade-in-up leading-relaxed max-w-4xl mx-auto font-medium" style={{ animationDelay: '0.1s' }}>
-                  Your wealth is more than numbers—it's the security of your family, the education of your children, and the freedom to live with purpose.
-                </p>
-                <p className="text-base sm:text-lg text-gray-700 mb-8 animate-fade-in-up leading-relaxed max-w-3xl mx-auto" style={{ animationDelay: '0.2s' }}>
-                  We believe in patient, research-driven strategies grounded in integrity and discipline. Every recommendation we make follows the same standards we apply to our own portfolios—because your trust deserves nothing less.
-                </p>
+            {/* Welcome Section - Premium Redesign */}
+            <section className="py-4 sm:py-6 px-4 sm:px-6 mx-auto mt-2 sm:mt-4 max-w-6xl">
+              <div className="bg-white/40 backdrop-blur-sm rounded-2xl border border-white shadow-2xl p-6 sm:p-8 md:p-10 relative overflow-hidden">
+                {/* Subtle dot pattern background */}
+                <div className="absolute inset-0 opacity-5 pointer-events-none"
+                     style={{
+                       backgroundImage: `radial-gradient(circle at 1px 1px, #1E5631 1px, transparent 1px)`,
+                       backgroundSize: '40px 40px'
+                     }}></div>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                  <button
-                    onClick={() => handleContactAction('calendar')}
-                    className="px-10 py-4 rounded-lg text-lg font-semibold
-                             transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl
-                             w-full sm:w-auto text-white"
-                    style={{ backgroundColor: '#1E5631' }}
-                  >
-                    Start a Conversation
-                  </button>
-                  <button
-                    onClick={() => changePage('services')}
-                    className="px-10 py-4 rounded-lg text-lg font-semibold
-                             transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg
-                             w-full sm:w-auto border-2"
-                    style={{ backgroundColor: 'white', color: '#1E5631', borderColor: '#1E5631' }}
-                  >
-                    Explore Our Services
-                  </button>
+                {/* Decorative corner accents */}
+                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+
+                <div className="text-center relative z-10">
+                  {/* Split heading with refined typography */}
+                  <div className="mb-4 animate-fade-in-up">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-1 tracking-tight" style={{color: '#1E5631', fontWeight: 300, letterSpacing: '-0.02em'}}>
+                      Welcome To
+                    </h1>
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3" style={{color: '#1E5631', fontWeight: 600, letterSpacing: '-0.01em'}}>
+                      Kalpvriksh Global
+                    </h1>
+                    {/* Gradient divider */}
+                    <div className="w-24 h-0.5 mx-auto mb-4" style={{background: 'linear-gradient(to right, transparent, #C4A747, transparent)'}}></div>
+                  </div>
+
+                  {/* Pull quote with decorative elements */}
+                  <div className="max-w-4xl mx-auto mb-4 animate-fade-in-up" style={{animationDelay: '0.1s'}}>
+                    <div className="relative mb-4 p-4 sm:p-5 border-l-2" style={{borderColor: '#C4A747'}}>
+                      <span className="absolute -left-3 top-0 text-4xl opacity-20" style={{color: '#C4A747'}}>"</span>
+                      <p className="text-lg sm:text-xl md:text-2xl font-light italic leading-relaxed" style={{color: '#1E5631'}}>
+                        Your wealth is more than numbers—it's the security of your family, the education of your children, and the freedom to live with purpose.
+                      </p>
+                      <span className="absolute -left-3 bottom-0 text-4xl opacity-20" style={{color: '#C4A747'}}>"</span>
+                    </div>
+
+                    {/* Refined body text with emphasis */}
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3" style={{lineHeight: '1.7'}}>
+                      We believe in <span className="font-semibold" style={{color: '#1E5631'}}>patient, research-driven strategies</span> grounded in <span className="font-semibold" style={{color: '#1E5631'}}>integrity and discipline</span>.
+                    </p>
+
+                    <p className="text-xs sm:text-sm text-gray-600 italic leading-relaxed">
+                      Every recommendation we make follows the same standards we apply to our own portfolios—because your trust deserves nothing less.
+                    </p>
+                  </div>
+
+                  {/* Trust indicators */}
+                  <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mt-4 opacity-50 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-light" style={{color: '#1E5631'}}>23+</div>
+                      <div className="text-xs uppercase tracking-wide text-gray-500" style={{letterSpacing: '0.1em'}}>Years Experience</div>
+                    </div>
+                    <div className="w-px h-8 bg-gray-300 hidden sm:block"></div>
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-light" style={{color: '#1E5631'}}>100+</div>
+                      <div className="text-xs uppercase tracking-wide text-gray-500" style={{letterSpacing: '0.1em'}}>Families Served</div>
+                    </div>
+                    <div className="w-px h-8 bg-gray-300 hidden sm:block"></div>
+                    <div className="text-center">
+                      <div className="text-2xl sm:text-3xl font-light" style={{color: '#1E5631'}}>CWM®</div>
+                      <div className="text-xs uppercase tracking-wide text-gray-500" style={{letterSpacing: '0.1em'}}>Certified</div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              {/* Gold Divider */}
-              <div className="w-full h-px mt-12" style={{ backgroundColor: '#C4A747' }}></div>
+
+              {/* Elegant bottom divider */}
+              <div className="w-full h-px mt-6 mx-auto max-w-3xl" style={{ background: 'linear-gradient(to right, transparent, #C4A747, transparent)' }}></div>
             </section>
 
             {/* Our Services Summary */}
-            <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-8">
+            <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-4">
               <div className="text-center mb-8">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1E5631' }}>
                   Our Services
@@ -590,15 +682,23 @@ const KalpavrikshCapital = () => {
                     onError={(e) => { e.currentTarget.style.display = 'none'; }}
                   />
                   <div className="flex-grow text-center md:text-left">
-                    <h3 className="text-xl sm:text-2xl font-bold mb-2" style={{ color: '#1E5631' }}>
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: '#1E5631' }}>
                       Founder & CEO
                     </h3>
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
-                      Rakhi Jain is a Gold Medalist Chartered Accountant and Chartered Wealth Manager with over two decades of strategic finance leadership at Unilever across India and the Middle East.
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-6">
+                      Gold Medalist Chartered Accountant and Chartered Wealth Manager (CWM®)
                     </p>
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                      Her approach combines corporate discipline with personal care—treating every family's wealth journey with the same rigor, ethics, and long-term thinking she applied throughout her career.
-                    </p>
+                    <div className="space-y-4">
+                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                        • Trusted advisor offering personalised, goal‑based financial planning grounded in clarity, discipline, and long‑term outcomes aligned with life aspirations.
+                      </p>
+                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                        • Proven expertise in identifying high‑performing asset managers and investment opportunities. Passionate about investor education and on a mission to empower 100+ families on their path to financial freedom.
+                      </p>
+                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                        • Former Finance Director, Unilever Middle East, with 23+ years of leadership in Strategy, Corporate Finance, and Business Performance across India & the Middle East.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -616,41 +716,90 @@ const KalpavrikshCapital = () => {
                 </p>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-6 mb-8">
-                {testimonials.slice(0, 2).map((testimonial, index) => (
+              <div className="relative mb-8">
+                {/* Carousel Container */}
+                <div className="overflow-hidden">
                   <div
-                    key={index}
-                    className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
                   >
-                    <div className="flex items-start gap-4 mb-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-16 h-16 rounded-full object-cover border-2"
-                        style={{ borderColor: '#1E5631' }}
-                        onError={(e) => {
-                          e.currentTarget.src = FALLBACK_AVATAR;
-                        }}
-                      />
-                      <div className="flex-grow">
-                        <h4 className="text-lg font-bold" style={{ color: '#1E5631' }}>{testimonial.name}</h4>
-                        <p className="text-sm text-gray-600">{testimonial.role}</p>
-                        <div className="flex gap-1 mt-1">
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <span key={i} className="text-lg" style={{ color: '#C4A747' }}>⭐</span>
-                          ))}
+                    {testimonials.map((testimonial, index) => (
+                      <div
+                        key={index}
+                        className="min-w-full px-2 sm:px-4"
+                      >
+                        <div className="bg-white p-6 rounded-xl shadow-sm max-w-3xl mx-auto">
+                          <div className="flex items-start gap-4 mb-4">
+                            <img
+                              src={testimonial.image}
+                              alt={testimonial.name}
+                              className="w-16 h-16 rounded-full object-cover border-2"
+                              style={{ borderColor: '#1E5631' }}
+                              onError={(e) => {
+                                e.currentTarget.src = FALLBACK_AVATAR;
+                              }}
+                            />
+                            <div className="flex-grow">
+                              <h4 className="text-lg font-bold" style={{ color: '#1E5631' }}>{testimonial.name}</h4>
+                              <p className="text-sm text-gray-600">{testimonial.role}</p>
+                              <div className="flex gap-1 mt-1">
+                                {[...Array(testimonial.rating)].map((_, i) => (
+                                  <span key={i} className="text-lg" style={{ color: '#C4A747' }}>⭐</span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="space-y-3">
+                            {testimonial.content.slice(0, 2).map((paragraph, idx) => (
+                              <p key={idx} className="text-sm text-gray-700 italic leading-relaxed">
+                                "{paragraph}"
+                              </p>
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="space-y-3">
-                      {testimonial.content.slice(0, 2).map((paragraph, idx) => (
-                        <p key={idx} className="text-sm text-gray-700 italic leading-relaxed">
-                          "{paragraph}"
-                        </p>
-                      ))}
-                    </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+
+                {/* Navigation Buttons */}
+                <button
+                  onClick={() => setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+                  style={{ color: '#1E5631' }}
+                  aria-label="Previous testimonial"
+                >
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={() => setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+                  style={{ color: '#1E5631' }}
+                  aria-label="Next testimonial"
+                >
+                  <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Dots Navigation */}
+                <div className="flex justify-center gap-2 mt-6">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentTestimonial(index)}
+                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                        currentTestimonial === index ? 'w-6 sm:w-8' : ''
+                      }`}
+                      style={{
+                        backgroundColor: currentTestimonial === index ? '#C4A747' : '#D1D5DB'
+                      }}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
 
               <div className="text-center">
@@ -798,7 +947,7 @@ const KalpavrikshCapital = () => {
                 {processSteps.map((step, index) => (
                   <div
                     key={index}
-                    className="bg-white p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 transform hover:scale-105 animate-fade-in-up cursor-pointer border-2"
+                    className="bg-white p-4 sm:p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-500 transform hover:scale-105 animate-fade-in-up cursor-pointer border-2 relative"
                     style={{ animationDelay: `${index * 0.1}s`, borderColor: '#C4A747' }}
                   >
                     <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-white rounded-full flex items-center justify-center text-lg sm:text-xl md:text-2xl font-bold mx-auto mb-3 sm:mb-4 transform transition-all duration-300 hover:rotate-360"
@@ -967,58 +1116,105 @@ const KalpavrikshCapital = () => {
               </p>
             </section>
 
-            <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-              {testimonials.map((testimonial, index) => (
+            <div className="max-w-6xl mx-auto relative">
+              {/* Carousel Container */}
+              <div className="overflow-hidden">
                 <div
-                  key={index}
-                  className="bg-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm hover:shadow-md transition-all duration-500 transform hover:scale-[1.02] animate-fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
                 >
-                  <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                    <div className="flex-shrink-0 mx-auto sm:mx-0">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full object-cover border-2 transform transition-transform duration-300 hover:scale-110"
-                        style={{ borderColor: '#1E5631' }}
-                        loading="lazy"
-                        decoding="async"
-                        onError={(e) => {
-                          e.currentTarget.src = FALLBACK_AVATAR;
-                        }}
-                      />
-                    </div>
-                    <div className="flex-grow text-center sm:text-left">
-                      <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start gap-2">
-                        <div>
-                          <h4 className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#1E5631' }}>{testimonial.name}</h4>
-                          <p className="text-gray-600 text-xs sm:text-sm md:text-base">{testimonial.role}</p>
+                  {testimonials.map((testimonial, index) => (
+                    <div
+                      key={index}
+                      className="min-w-full px-2 sm:px-4"
+                    >
+                      <div className="bg-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm">
+                        <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                          <div className="flex-shrink-0 mx-auto sm:mx-0">
+                            <img
+                              src={testimonial.image}
+                              alt={testimonial.name}
+                              className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full object-cover border-2 transform transition-transform duration-300 hover:scale-110"
+                              style={{ borderColor: '#1E5631' }}
+                              loading="lazy"
+                              decoding="async"
+                              onError={(e) => {
+                                e.currentTarget.src = FALLBACK_AVATAR;
+                              }}
+                            />
+                          </div>
+                          <div className="flex-grow text-center sm:text-left">
+                            <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start gap-2">
+                              <div>
+                                <h4 className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#1E5631' }}>{testimonial.name}</h4>
+                                <p className="text-gray-600 text-xs sm:text-sm md:text-base">{testimonial.role}</p>
+                              </div>
+                              <div className="flex gap-0.5 sm:gap-1">
+                                {[...Array(testimonial.rating)].map((_, i) => (
+                                  <span
+                                    key={i}
+                                    className="text-lg sm:text-xl md:text-2xl"
+                                    style={{ color: '#C4A747' }}
+                                  >⭐</span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                        <div className="flex gap-0.5 sm:gap-1">
-                          {[...Array(testimonial.rating)].map((_, i) => (
-                            <span
-                              key={i}
-                              className="text-lg sm:text-xl md:text-2xl"
-                              style={{ color: '#C4A747' }}
-                            >⭐</span>
+                        <div className="space-y-3 sm:space-y-4">
+                          {testimonial.content.map((paragraph, idx) => (
+                            <p
+                              key={idx}
+                              className="text-gray-700 italic leading-relaxed text-xs sm:text-sm md:text-base lg:text-lg"
+                            >
+                              {paragraph}
+                            </p>
                           ))}
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="space-y-3 sm:space-y-4">
-                    {testimonial.content.map((paragraph, idx) => (
-                      <p
-                        key={idx}
-                        className="text-gray-700 italic leading-relaxed text-xs sm:text-sm md:text-base lg:text-lg animate-fade-in-up"
-                        style={{ animationDelay: `${idx * 0.1}s` }}
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Navigation Buttons */}
+              <button
+                onClick={() => setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+                style={{ color: '#1E5631' }}
+                aria-label="Previous testimonial"
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={() => setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+                style={{ color: '#1E5631' }}
+                aria-label="Next testimonial"
+              >
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              {/* Dots Navigation */}
+              <div className="flex justify-center gap-2 mt-6">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                      currentTestimonial === index ? 'w-6 sm:w-8' : ''
+                    }`}
+                    style={{
+                      backgroundColor: currentTestimonial === index ? '#C4A747' : '#D1D5DB'
+                    }}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
 
           </div>
@@ -1050,9 +1246,9 @@ const KalpavrikshCapital = () => {
                   ></div>
                   <div className="relative z-10">
                     <div className="bg-white rounded-xl p-6 mb-4 inline-block shadow-sm transform transition-all duration-500 hover:scale-105 hover:rotate-2">
-                      <h3 className="text-2xl font-bold text-gray-800">The Psychology</h3>
-                      <h3 className="text-2xl font-bold text-gray-800">of Money</h3>
-                      <p className="text-sm text-gray-600 mt-2">by Morgan Housel</p>
+                      <h3 className="text-3xl sm:text-4xl font-bold text-gray-800">The Psychology</h3>
+                      <h3 className="text-3xl sm:text-4xl font-bold text-gray-800">of Money</h3>
+                      <p className="text-base sm:text-lg text-gray-600 mt-3">by Morgan Housel</p>
                     </div>
                   </div>
                 </div>
@@ -1102,9 +1298,9 @@ const KalpavrikshCapital = () => {
                   ></div>
                   <div className="relative z-10">
                     <div className="bg-white rounded-xl p-6 mb-4 inline-block shadow-sm transform transition-all duration-500 hover:scale-105 hover:-rotate-2">
-                      <h3 className="text-2xl font-bold text-gray-800">The Richest Man</h3>
-                      <h3 className="text-2xl font-bold text-gray-800">in Babylon</h3>
-                      <p className="text-sm text-gray-600 mt-2">by George S. Clason</p>
+                      <h3 className="text-3xl sm:text-4xl font-bold text-gray-800">The Richest Man</h3>
+                      <h3 className="text-3xl sm:text-4xl font-bold text-gray-800">in Babylon</h3>
+                      <p className="text-base sm:text-lg text-gray-600 mt-3">by George S. Clason</p>
                     </div>
                   </div>
                 </div>
@@ -1296,20 +1492,22 @@ const KalpavrikshCapital = () => {
 
         {/* Disclosures Page */}
         {currentPage === 'disclosures' && (
-          <div className="space-y-12 sm:space-y-16 px-3 sm:px-4 py-6 sm:py-8">
-            <section className="text-center max-w-5xl mx-auto animate-fade-in-up">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2" style={{ color: '#1E5631' }}>
-                Disclosures & Regulatory Information
-              </h1>
-              <div className="w-24 sm:w-32 h-1 mx-auto rounded-full mb-6" style={{ backgroundColor: '#C4A747' }}></div>
-              <p className="text-base sm:text-lg text-gray-700 px-2 max-w-3xl mx-auto">
-                Clarity and transparency guide every interaction at Kalpvriksh Global.
-              </p>
-            </section>
+          <div className="px-4 sm:px-6 py-6 sm:py-8">
+            <div className="max-w-4xl mx-auto bg-white p-6 sm:p-8 md:p-12 shadow-sm">
+              {/* Header */}
+              <div className="text-center mb-8 pb-6 border-b-2" style={{ borderColor: '#C4A747' }}>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1E5631' }}>
+                  Disclosures & Regulatory Information
+                </h1>
+                <p className="text-sm sm:text-base text-gray-600">
+                  Clarity and transparency guide every interaction at Kalpvriksh Global.
+                </p>
+              </div>
 
-            <div className="max-w-5xl mx-auto space-y-8">
-              {/* 1. AMFI Registration */}
-              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              {/* Continuous document content */}
+              <div className="space-y-8 text-sm sm:text-base text-gray-700 leading-relaxed">
+                {/* 1. AMFI Registration */}
+                <div>
                 <h2 className="text-xl sm:text-2xl font-bold mb-4" style={{ color: '#1E5631' }}>
                   1. AMFI Registration (India)
                 </h2>
@@ -1318,7 +1516,7 @@ const KalpavrikshCapital = () => {
                 </h3>
                 <div className="space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed">
                   <p>
-                    Kalpvriksh Global / Rakhi Jain is an <strong>AMFI-Registered Mutual Fund Distributor (ARN-XXXXXX)</strong>.
+                    Kalpvriksh Global / Rakhi Jain is an <strong>AMFI-Registered Mutual Fund Distributor (ARN-313560)</strong>.
                   </p>
                   <div>
                     <p className="font-semibold mb-2">We distribute:</p>
@@ -1343,14 +1541,14 @@ const KalpavrikshCapital = () => {
               </div>
 
               {/* 2. Services for UAE Residents */}
-              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <h2 className="text-xl sm:text-2xl font-bold mb-4" style={{ color: '#1E5631' }}>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: '#1E5631' }}>
                   2. Services for UAE Residents & Global Clients
                 </h2>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: '#C4A747' }}>
+                <h3 className="text-base font-semibold mb-2" style={{ color: '#C4A747' }}>
                   Education-led, conflict-free guidance
                 </h3>
-                <div className="space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed">
+                <div className="space-y-3">
                   <p>
                     <strong>Kalpvriksh Global does not hold a UAE regulatory license.</strong>
                   </p>
@@ -1380,14 +1578,14 @@ const KalpavrikshCapital = () => {
               </div>
 
               {/* 3. Nature of Information */}
-              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                <h2 className="text-xl sm:text-2xl font-bold mb-4" style={{ color: '#1E5631' }}>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: '#1E5631' }}>
                   3. Nature of Information Provided
                 </h2>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: '#C4A747' }}>
+                <h3 className="text-base font-semibold mb-2" style={{ color: '#C4A747' }}>
                   Educational. Informational. Not advisory.
                 </h3>
-                <div className="space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed">
+                <div className="space-y-3">
                   <div>
                     <p className="mb-2">All content shared through:</p>
                     <ul className="list-disc list-inside space-y-1 ml-4">
@@ -1413,14 +1611,14 @@ const KalpavrikshCapital = () => {
               </div>
 
               {/* 4. Conflict of Interest */}
-              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                <h2 className="text-xl sm:text-2xl font-bold mb-4" style={{ color: '#1E5631' }}>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: '#1E5631' }}>
                   4. Conflict-of-Interest Transparency
                 </h2>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: '#C4A747' }}>
+                <h3 className="text-base font-semibold mb-2" style={{ color: '#C4A747' }}>
                   Integrity is our foundation.
                 </h3>
-                <div className="space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed">
+                <div className="space-y-3">
                   <p className="text-lg font-medium" style={{ color: '#1E5631' }}>
                     Our philosophy is simple: <em>If we wouldn't invest in it ourselves, we won't recommend it to you.</em>
                   </p>
@@ -1436,14 +1634,14 @@ const KalpavrikshCapital = () => {
               </div>
 
               {/* 5. Cross-Border Services */}
-              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-                <h2 className="text-xl sm:text-2xl font-bold mb-4" style={{ color: '#1E5631' }}>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: '#1E5631' }}>
                   5. Cross-Border Services
                 </h2>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: '#C4A747' }}>
+                <h3 className="text-base font-semibold mb-2" style={{ color: '#C4A747' }}>
                   Aligned with local regulations
                 </h3>
-                <div className="space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed">
+                <div className="space-y-3">
                   <p className="font-semibold">Our services differ by jurisdiction:</p>
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li><strong>India:</strong> Mutual fund distribution + financial education</li>
@@ -1456,27 +1654,27 @@ const KalpavrikshCapital = () => {
               </div>
 
               {/* 6. Data & Privacy */}
-              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                <h2 className="text-xl sm:text-2xl font-bold mb-4" style={{ color: '#1E5631' }}>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: '#1E5631' }}>
                   6. Data & Privacy
                 </h2>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: '#C4A747' }}>
+                <h3 className="text-base font-semibold mb-2" style={{ color: '#C4A747' }}>
                   Your information stays confidential.
                 </h3>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                <p>
                   We maintain strict confidentiality of all client information.
                 </p>
               </div>
 
               {/* 7. Website Use Disclaimer */}
-              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
-                <h2 className="text-xl sm:text-2xl font-bold mb-4" style={{ color: '#1E5631' }}>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: '#1E5631' }}>
                   7. Website Use Disclaimer
                 </h2>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: '#C4A747' }}>
+                <h3 className="text-base font-semibold mb-2" style={{ color: '#C4A747' }}>
                   Use of information
                 </h3>
-                <div className="space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed">
+                <div className="space-y-3">
                   <p>
                     All content on this website is provided "as is" without warranties of any kind.
                   </p>
@@ -1486,20 +1684,21 @@ const KalpavrikshCapital = () => {
                 </div>
               </div>
 
-              {/* 8. Contact */}
-              <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-                <h2 className="text-xl sm:text-2xl font-bold mb-4" style={{ color: '#1E5631' }}>
-                  8. Contact
-                </h2>
-                <h3 className="text-lg font-semibold mb-3" style={{ color: '#C4A747' }}>
-                  We're here to help.
-                </h3>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  For questions regarding these disclosures, please write to:
-                </p>
-                <p className="text-base sm:text-lg font-semibold mt-3" style={{ color: '#1E5631' }}>
-                  📧 info@kalpvrikshglobal.com
-                </p>
+                {/* 8. Contact */}
+                <div>
+                  <h2 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: '#1E5631' }}>
+                    8. Contact
+                  </h2>
+                  <h3 className="text-base font-semibold mb-2" style={{ color: '#C4A747' }}>
+                    We're here to help.
+                  </h3>
+                  <p>
+                    For questions regarding these disclosures, please write to:
+                  </p>
+                  <p className="font-semibold mt-2" style={{ color: '#1E5631' }}>
+                    📧 info@kalpvrikshglobal.com
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -1507,7 +1706,7 @@ const KalpavrikshCapital = () => {
       </div>
 
       {/* Footer */}
-      <footer className="text-white py-8 sm:py-10 md:py-12 mt-12 sm:mt-16 pb-24 sm:pb-8" style={{ paddingBottom: 'max(6rem, env(safe-area-inset-bottom))', backgroundColor: '#1E5631'}}>
+      <footer className="text-white py-8 sm:py-10 md:py-12 mt-12 sm:mt-16 pb-32 sm:pb-8" style={{ paddingBottom: 'max(8rem, env(safe-area-inset-bottom))', backgroundColor: '#1E5631'}}>
         <div className="max-w-6xl mx-auto px-3 sm:px-4">
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div className="animate-fade-in-up text-center sm:text-left">
@@ -1574,15 +1773,9 @@ const KalpavrikshCapital = () => {
               </div>
             </div>
           </div>
-          <div className="border-t pt-6 sm:pt-8 text-center" style={{ borderColor: '#163822' }}>
-            <p className="mb-2 text-sm sm:text-base">
-              <strong style={{ color: '#C4A747' }}>Kalpvriksh Global</strong>
-            </p>
-            <p className="text-xs sm:text-sm px-2" style={{ color: '#F5EDE4' }}>
-            Led by Rakhi Jain, Gold Medalist Chartered Accountant & Strategic Finance Leader
-            </p>
-            <p className="text-xs mt-4" style={{ color: '#F5EDE4' }}>
-              © 2024 Kalpvriksh Global. All rights reserved.
+          <div className="border-t pt-4 text-center" style={{ borderColor: '#163822' }}>
+            <p className="text-xs" style={{ color: '#F5EDE4', opacity: '0.8' }}>
+              Designed by Gaurav Jain
             </p>
           </div>
         </div>
