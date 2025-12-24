@@ -102,7 +102,7 @@ const KalpavrikshCapital = () => {
   const handleContactAction = (action) => {
     switch(action) {
       case 'email':
-        window.location.href = 'mailto:rakhi@kalpavrikshglobal.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
+        window.location.href = 'mailto:rakhijain@kalpavrikshglobal.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
         break;
       case 'linkedin':
         window.open('https://www.linkedin.com/in/rakhi-jain-7658328/', '_blank');
@@ -1706,7 +1706,7 @@ const KalpavrikshCapital = () => {
               </div>
               <p className="text-sm sm:text-base mb-3 sm:mb-4" style={{ color: '#F5EDE4' }}>Building financial confidence through discipline and clarity</p>
               <div className="text-xs sm:text-sm" style={{ color: '#F5EDE4' }}>
-                <p>📧 rakhi@kalpavrikshglobal.com</p>
+                <p>📧 rakhijain@kalpavrikshglobal.com</p>
               </div>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
