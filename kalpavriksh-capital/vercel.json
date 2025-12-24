@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "kalpvrikshglobal.com"
+        }
+      ],
+      "destination": "https://www.kalpvrikshglobal.com/$1",
+      "permanent": true
+    }
+  ]
+}
