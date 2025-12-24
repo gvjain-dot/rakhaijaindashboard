@@ -362,18 +362,18 @@ const KalpavrikshCapital = () => {
   'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27%23047857%27%3E%3Ccircle cx=%2712%27 cy=%2712%27 r=%2710%27/%3E%3Cpath d=%27M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 2c-3.5 0-6 1.8-6 3v1h12v-1c0-1.2-2.5-3-6-3z%27/%3E%3C/svg%3E';
   
   return (
-    <div className="min-h-[100svh]" style={{ backgroundColor: '#FAF7F2' }}>
+    <div className="min-h-[100svh] overflow-x-hidden" style={{ backgroundColor: '#FAF7F2' }}>
       {/* Navigation - DARK GREEN BACKGROUND */}
       <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'shadow-lg' : 'shadow-md'
       } backdrop-blur-lg`}  style={{ paddingTop: 'env(safe-area-inset-top)', backgroundColor: '#1E5631'}}>
-        <div className="max-w-6xl mx-auto px-3 sm:px-4 py-3 sm:py-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 sm:gap-3">
               <img
                 src="/logo.png"
                 alt="Kalpvriksh Global Logo"
-                className="h-12 sm:h-14 md:h-16 lg:h-18 w-12 sm:w-14 md:w-16 lg:w-18 transition-transform duration-300 hover:scale-110 rounded-full"
+                className="h-12 sm:h-14 md:h-16 lg:h-20 w-12 sm:w-14 md:w-16 lg:w-20 transition-transform duration-300 hover:scale-110 rounded-full"
                 style={{ objectFit: 'cover', objectPosition: '85% center', transform: 'scale(0.8)' }}
                 loading="lazy"
                 decoding="async"
@@ -492,7 +492,7 @@ const KalpavrikshCapital = () => {
         {currentPage === 'home' && (
           <div className="space-y-16">
             {/* Welcome Section - Premium Redesign */}
-            <section className="py-4 sm:py-6 px-4 sm:px-6 mx-auto mt-2 sm:mt-4 max-w-6xl">
+            <section className="py-6 sm:py-8 px-4 sm:px-6 mx-auto mt-2 sm:mt-4 max-w-6xl">
               <div className="bg-white/40 backdrop-blur-sm rounded-2xl border border-white shadow-2xl p-6 sm:p-8 md:p-10 relative overflow-hidden">
                 {/* Subtle dot pattern background */}
                 <div className="absolute inset-0 opacity-5 pointer-events-none"
@@ -708,9 +708,9 @@ const KalpavrikshCapital = () => {
                     {testimonials.map((testimonial, index) => (
                       <div
                         key={index}
-                        className="min-w-full px-2 sm:px-4"
+                        className="min-w-full px-4 sm:px-6"
                       >
-                        <div className="bg-white p-6 rounded-xl shadow-sm max-w-3xl mx-auto">
+                        <div className="bg-white p-6 sm:p-8 rounded-xl shadow-sm max-w-3xl mx-auto">
                           <div className="flex items-start gap-4 mb-4">
                             <img
                               src={testimonial.image}
@@ -747,7 +747,7 @@ const KalpavrikshCapital = () => {
                 {/* Navigation Buttons */}
                 <button
                   onClick={() => setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
                   style={{ color: '#1E5631' }}
                   aria-label="Previous testimonial"
                 >
@@ -757,7 +757,7 @@ const KalpavrikshCapital = () => {
                 </button>
                 <button
                   onClick={() => setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
                   style={{ color: '#1E5631' }}
                   aria-label="Next testimonial"
                 >
@@ -1116,7 +1116,7 @@ const KalpavrikshCapital = () => {
                             <img
                               src={testimonial.image}
                               alt={testimonial.name}
-                              className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full object-cover border-2 transform transition-transform duration-300 hover:scale-110"
+                              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full object-cover border-2 transform transition-transform duration-300 hover:scale-110"
                               style={{ borderColor: '#1E5631' }}
                               loading="lazy"
                               decoding="async"
@@ -1162,7 +1162,7 @@ const KalpavrikshCapital = () => {
               {/* Navigation Buttons */}
               <button
                 onClick={() => setCurrentTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-4 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
                 style={{ color: '#1E5631' }}
                 aria-label="Previous testimonial"
               >
@@ -1172,7 +1172,7 @@ const KalpavrikshCapital = () => {
               </button>
               <button
                 onClick={() => setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-4 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
                 style={{ color: '#1E5631' }}
                 aria-label="Next testimonial"
               >
@@ -1688,15 +1688,15 @@ const KalpavrikshCapital = () => {
       </div>
 
       {/* Footer */}
-      <footer className="text-white py-8 sm:py-10 md:py-12 mt-12 sm:mt-16 pb-32 sm:pb-8" style={{ paddingBottom: 'max(8rem, env(safe-area-inset-bottom))', backgroundColor: '#1E5631'}}>
-        <div className="max-w-6xl mx-auto px-3 sm:px-4">
+      <footer className="text-white py-8 sm:py-10 md:py-12 mt-12 sm:mt-16 pb-36 sm:pb-8" style={{ paddingBottom: 'max(9rem, env(safe-area-inset-bottom))', backgroundColor: '#1E5631'}}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
             <div className="animate-fade-in-up text-center sm:text-left">
               <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4 justify-center sm:justify-start">
                 <img
                   src="/logo.png"
                   alt="Kalpvriksh Global Logo"
-                  className="h-14 sm:h-16 md:h-18 lg:h-20 w-14 sm:w-16 md:w-18 lg:w-20 transition-transform duration-300 hover:scale-110 rounded-full"
+                  className="h-14 sm:h-16 md:h-20 lg:h-24 w-14 sm:w-16 md:w-20 lg:w-24 transition-transform duration-300 hover:scale-110 rounded-full"
                   style={{ objectFit: 'cover', objectPosition: '85% center', transform: 'scale(0.8)' }}
                   loading="lazy"
                   decoding="async"
