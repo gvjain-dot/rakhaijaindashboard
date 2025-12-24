@@ -114,7 +114,7 @@ const KalpavrikshCapital = () => {
         window.open('http://www.youtube.com/@RakhiJain-i59', '_blank');
         break;
       case 'whatsapp':
-        alert('WhatsApp contact will be available soon. Please use email or schedule a call for now.');
+        window.open('https://wa.me/917899841847', '_blank');
         break;
       default:
         break;
@@ -538,24 +538,6 @@ const KalpavrikshCapital = () => {
                     <p className="text-xs sm:text-sm text-gray-600 italic leading-relaxed">
                       Every recommendation we make follows the same standards we apply to our own portfolios—because your trust deserves nothing less.
                     </p>
-                  </div>
-
-                  {/* Trust indicators */}
-                  <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 mt-4 opacity-50 animate-fade-in-up" style={{animationDelay: '0.2s'}}>
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-light" style={{color: '#1E5631'}}>23+</div>
-                      <div className="text-xs uppercase tracking-wide text-gray-500" style={{letterSpacing: '0.1em'}}>Years Experience</div>
-                    </div>
-                    <div className="w-px h-8 bg-gray-300 hidden sm:block"></div>
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-light" style={{color: '#1E5631'}}>100+</div>
-                      <div className="text-xs uppercase tracking-wide text-gray-500" style={{letterSpacing: '0.1em'}}>Families Served</div>
-                    </div>
-                    <div className="w-px h-8 bg-gray-300 hidden sm:block"></div>
-                    <div className="text-center">
-                      <div className="text-2xl sm:text-3xl font-light" style={{color: '#1E5631'}}>CWM®</div>
-                      <div className="text-xs uppercase tracking-wide text-gray-500" style={{letterSpacing: '0.1em'}}>Certified</div>
-                    </div>
                   </div>
                 </div>
               </div>
