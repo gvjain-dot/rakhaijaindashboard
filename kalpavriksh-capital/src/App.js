@@ -771,7 +771,7 @@ const KalpavrikshCapital = () => {
                 {/* Navigation Buttons */}
                 <button
                   onClick={() => handleTestimonialNav('prev')}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
                   style={{ color: '#1E5631' }}
                   aria-label="Previous testimonial"
                 >
@@ -781,7 +781,7 @@ const KalpavrikshCapital = () => {
                 </button>
                 <button
                   onClick={() => handleTestimonialNav('next')}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110"
                   style={{ color: '#1E5631' }}
                   aria-label="Next testimonial"
                 >
@@ -1122,107 +1122,59 @@ const KalpavrikshCapital = () => {
               </p>
             </section>
 
-            <div className="max-w-6xl mx-auto relative">
-              {/* Carousel Container */}
-              <div className="overflow-hidden">
+            <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-6 sm:gap-8">
+              {testimonials.map((testimonial, index) => (
                 <div
-                  className="flex transition-transform duration-500 ease-in-out"
-                  style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+                  key={index}
+                  className="bg-white p-6 sm:p-8 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border-t-4 transform hover:scale-[1.02] animate-fade-in-up"
+                  style={{ animationDelay: `${index * 0.1}s`, borderColor: '#C4A747' }}
                 >
-                  {testimonials.map((testimonial, index) => (
-                    <div
-                      key={index}
-                      className="min-w-full px-2 sm:px-4"
-                    >
-                      <div className="bg-white p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl shadow-sm">
-                        <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
-                          <div className="flex-shrink-0 mx-auto sm:mx-0">
-                            <img
-                              src={testimonial.image}
-                              alt={testimonial.name}
-                              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full object-cover border-2 transform transition-transform duration-300 hover:scale-110"
-                              style={{ borderColor: '#1E5631' }}
-                              loading="lazy"
-                              decoding="async"
-                              onError={(e) => {
-                                e.currentTarget.src = FALLBACK_AVATAR;
-                              }}
-                            />
-                          </div>
-                          <div className="flex-grow text-center sm:text-left">
-                            <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start gap-2">
-                              <div>
-                                <h4 className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#1E5631' }}>{testimonial.name}</h4>
-                                <p className="text-gray-600 text-xs sm:text-sm md:text-base">{testimonial.role}</p>
-                              </div>
-                              <div className="flex gap-0.5 sm:gap-1">
-                                {[...Array(testimonial.rating)].map((_, i) => (
-                                  <span
-                                    key={i}
-                                    className="text-lg sm:text-xl md:text-2xl"
-                                    style={{ color: '#C4A747' }}
-                                  >⭐</span>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
+                  <div className="flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6">
+                    <div className="flex-shrink-0">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-full object-cover border-2 transform transition-transform duration-300 hover:scale-110"
+                        style={{ borderColor: '#1E5631' }}
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => {
+                          e.currentTarget.src = FALLBACK_AVATAR;
+                        }}
+                      />
+                    </div>
+                    <div className="flex-grow">
+                      <div className="flex justify-between items-start flex-wrap gap-2">
+                        <div>
+                          <h4 className="text-lg sm:text-xl font-bold" style={{ color: '#1E5631' }}>{testimonial.name}</h4>
+                          <p className="text-gray-600 text-xs sm:text-sm">{testimonial.role}</p>
                         </div>
-                        <div className="space-y-3 sm:space-y-4">
-                          {testimonial.content.map((paragraph, idx) => (
-                            <p
-                              key={idx}
-                              className="text-gray-700 italic leading-relaxed text-xs sm:text-sm md:text-base lg:text-lg"
-                            >
-                              {paragraph}
-                            </p>
+                        <div className="flex gap-0.5 sm:gap-1">
+                          {[...Array(testimonial.rating)].map((_, i) => (
+                            <span
+                              key={i}
+                              className="text-lg sm:text-xl animate-fade-in-scale"
+                              style={{ animationDelay: `${i * 0.1}s`, color: '#C4A747' }}
+                            >⭐</span>
                           ))}
                         </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
+                  <div className="space-y-3 sm:space-y-4">
+                    {testimonial.content.map((paragraph, idx) => (
+                      <p
+                        key={idx}
+                        className="text-gray-700 italic leading-relaxed text-xs sm:text-sm md:text-base animate-fade-in-up"
+                        style={{ animationDelay: `${idx * 0.1}s` }}
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
                 </div>
-              </div>
-
-              {/* Navigation Buttons */}
-              <button
-                onClick={() => handleTestimonialNav('prev')}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
-                style={{ color: '#1E5631' }}
-                aria-label="Previous testimonial"
-              >
-                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                onClick={() => handleTestimonialNav('next')}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 bg-white rounded-full p-2 sm:p-3 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 hidden xs:block"
-                style={{ color: '#1E5631' }}
-                aria-label="Next testimonial"
-              >
-                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-
-              {/* Dots Navigation */}
-              <div className="flex justify-center gap-2 mt-6">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleTestimonialNav(index)}
-                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-                      currentTestimonial === index ? 'w-6 sm:w-8' : ''
-                    }`}
-                    style={{
-                      backgroundColor: currentTestimonial === index ? '#C4A747' : '#D1D5DB'
-                    }}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
+              ))}
             </div>
-
           </div>
         )}
 
