@@ -386,7 +386,7 @@ const KalpavrikshCapital = () => {
   'data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27%23047857%27%3E%3Ccircle cx=%2712%27 cy=%2712%27 r=%2710%27/%3E%3Cpath d=%27M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 2c-3.5 0-6 1.8-6 3v1h12v-1c0-1.2-2.5-3-6-3z%27/%3E%3C/svg%3E';
   
   return (
-    <div className="min-h-[100svh] overflow-x-hidden" style={{ backgroundColor: '#FAF7F2' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#FAF7F2' }}>
       {/* Navigation - DARK GREEN BACKGROUND */}
       <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'shadow-lg' : 'shadow-md'
@@ -405,7 +405,7 @@ const KalpavrikshCapital = () => {
               />
               <span className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold whitespace-nowrap" style={{ color: '#F5EDE4' }}>Kalpvriksh Global</span>
             </div>
-            
+
             {/* Desktop Menu */}
             <div className="hidden lg:flex gap-6">
               {['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact'].map((page) => (
@@ -511,7 +511,7 @@ const KalpavrikshCapital = () => {
       </div>
 
       {/* Main Content */}
-      <div className="pt-20">
+      <div className="pt-24 sm:pt-28 md:pt-32">
         {/* Home Page */}
         {currentPage === 'home' && (
           <div className="space-y-16">
@@ -522,14 +522,14 @@ const KalpavrikshCapital = () => {
                 <div className="absolute inset-0 opacity-5 pointer-events-none"
                      style={{
                        backgroundImage: `radial-gradient(circle at 1px 1px, #1E5631 1px, transparent 1px)`,
-                       backgroundSize: '40px 40px'
+                       backgroundSize: 'clamp(30px, 5vw, 40px) clamp(30px, 5vw, 40px)'
                      }}></div>
 
-                {/* Decorative corner accents */}
-                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
-                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
-                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
-                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                {/* Decorative corner accents - responsive sizes */}
+                <div className="absolute top-0 left-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 border-t-2 border-l-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                <div className="absolute top-0 right-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 border-t-2 border-r-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                <div className="absolute bottom-0 left-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 border-b-2 border-l-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                <div className="absolute bottom-0 right-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 border-b-2 border-r-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
 
                 <div className="text-center relative z-10">
                   {/* Split heading with refined typography */}
@@ -570,7 +570,7 @@ const KalpavrikshCapital = () => {
               <div className="w-full h-px mt-6 mx-auto max-w-3xl" style={{ background: 'linear-gradient(to right, transparent, #C4A747, transparent)' }}></div>
             </section>
 
-            {/* Our Services Summary */}
+            {/* Our Services & Process Combined */}
             <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-4">
               <div className="text-center mb-8">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1E5631' }}>
@@ -582,7 +582,7 @@ const KalpavrikshCapital = () => {
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 {services.slice(0, 6).map((service, index) => (
                   <div
                     key={index}
@@ -596,33 +596,19 @@ const KalpavrikshCapital = () => {
                   </div>
                 ))}
               </div>
-              {/* Gold Divider */}
-              <div className="w-full h-px mb-8" style={{ backgroundColor: '#C4A747' }}></div>
 
-              <div className="text-center">
-                <button
-                  onClick={() => changePage('services')}
-                  className="px-6 py-3 rounded-lg text-base font-semibold transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg border-2"
-                  style={{ backgroundColor: 'white', color: '#1E5631', borderColor: '#1E5631' }}
-                >
-                  View All Services
-                </button>
-              </div>
-            </section>
-
-            {/* Our Process */}
-            <section className="max-w-6xl mx-auto px-4 sm:px-6">
-              <div className="text-center mb-10 sm:mb-12">
+              {/* Our Process */}
+              <div className="text-center mb-10">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1E5631' }}>
                   Our Process
                 </h2>
                 <div className="w-20 h-1 mx-auto rounded-full mb-6" style={{ backgroundColor: '#C4A747' }}></div>
-                <p className="text-sm sm:text-base text-gray-700 max-w-4xl mx-auto leading-relaxed italic mb-8" style={{ color: '#4E3629' }}>
+                <p className="text-sm sm:text-base text-gray-700 max-w-4xl mx-auto leading-relaxed italic" style={{ color: '#4E3629' }}>
                   "Integrity and ethics guide every step of our process. Each recommendation is grounded in research, discipline, and the same standards we apply to our own portfolios."
                 </p>
               </div>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 {processSteps.map((step, index) => {
                   const treeImages = [
                     '/process/seed.png',
@@ -634,7 +620,8 @@ const KalpavrikshCapital = () => {
                   return (
                     <div
                       key={index}
-                      className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 relative text-center border-2"
+                      onClick={() => changePage('services')}
+                      className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 relative text-center border-2 cursor-pointer"
                       style={{ borderColor: '#C4A747' }}
                     >
                       <div className="mb-4">
@@ -660,6 +647,18 @@ const KalpavrikshCapital = () => {
                   );
                 })}
               </div>
+
+              {/* Single View Button for both Services & Process */}
+              <div className="text-center">
+                <button
+                  onClick={() => changePage('services')}
+                  className="px-6 py-3 rounded-lg text-base font-semibold transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg border-2"
+                  style={{ backgroundColor: 'white', color: '#1E5631', borderColor: '#1E5631' }}
+                >
+                  View All Services & Our Process
+                </button>
+              </div>
+
               {/* Gold Divider */}
               <div className="w-full h-px mt-12" style={{ backgroundColor: '#C4A747' }}></div>
             </section>
@@ -946,8 +945,8 @@ const KalpavrikshCapital = () => {
                 </div>
               ))}
             </div>
-            
-            <section className="max-w-6xl mx-auto text-center">
+
+            <section className="max-w-6xl mx-auto text-center mt-12">
               <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12 animate-fade-in-up px-2" style={{ color: '#1E5631' }}>Our Process</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
                 {processSteps.map((step, index) => (
@@ -1714,20 +1713,20 @@ const KalpavrikshCapital = () => {
             <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#C4A747' }}>Services</h4>
               <div className="space-y-2 text-xs sm:text-sm text-center sm:text-left" style={{ color: '#F5EDE4' }}>
-                <p className="hover:translate-x-2 transition-transform duration-200">• Investments & Mutual Funds</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">• Goal Based Solutions</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">• Insurance Planning</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">• Tax & Estate Planning</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">• Learning Academy</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">Investments & Mutual Funds</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">Goal Based Solutions</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">Insurance Planning</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">Tax & Estate Planning</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">Learning Academy</p>
               </div>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#C4A747' }}>Professional Info</h4>
               <div className="space-y-2 text-xs sm:text-sm text-center sm:text-left" style={{ color: '#F5EDE4' }}>
-                <p className="hover:translate-x-2 transition-transform duration-200">• Gold Medalist Chartered Accountant</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">• Chartered Wealth Manager</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">• 20+ Years Experience</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">• Unilever Background</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">Gold Medalist Chartered Accountant</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">Chartered Wealth Manager</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">20+ Years Experience</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">Unilever Background</p>
               </div>
             </div>
           </div>
