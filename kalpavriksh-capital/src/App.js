@@ -525,11 +525,11 @@ const KalpavrikshCapital = () => {
                        backgroundSize: 'clamp(30px, 5vw, 40px) clamp(30px, 5vw, 40px)'
                      }}></div>
 
-                {/* Decorative corner accents - responsive sizes */}
-                <div className="absolute top-0 left-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 border-t-2 border-l-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
-                <div className="absolute top-0 right-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 border-t-2 border-r-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
-                <div className="absolute bottom-0 left-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 border-b-2 border-l-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 border-b-2 border-r-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                {/* Decorative corner accents */}
+                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 opacity-20" style={{borderColor: '#C4A747'}}></div>
 
                 <div className="text-center relative z-10">
                   {/* Split heading with refined typography */}
