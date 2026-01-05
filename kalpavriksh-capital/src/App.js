@@ -170,7 +170,7 @@ const KalpavrikshCapital = () => {
   const handleContactAction = (action) => {
     switch(action) {
       case 'email':
-        window.location.href = 'mailto:rakhijain@kalpavrikshglobal.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
+        window.location.href = 'mailto:info@kalpavrikshglobal.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
         break;
       case 'linkedin':
         window.open('https://www.linkedin.com/in/rakhi-jain-7658328/', '_blank');
@@ -738,10 +738,10 @@ const KalpavrikshCapital = () => {
                     <h3 className="text-xl sm:text-2xl font-bold mb-3" style={{ color: '#1E5631' }}>
                       Founder & CEO
                     </h3>
-                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-6">
-                      Gold Medalist Chartered Accountant and Chartered Wealth Manager (CWM®)
-                    </p>
                     <div className="space-y-4">
+                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-6">
+                      • Gold Medalist Chartered Accountant and Chartered Wealth Manager (CWM®)
+                      </p>
                       <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                         • Trusted advisor offering personalised, goal‑based financial planning grounded in clarity, discipline, and long‑term outcomes aligned with life aspirations.
                       </p>
@@ -750,6 +750,9 @@ const KalpavrikshCapital = () => {
                       </p>
                       <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                         • Former Finance Director, Unilever Middle East, with 23+ years of leadership in Strategy, Corporate Finance, and Business Performance across India & the Middle East.
+                      </p>
+                      <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                        • AMFI registered Mutual Fund Distributor
                       </p>
                     </div>
                   </div>
@@ -1395,9 +1398,8 @@ const KalpavrikshCapital = () => {
                   Join Our WhatsApp Community
                 </h2>
                 <p className="text-lg mb-8" style={{ color: '#F0EBE5' }}>
-                  Get exclusive financial wisdom, tips, and updates directly on WhatsApp
+                  Get exclusive updates on events, webinars, articles, and curated insights.
                 </p>
-
                 <button
                   onClick={() => window.open('https://chat.whatsapp.com/HN5hTuCJj1zDaJkWIavkYX', '_blank')}
                   className="px-8 py-4 rounded-full text-lg font-semibold
@@ -1725,7 +1727,7 @@ const KalpavrikshCapital = () => {
                 />
                 <span className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#F5EDE4' }}>Kalpvriksh Global</span>
               </div>
-              <p className="text-sm sm:text-base mb-3 sm:mb-4" style={{ color: '#F5EDE4' }}>Empowering decisions , Enriching Journeys</p>
+              <p className="text-sm sm:text-base mb-3 sm:mb-4" style={{ color: '#F5EDE4' }}>Empowering decisions, Enriching Journeys</p>
               <div className="text-xs sm:text-sm" style={{ color: '#F5EDE4' }}>
                 <p>📧 rakhijain@kalpavrikshglobal.com</p>
               </div>
@@ -1772,7 +1774,7 @@ const KalpavrikshCapital = () => {
                 <p className="hover:translate-x-2 transition-transform duration-200">Gold Medalist Chartered Accountant</p>
                 <p className="hover:translate-x-2 transition-transform duration-200">Chartered Wealth Manager</p>
                 <p className="hover:translate-x-2 transition-transform duration-200">20+ Years Experience</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">Former Finance Director,Unilever</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">Former Finance Director - Unilever</p>
               </div>
             </div>
           </div>
