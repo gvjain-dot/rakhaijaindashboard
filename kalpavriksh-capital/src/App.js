@@ -11,6 +11,14 @@ const KalpavrikshCapital = () => {
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
   const isTransitioning = React.useRef(false);
 
+  // Google Sheets integration for webinar data
+  const [webinarData, setWebinarData] = useState({
+    title: 'Loading...',
+    date: '',
+    link: '#',
+    description: ''
+  });
+
   // Page order for infinite scrolling
   const pageOrder = ['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact', 'disclosures'];
 
@@ -99,6 +107,42 @@ const KalpavrikshCapital = () => {
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
+  }, []);
+
+  // Fetch webinar data from Google Sheets
+  useEffect(() => {
+    const fetchWebinarData = async () => {
+      const SHEET_ID = process.env.REACT_APP_GOOGLE_SHEETS_ID;
+      const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+      const RANGE = 'Sheet1!A2:D2'; // Adjust range as needed
+
+      try {
+        const response = await fetch(
+          `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`
+        );
+        const data = await response.json();
+
+        if (data.values && data.values.length > 0) {
+          const [title, date, link, description] = data.values[0];
+          setWebinarData({
+            title: title || 'Financial Planning Webinar',
+            date: date || '',
+            link: link || '#',
+            description: description || 'Join our upcoming webinar'
+          });
+        }
+      } catch (error) {
+        console.error('Error fetching webinar data:', error);
+        setWebinarData({
+          title: 'Financial Planning Webinar',
+          date: 'Coming Soon',
+          link: '#',
+          description: 'Stay tuned for our next webinar'
+        });
+      }
+    };
+
+    fetchWebinarData();
   }, []);
 
   // Scroll to top when changing pages
@@ -1078,16 +1122,17 @@ const KalpavrikshCapital = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-start">
                 <div className="flex-1 text-center">
                   <button
-                    onClick={() => window.open('https://forms.gle/YOUR_GOOGLE_FORM_ID', '_blank')}
+                    onClick={() => window.open(webinarData.link, '_blank')}
                     className="text-white px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl w-full sm:w-auto"
                     style={{ backgroundColor: '#1E5631' }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#163822'}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1E5631'}
                   >
-                    📅 Book Your Spot
+                    📅 {webinarData.title}
                   </button>
                   <p className="text-sm text-gray-600 mt-3 px-4">
-                    Join one of our upcoming webinar sessions and learn with other families on their wealth-building journey
+                    {webinarData.date && <span className="font-semibold block mb-1">{webinarData.date}</span>}
+                    {webinarData.description || 'Join one of our upcoming webinar sessions and learn with other families on their wealth-building journey'}
                   </p>
                 </div>
                 <div className="flex-1 text-center">
