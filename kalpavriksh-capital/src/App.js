@@ -1350,47 +1350,6 @@ const KalpavrikshCapital = () => {
               </div>
             </div>
 
-            {/* Watch & Learn Section */}
-            <section className="max-w-3xl mx-auto animate-fade-in-up">
-              <div className="text-center mb-6">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-3" style={{ color: '#1E5631' }}>
-                  🎥 Watch & Learn
-                </h2>
-                <div className="w-20 h-1 mx-auto rounded-full mb-4 animate-expand-width" style={{ backgroundColor: '#C4A747' }}></div>
-                <p className="text-base sm:text-lg text-gray-700">
-                  Video insights on financial planning
-                </p>
-              </div>
-
-              <div className="bg-white rounded-xl p-4 sm:p-5 shadow-sm">
-                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-                  <div className="flex-shrink-0">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg flex items-center justify-center" style={{ background: 'linear-gradient(to bottom right, #F0EBE5, #E8DED0)' }}>
-                      <svg className="w-10 h-10 sm:w-12 sm:h-12" style={{ color: '#1E5631' }} fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="flex-1 text-center sm:text-left">
-                    <p className="text-base font-semibold mb-2" style={{ color: '#1E5631' }}>YouTube Channel</p>
-                    <p className="text-sm text-gray-600 mb-3">Watch insights on wealth building</p>
-                    <button
-                      onClick={() => window.open('http://www.youtube.com/@RakhiJain-i59', '_blank')}
-                      className="text-white px-6 py-2.5 rounded-full text-sm font-semibold
-                               transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg
-                               inline-flex items-center gap-2"
-                      style={{ backgroundColor: '#FF0000' }}
-                    >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                      </svg>
-                      Visit Channel
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </section>
-
             {/* WhatsApp Community Section */}
             <section className="max-w-4xl mx-auto animate-fade-in-up">
               <div className="rounded-2xl p-8 sm:p-12 shadow-lg text-center" style={{ background: 'linear-gradient(to bottom right, #1E5631, #163822)' }}>
