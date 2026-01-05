@@ -182,7 +182,7 @@ const KalpavrikshCapital = () => {
         window.open('http://www.youtube.com/@RakhiJain-i59', '_blank');
         break;
       case 'whatsapp':
-        window.open('https://wa.me/917899841847', '_blank');
+        window.open('https://chat.whatsapp.com/HN5hTuCJj1zDaJkWIavkYX', '_blank');
         break;
       default:
         break;
