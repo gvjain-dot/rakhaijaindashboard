@@ -456,12 +456,16 @@ const KalpavrikshCapital = () => {
                 <button
                   key={page}
                   onClick={() => changePage(page)}
-                  className={`px-6 py-2 rounded-full font-medium transition-all duration-300 transform border-2 ${
+                  className={`px-6 py-2 rounded-full font-medium transition-all duration-300 transform border-2 cursor-pointer ${
                     currentPage === page
-                      ? 'bg-white shadow-lg scale-105 border-[#C4A747]'
-                      : 'hover:bg-white/20 hover:scale-105 border-[#C4A747] hover:border-[#C4A747]'
+                      ? 'bg-white shadow-lg scale-105'
+                      : 'hover:bg-white/20 hover:scale-105'
                   }`}
-                  style={currentPage === page ? { color: '#1E5631' } : { color: '#F5EDE4' }}
+                  style={{
+                    color: currentPage === page ? '#1E5631' : '#F5EDE4',
+                    borderColor: '#C4A747',
+                    borderStyle: 'solid'
+                  }}
                 >
                   {page.charAt(0).toUpperCase() + page.slice(1)}
                 </button>
@@ -494,7 +498,7 @@ const KalpavrikshCapital = () => {
                 <button
                   key={page}
                   onClick={() => changePage(page)}
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2 ${
+                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2 cursor-pointer ${
                     currentPage === page
                       ? 'bg-white shadow-md'
                       : 'hover:bg-white/20'
