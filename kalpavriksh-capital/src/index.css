@@ -2,11 +2,90 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS Reset & Normalization for cross-browser consistency */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Prevent font size adjustments on orientation change */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* Smooth scrolling for all browsers */
+  scroll-behavior: smooth;
+
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+  width: 100%;
+
+  /* Prevent layout shift from scrollbar */
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Prevent text zoom on iOS devices */
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Ensure images and media are responsive by default */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Improve consistency for form elements */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Additional responsive fixes for consistent layout across devices */
+@media (min-width: 1536px) {
+  body {
+    /* Prevent extreme scaling on very large screens */
+    font-size: 16px;
+  }
+}
+
+/* Fix for browsers that don't support clamp() */
+@supports not (width: clamp(1px, 2vw, 3px)) {
+  .responsive-bg {
+    background-size: 40px 40px;
+  }
+}
+
+/* Ensure all containers respect overflow */
+* {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
