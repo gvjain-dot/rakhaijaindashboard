@@ -55,10 +55,9 @@ img, picture, video, canvas, svg {
   height: auto;
 }
 
-/* Remove default button styles */
+/* Remove default button styles (but preserve border where explicitly set) */
 button {
   background: none;
-  border: none;
   padding: 0;
   font: inherit;
   cursor: pointer;
