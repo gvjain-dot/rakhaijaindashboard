@@ -1388,26 +1388,23 @@ const KalpavrikshCapital = () => {
               </div>
             </section>
 
-            {/* Newsletter Subscription Section */}
+            {/* WhatsApp Community Section */}
             <section className="max-w-4xl mx-auto animate-fade-in-up">
               <div className="rounded-2xl p-8 sm:p-12 shadow-lg text-center" style={{ background: 'linear-gradient(to bottom right, #1E5631, #163822)' }}>
                 <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
-                  Subscribe for Latest Insights
+                  Join Our WhatsApp Community
                 </h2>
                 <p className="text-lg mb-8" style={{ color: '#F0EBE5' }}>
-                  Get exclusive financial wisdom, tips, and updates delivered to your inbox
+                  Get exclusive financial wisdom, tips, and updates directly on WhatsApp
                 </p>
 
                 <button
-                  onClick={() => {
-                    // This will be linked to Google Sheet later
-                    alert('Subscription feature coming soon! We will notify you when it\'s ready.');
-                  }}
+                  onClick={() => window.open('https://chat.whatsapp.com/HN5hTuCJj1zDaJkWIavkYX', '_blank')}
                   className="px-8 py-4 rounded-full text-lg font-semibold
-                           transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl border-2"
+                           transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl border-2 cursor-pointer"
                   style={{ backgroundColor: '#C4A747', color: '#1E5631', borderColor: '#E5E7EB' }}
                 >
-                  Subscribe for Latest Insights
+                  💬 Join WhatsApp Community
                 </button>
               </div>
             </section>
@@ -1728,7 +1725,7 @@ const KalpavrikshCapital = () => {
                 />
                 <span className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#F5EDE4' }}>Kalpvriksh Global</span>
               </div>
-              <p className="text-sm sm:text-base mb-3 sm:mb-4" style={{ color: '#F5EDE4' }}>Building financial confidence through discipline and clarity</p>
+              <p className="text-sm sm:text-base mb-3 sm:mb-4" style={{ color: '#F5EDE4' }}>Empowering decisions , Enriching Journeys</p>
               <div className="text-xs sm:text-sm" style={{ color: '#F5EDE4' }}>
                 <p>📧 rakhijain@kalpavrikshglobal.com</p>
               </div>
@@ -1775,7 +1772,7 @@ const KalpavrikshCapital = () => {
                 <p className="hover:translate-x-2 transition-transform duration-200">Gold Medalist Chartered Accountant</p>
                 <p className="hover:translate-x-2 transition-transform duration-200">Chartered Wealth Manager</p>
                 <p className="hover:translate-x-2 transition-transform duration-200">20+ Years Experience</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">Unilever Background</p>
+                <p className="hover:translate-x-2 transition-transform duration-200">Former Finance Director,Unilever</p>
               </div>
             </div>
           </div>
