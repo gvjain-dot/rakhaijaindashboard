@@ -20,7 +20,7 @@ const KalpavrikshCapital = () => {
   });
 
   // Page order for infinite scrolling
-  const pageOrder = ['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact', 'disclosures'];
+  const pageOrder = React.useMemo(() => ['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact', 'disclosures'], []);
 
   // Reset transition flag when page changes
   useEffect(() => {
@@ -70,15 +70,16 @@ const KalpavrikshCapital = () => {
   }, [currentPage, pageOrder]);
 
   // Auto-play testimonials carousel on home page
+  const testimonialsLength = 6; // Fixed number of testimonials
   useEffect(() => {
     if (currentPage === 'home' && !isAutoScrollPaused) {
       const interval = setInterval(() => {
-        setCurrentTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+        setCurrentTestimonial((prev) => (prev === testimonialsLength - 1 ? 0 : prev + 1));
       }, 5000); // Change every 5 seconds
 
       return () => clearInterval(interval);
     }
-  }, [currentPage, currentTestimonial, isAutoScrollPaused]);
+  }, [currentPage, currentTestimonial, isAutoScrollPaused, testimonialsLength]);
 
   // Auto-restart after pause (5 seconds after user interaction)
   useEffect(() => {
@@ -107,6 +108,7 @@ const KalpavrikshCapital = () => {
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Fetch webinar data from Google Sheets
@@ -303,6 +305,7 @@ const KalpavrikshCapital = () => {
     }
   ];
 
+  // eslint-disable-next-line no-unused-vars
   const workshops = [
     {
       id: 1,
