@@ -181,7 +181,7 @@ const KalpavrikshCapital = () => {
         window.open('https://calendly.com/rakhi-jain-fermatprime/30min', '_blank');
         break;
       case 'youtube':
-        window.open('http://www.youtube.com/@RakhiJain-i59', '_blank');
+        window.open('https://www.youtube.com/@KalpvrikshGlobal', '_blank');
         break;
       case 'whatsapp':
         window.open('https://chat.whatsapp.com/HN5hTuCJj1zDaJkWIavkYX', '_blank');
