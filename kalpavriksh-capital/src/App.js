@@ -172,7 +172,7 @@ const KalpavrikshCapital = () => {
   const handleContactAction = (action) => {
     switch(action) {
       case 'email':
-        window.location.href = 'mailto:info@kalpavrikshglobal.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
+        window.location.href = 'mailto:info@kalpvrikshglobal.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
         break;
       case 'linkedin':
         window.open('https://www.linkedin.com/in/rakhi-jain-7658328/', '_blank');
