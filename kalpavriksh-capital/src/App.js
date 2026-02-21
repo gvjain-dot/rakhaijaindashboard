@@ -11,13 +11,6 @@ const KalpavrikshCapital = () => {
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
   const isTransitioning = React.useRef(false);
 
-  // Google Sheets integration for webinar data
-  const [webinarData, setWebinarData] = useState({
-    title: 'Loading...',
-    date: '',
-    link: '#',
-    description: ''
-  });
 
   // Page order for infinite scrolling
   const pageOrder = React.useMemo(() => ['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact', 'disclosures'], []);
@@ -70,7 +63,7 @@ const KalpavrikshCapital = () => {
   }, [currentPage, pageOrder]);
 
   // Auto-play testimonials carousel on home page
-  const testimonialsLength = 6; // Fixed number of testimonials
+  const testimonialsLength = 4; // Must match testimonials array length
   useEffect(() => {
     if (currentPage === 'home' && !isAutoScrollPaused) {
       const interval = setInterval(() => {
@@ -111,41 +104,6 @@ const KalpavrikshCapital = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Fetch webinar data from Google Sheets
-  useEffect(() => {
-    const fetchWebinarData = async () => {
-      const SHEET_ID = process.env.REACT_APP_GOOGLE_SHEETS_ID;
-      const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-      const RANGE = 'Sheet1!A2:D2'; // Adjust range as needed
-
-      try {
-        const response = await fetch(
-          `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`
-        );
-        const data = await response.json();
-
-        if (data.values && data.values.length > 0) {
-          const [title, date, link, description] = data.values[0];
-          setWebinarData({
-            title: title || 'Financial Planning Webinar',
-            date: date || '',
-            link: link || '#',
-            description: description || 'Join our upcoming webinar'
-          });
-        }
-      } catch (error) {
-        console.error('Error fetching webinar data:', error);
-        setWebinarData({
-          title: 'Financial Planning Webinar',
-          date: 'Coming Soon',
-          link: '#',
-          description: 'Stay tuned for our next webinar'
-        });
-      }
-    };
-
-    fetchWebinarData();
-  }, []);
 
   // Scroll to top when changing pages
   const changePage = (page) => {
@@ -172,7 +130,7 @@ const KalpavrikshCapital = () => {
   const handleContactAction = (action) => {
     switch(action) {
       case 'email':
-        window.location.href = 'mailto:info@kalpavrikshglobal.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
+        window.location.href = 'mailto:info@kalpvrikshglobal.com?subject=Financial Consultation Inquiry&body=Hi Rakhi,%0A%0AI would like to discuss my financial planning needs.%0A%0ABest regards,';
         break;
       case 'linkedin':
         window.open('https://www.linkedin.com/in/rakhi-jain-7658328/', '_blank');
@@ -184,7 +142,7 @@ const KalpavrikshCapital = () => {
         window.open('https://www.youtube.com/@KalpvrikshGlobal', '_blank');
         break;
       case 'whatsapp':
-        window.open('https://chat.whatsapp.com/HN5hTuCJj1zDaJkWIavkYX', '_blank');
+        window.open('https://wa.me/919886980120', '_blank');
         break;
       default:
         break;
@@ -445,7 +403,7 @@ const KalpavrikshCapital = () => {
                 src="/logo.png"
                 alt="Kalpvriksh Global Logo"
                 className="h-12 sm:h-14 md:h-16 lg:h-20 w-12 sm:w-14 md:w-16 lg:w-20 transition-transform duration-300 hover:scale-110 rounded-full"
-                style={{ objectFit: 'cover', objectPosition: '85% center', transform: 'scale(0.8)' }}
+                style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '1.5px solid #1E5631' }}
                 loading="lazy"
                 decoding="async"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -1132,17 +1090,16 @@ const KalpavrikshCapital = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-start">
                 <div className="flex-1 text-center">
                   <button
-                    onClick={() => window.open(webinarData.link, '_blank')}
+                    onClick={() => window.open('https://wa.me/919886980120', '_blank')}
                     className="text-white px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl w-full sm:w-auto"
-                    style={{ backgroundColor: '#1E5631' }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#163822'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1E5631'}
+                    style={{ backgroundColor: '#25D366' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1EBE57'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#25D366'}
                   >
-                    📅 {webinarData.title}
+                    Join Our WhatsApp Community
                   </button>
                   <p className="text-sm text-gray-600 mt-3 px-4">
-                    {webinarData.date && <span className="font-semibold block mb-1">{webinarData.date}</span>}
-                    {webinarData.description || 'Join one of our upcoming webinar sessions and learn with other families on their wealth-building journey'}
+                    Get financial insights, workshop updates, and connect with like-minded families on their wealth-building journey
                   </p>
                 </div>
                 <div className="flex-1 text-center">
@@ -1702,7 +1659,7 @@ const KalpavrikshCapital = () => {
                   src="/logo.png"
                   alt="Kalpvriksh Global Logo"
                   className="h-14 sm:h-16 md:h-20 lg:h-24 w-14 sm:w-16 md:w-20 lg:w-24 transition-transform duration-300 hover:scale-110 rounded-full"
-                  style={{ objectFit: 'cover', objectPosition: '85% center', transform: 'scale(0.8)' }}
+                  style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '1.5px solid #1E5631' }}
                   loading="lazy"
                   decoding="async"
                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
