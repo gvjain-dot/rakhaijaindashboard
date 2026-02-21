@@ -442,7 +442,7 @@ const KalpavrikshCapital = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 sm:gap-3">
               <img
-                src="/logo_1.jpg"
+                src="/logo.png"
                 alt="Kalpvriksh Global Logo"
                 className="h-12 sm:h-14 md:h-16 lg:h-20 w-12 sm:w-14 md:w-16 lg:w-20 transition-transform duration-300 hover:scale-110 rounded-full"
                 style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '1.5px solid #1E5631' }}
@@ -1698,7 +1698,7 @@ const KalpavrikshCapital = () => {
             <div className="animate-fade-in-up text-center sm:text-left">
               <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4 justify-center sm:justify-start">
                 <img
-                  src="/logo_1.jpg"
+                  src="/logo.png"
                   alt="Kalpvriksh Global Logo"
                   className="h-14 sm:h-16 md:h-20 lg:h-24 w-14 sm:w-16 md:w-20 lg:w-24 transition-transform duration-300 hover:scale-110 rounded-full"
                   style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '1.5px solid #1E5631' }}
