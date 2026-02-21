@@ -70,7 +70,7 @@ const KalpavrikshCapital = () => {
   }, [currentPage, pageOrder]);
 
   // Auto-play testimonials carousel on home page
-  const testimonialsLength = 6; // Fixed number of testimonials
+  const testimonialsLength = 4; // Must match testimonials array length
   useEffect(() => {
     if (currentPage === 'home' && !isAutoScrollPaused) {
       const interval = setInterval(() => {
@@ -184,7 +184,7 @@ const KalpavrikshCapital = () => {
         window.open('https://www.youtube.com/@KalpvrikshGlobal', '_blank');
         break;
       case 'whatsapp':
-        window.open('https://chat.whatsapp.com/HN5hTuCJj1zDaJkWIavkYX', '_blank');
+        window.open('https://wa.me/919886980120', '_blank');
         break;
       default:
         break;
@@ -442,10 +442,10 @@ const KalpavrikshCapital = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 sm:gap-3">
               <img
-                src="/logo.png"
+                src="/Logo_only_tree_dark_brown_2.jpg"
                 alt="Kalpvriksh Global Logo"
                 className="h-12 sm:h-14 md:h-16 lg:h-20 w-12 sm:w-14 md:w-16 lg:w-20 transition-transform duration-300 hover:scale-110 rounded-full"
-                style={{ objectFit: 'cover', objectPosition: '85% center', transform: 'scale(0.8)' }}
+                style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '1.5px solid #1E5631' }}
                 loading="lazy"
                 decoding="async"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -1132,17 +1132,16 @@ const KalpavrikshCapital = () => {
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-start">
                 <div className="flex-1 text-center">
                   <button
-                    onClick={() => window.open(webinarData.link, '_blank')}
+                    onClick={() => window.open('https://wa.me/919886980120', '_blank')}
                     className="text-white px-8 py-4 rounded-full text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl w-full sm:w-auto"
-                    style={{ backgroundColor: '#1E5631' }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#163822'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#1E5631'}
+                    style={{ backgroundColor: '#25D366' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#1EBE57'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#25D366'}
                   >
-                    📅 {webinarData.title}
+                    Join Our WhatsApp Community
                   </button>
                   <p className="text-sm text-gray-600 mt-3 px-4">
-                    {webinarData.date && <span className="font-semibold block mb-1">{webinarData.date}</span>}
-                    {webinarData.description || 'Join one of our upcoming webinar sessions and learn with other families on their wealth-building journey'}
+                    Get financial insights, workshop updates, and connect with like-minded families on their wealth-building journey
                   </p>
                 </div>
                 <div className="flex-1 text-center">
@@ -1699,10 +1698,10 @@ const KalpavrikshCapital = () => {
             <div className="animate-fade-in-up text-center sm:text-left">
               <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4 justify-center sm:justify-start">
                 <img
-                  src="/logo.png"
+                  src="/Logo_only_tree_dark_brown_2.jpg"
                   alt="Kalpvriksh Global Logo"
                   className="h-14 sm:h-16 md:h-20 lg:h-24 w-14 sm:w-16 md:w-20 lg:w-24 transition-transform duration-300 hover:scale-110 rounded-full"
-                  style={{ objectFit: 'cover', objectPosition: '85% center', transform: 'scale(0.8)' }}
+                  style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '1.5px solid #1E5631' }}
                   loading="lazy"
                   decoding="async"
                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
