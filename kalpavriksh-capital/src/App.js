@@ -11,13 +11,6 @@ const KalpavrikshCapital = () => {
   const [selectedWorkshop, setSelectedWorkshop] = useState(null);
   const isTransitioning = React.useRef(false);
 
-  // Google Sheets integration for webinar data
-  const [webinarData, setWebinarData] = useState({
-    title: 'Loading...',
-    date: '',
-    link: '#',
-    description: ''
-  });
 
   // Page order for infinite scrolling
   const pageOrder = React.useMemo(() => ['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact', 'disclosures'], []);
@@ -111,41 +104,6 @@ const KalpavrikshCapital = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Fetch webinar data from Google Sheets
-  useEffect(() => {
-    const fetchWebinarData = async () => {
-      const SHEET_ID = process.env.REACT_APP_GOOGLE_SHEETS_ID;
-      const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-      const RANGE = 'Sheet1!A2:D2'; // Adjust range as needed
-
-      try {
-        const response = await fetch(
-          `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`
-        );
-        const data = await response.json();
-
-        if (data.values && data.values.length > 0) {
-          const [title, date, link, description] = data.values[0];
-          setWebinarData({
-            title: title || 'Financial Planning Webinar',
-            date: date || '',
-            link: link || '#',
-            description: description || 'Join our upcoming webinar'
-          });
-        }
-      } catch (error) {
-        console.error('Error fetching webinar data:', error);
-        setWebinarData({
-          title: 'Financial Planning Webinar',
-          date: 'Coming Soon',
-          link: '#',
-          description: 'Stay tuned for our next webinar'
-        });
-      }
-    };
-
-    fetchWebinarData();
-  }, []);
 
   // Scroll to top when changing pages
   const changePage = (page) => {
