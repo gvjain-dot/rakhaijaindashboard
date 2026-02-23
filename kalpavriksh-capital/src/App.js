@@ -892,19 +892,32 @@ const KalpavrikshCapital = () => {
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
+                {/* Latest Article */}
+                <a
+                  href="https://www.linkedin.com/pulse/what-replace-your-salary-5-years-rakhi-jain-uyicf/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col"
+                >
+                  <div className="p-5 flex items-center gap-3" style={{ background: 'linear-gradient(135deg, #1E5631, #2d7a47)' }}>
+                    <span className="text-3xl">💼</span>
+                    <span className="text-xs font-semibold px-2 py-1 rounded-full" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Retirement Planning</span>
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="text-base font-bold mb-2 leading-snug" style={{ color: '#1E5631' }}>What Will Replace Your Salary in 5 Years?</h3>
+                    <p className="text-sm text-gray-600 mb-3 leading-relaxed flex-1">
+                      Decoupling your lifestyle from your time — a practical guide to building passive income before retirement.
+                    </p>
+                    <p className="text-xs font-semibold" style={{ color: '#C4A747' }}>by Rakhi Jain · Feb 23, 2026 →</p>
+                  </div>
+                </a>
+                {/* Book Summary */}
                 <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
                   <h3 className="text-lg font-bold mb-3" style={{ color: '#1E5631' }}>The Psychology of Money</h3>
                   <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                    Profound timeless concepts on personal finance higher savings, buying freedom, and the power of patience in wealth generation.
+                    Profound timeless concepts on personal finance — higher savings, buying freedom, and the power of patience in wealth generation.
                   </p>
                   <p className="text-xs text-gray-500 italic">by Morgan Housel</p>
-                </div>
-                <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1E5631' }}>The Richest Man in Babylon</h3>
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                    Timeless financial wisdom through ancient stories the seven laws of wealth that remain relevant across millennia.
-                  </p>
-                  <p className="text-xs text-gray-500 italic">by George S. Clason</p>
                 </div>
               </div>
 
@@ -1202,6 +1215,82 @@ const KalpavrikshCapital = () => {
               </p>
             </section>
             
+            {/* My Articles Section */}
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2" style={{ color: '#1E5631' }}>My Articles</h2>
+                <div className="w-16 h-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747' }}></div>
+                <p className="text-sm text-gray-500">Weekly insights on personal finance, investing, and wealth building</p>
+              </div>
+
+              {/* Article: What Will Replace Your Salary in 5 Years */}
+              <a
+                href="https://www.linkedin.com/pulse/what-replace-your-salary-5-years-rakhi-jain-uyicf/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white rounded-xl sm:rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-500 transform hover:scale-[1.01] animate-fade-in-up"
+              >
+                {/* Thumbnail */}
+                <div className="relative p-8 sm:p-10 text-center overflow-hidden" style={{ minHeight: '200px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 50%, #3a5a28 100%)' }}>
+                  {/* Decorative circles */}
+                  <div className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(-30%, 30%)' }}></div>
+                  <div className="relative z-10">
+                    <div className="text-5xl sm:text-6xl mb-4">💼</div>
+                    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>
+                      Retirement Planning
+                    </span>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-snug px-2">
+                      What Will Replace Your Salary in 5 Years?
+                    </h3>
+                    <p className="text-white/70 text-xs mt-3">by Rakhi Jain · Feb 23, 2026</p>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 sm:p-8">
+                  <p className="text-sm sm:text-base text-gray-700 mb-6 leading-relaxed">
+                    Retirement isn't about stopping work — it's about decoupling your lifestyle from your time. This article walks through how high-earning professionals can replace predictable salary income with diversified, tax-efficient passive income structures.
+                  </p>
+                  <h4 className="text-base sm:text-lg font-bold mb-4" style={{ color: '#1E5631' }}>The "Thali" Approach to Retirement Income:</h4>
+                  <div className="space-y-3 mb-6">
+                    {[
+                      { emoji: "🍚", title: "Rice & Roti — Guaranteed Floor:", desc: "Pensions, annuities, and NPS provide your non-negotiable baseline." },
+                      { emoji: "🍛", title: "Dal & Curry — Core Income:", desc: "SWPs from mutual funds deliver tax-efficient regular withdrawals." },
+                      { emoji: "🥗", title: "Papad & Pickle — Inflation Shield:", desc: "Real estate and REITs protect against rising costs over time." }
+                    ].map((item, index) => (
+                      <div
+                        key={index}
+                        className="border-l-4 pl-4 hover:border-l-8 transition-all duration-300 hover:translate-x-2"
+                        style={{ borderColor: '#C4A747' }}
+                      >
+                        <p className="text-sm sm:text-base text-gray-700">
+                          <span className="mr-2">{item.emoji}</span>
+                          <strong>{item.title}</strong> {item.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="bg-amber-50 px-4 py-2 rounded-lg">
+                      <p className="text-xs text-gray-600 italic">"Build a 24–36 month cash buffer. Market volatility won't derail your retirement."</p>
+                    </div>
+                    <span className="ml-4 flex-shrink-0 text-sm font-semibold flex items-center gap-1 transition-all duration-200" style={{ color: '#C4A747' }}>
+                      Read on LinkedIn <span>→</span>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {/* Book Summaries */}
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-6 border-t pt-8" style={{ borderColor: '#E5E7EB' }}>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2" style={{ color: '#1E5631' }}>Book Summaries</h2>
+                <div className="w-16 h-1 rounded-full" style={{ backgroundColor: '#C4A747' }}></div>
+              </div>
+            </div>
+
             <div className="max-w-4xl mx-auto space-y-8 sm:space-y-12">
               {/* The Psychology of Money */}
               <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-all duration-500 transform hover:scale-[1.01] animate-fade-in-up">
