@@ -403,7 +403,7 @@ const KalpavrikshCapital = () => {
                 src="/logo.png"
                 alt="Kalpvriksh Global Logo"
                 className="h-12 sm:h-14 md:h-16 lg:h-20 w-12 sm:w-14 md:w-16 lg:w-20 transition-transform duration-300 hover:scale-110 rounded-full"
-                style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '1.5px solid #1E5631' }}
+                style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '2px solid #C4A747' }}
                 loading="lazy"
                 decoding="async"
                 onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -1748,7 +1748,7 @@ const KalpavrikshCapital = () => {
                   src="/logo.png"
                   alt="Kalpvriksh Global Logo"
                   className="h-14 sm:h-16 md:h-20 lg:h-24 w-14 sm:w-16 md:w-20 lg:w-24 transition-transform duration-300 hover:scale-110 rounded-full"
-                  style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '1.5px solid #1E5631' }}
+                  style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '2px solid #C4A747' }}
                   loading="lazy"
                   decoding="async"
                   onError={(e) => { e.currentTarget.style.display = 'none'; }}
