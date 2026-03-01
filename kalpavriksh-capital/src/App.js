@@ -393,7 +393,7 @@ const KalpavrikshCapital = () => {
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#FAF7F2' }}>
       {/* Navigation - DARK GREEN BACKGROUND */}
-      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+      {currentPage !== 'asset-allocation' && <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'shadow-lg' : 'shadow-md'
       } backdrop-blur-lg`}  style={{ paddingTop: 'env(safe-area-inset-top)', backgroundColor: '#1E5631'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
@@ -505,7 +505,7 @@ const KalpavrikshCapital = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </nav>}
 
       {/* Scroll Progress Bar */}
       <div className="fixed top-0 left-0 w-full h-1 z-50" style={{ backgroundColor: 'rgba(196, 167, 71, 0.2)' }}>
@@ -520,7 +520,7 @@ const KalpavrikshCapital = () => {
       </div>
 
       {/* Main Content */}
-      <div className="pt-24 sm:pt-28 md:pt-32">
+      <div className={currentPage === 'asset-allocation' ? '' : 'pt-24 sm:pt-28 md:pt-32'}>
         {/* Home Page */}
         {currentPage === 'home' && (
           <div className="space-y-16">
