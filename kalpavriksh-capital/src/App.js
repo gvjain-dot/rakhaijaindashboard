@@ -911,14 +911,25 @@ const KalpavrikshCapital = () => {
                     <p className="text-xs font-semibold" style={{ color: '#C4A747' }}>by Rakhi Jain · Feb 23, 2026 →</p>
                   </div>
                 </a>
-                {/* Book Summary */}
-                <div className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300">
-                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1E5631' }}>The Psychology of Money</h3>
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                    Profound timeless concepts on personal finance — higher savings, buying freedom, and the power of patience in wealth generation.
-                  </p>
-                  <p className="text-xs text-gray-500 italic">by Morgan Housel</p>
-                </div>
+                {/* Article 2 */}
+                <a
+                  href="/asset-allocation-article_1.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col"
+                >
+                  <div className="p-5 flex items-center gap-3" style={{ background: 'linear-gradient(135deg, #1B2A4A, #2a3f6b)' }}>
+                    <span className="text-3xl">📊</span>
+                    <span className="text-xs font-semibold px-2 py-1 rounded-full" style={{ backgroundColor: '#C09B3A', color: '#1B2A4A' }}>Asset Allocation</span>
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="text-base font-bold mb-2 leading-snug" style={{ color: '#1E5631' }}>Don't Put All Your Eggs in One Basket, or All Your Money in One Asset</h3>
+                    <p className="text-sm text-gray-600 mb-3 leading-relaxed flex-1">
+                      Why asset allocation — not stock-picking — is the most powerful decision you'll make as an investor.
+                    </p>
+                    <p className="text-xs font-semibold" style={{ color: '#C09B3A' }}>by Rakhi Jain · Weekly Insight →</p>
+                  </div>
+                </a>
               </div>
 
               <div className="text-center">
@@ -1277,6 +1288,61 @@ const KalpavrikshCapital = () => {
                     </div>
                     <span className="ml-4 flex-shrink-0 text-sm font-semibold flex items-center gap-1 transition-all duration-200" style={{ color: '#C4A747' }}>
                       Read on LinkedIn <span>→</span>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {/* Article: Asset Allocation */}
+            <div className="max-w-4xl mx-auto -mt-4">
+              <a
+                href="/asset-allocation-article_1.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white rounded-xl sm:rounded-2xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-500 transform hover:scale-[1.01] animate-fade-in-up"
+              >
+                {/* Thumbnail */}
+                <div className="relative p-8 sm:p-10 text-center overflow-hidden" style={{ minHeight: '200px', background: 'linear-gradient(135deg, #1B2A4A 0%, #2a3f6b 50%, #0F1E36 100%)' }}>
+                  <div className="absolute top-0 right-0 w-40 h-40 rounded-full opacity-10" style={{ backgroundColor: '#C09B3A', transform: 'translate(30%, -30%)' }}></div>
+                  <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full opacity-10" style={{ backgroundColor: '#C09B3A', transform: 'translate(-30%, 30%)' }}></div>
+                  <div className="relative z-10">
+                    <div className="text-5xl sm:text-6xl mb-4">📊</div>
+                    <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-3" style={{ backgroundColor: '#C09B3A', color: '#1B2A4A' }}>
+                      Asset Allocation
+                    </span>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-snug px-2">
+                      Don't Put All Your Eggs in One Basket, or All Your Money in One Asset
+                    </h3>
+                    <p className="text-white/70 text-xs mt-3">by Rakhi Jain · Weekly Insight</p>
+                  </div>
+                </div>
+                {/* Content */}
+                <div className="p-6 sm:p-8">
+                  <p className="text-sm sm:text-base text-gray-700 mb-6 leading-relaxed">
+                    Why asset allocation — not stock-picking — is the single most powerful decision you'll make as an investor. Learn how to divide your wealth across equities, bonds, gold, and real estate the smart way.
+                  </p>
+                  <h4 className="text-base sm:text-lg font-bold mb-4" style={{ color: '#1E5631' }}>The Key Asset Classes:</h4>
+                  <div className="space-y-3 mb-6">
+                    {[
+                      { emoji: "📈", title: "Equities:", desc: "The growth engine — highest long-term returns for 5+ year horizons." },
+                      { emoji: "🏦", title: "Fixed Income:", desc: "The stabiliser — predictable income that cushions equity downturns." },
+                      { emoji: "🪙", title: "Gold:", desc: "The hedge — performs during uncertainty, inflation, and currency dips." }
+                    ].map((item, index) => (
+                      <div key={index} className="border-l-4 pl-4 hover:border-l-8 transition-all duration-300 hover:translate-x-2" style={{ borderColor: '#C09B3A' }}>
+                        <p className="text-sm sm:text-base text-gray-700">
+                          <span className="mr-2">{item.emoji}</span>
+                          <strong>{item.title}</strong> {item.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <div className="bg-slate-50 px-4 py-2 rounded-lg">
+                      <p className="text-xs text-gray-600 italic">"Over 90% of a portfolio's returns are explained by asset allocation alone — not stock picks."</p>
+                    </div>
+                    <span className="ml-4 flex-shrink-0 text-sm font-semibold flex items-center gap-1" style={{ color: '#C09B3A' }}>
+                      Read Article <span>→</span>
                     </span>
                   </div>
                 </div>
@@ -1757,7 +1823,7 @@ const KalpavrikshCapital = () => {
               </div>
               <p className="text-sm sm:text-base mb-3 sm:mb-4" style={{ color: '#F5EDE4' }}>Empowering decisions, Enriching Journeys</p>
               <div className="text-xs sm:text-sm" style={{ color: '#F5EDE4' }}>
-                <p>📧 rakhijain@kalpavrikshglobal.com</p>
+                <p>📧 rakhijain@kalpvrikshglobal.com</p>
               </div>
             </div>
             <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
