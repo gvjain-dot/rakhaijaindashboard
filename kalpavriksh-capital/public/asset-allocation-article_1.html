@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Why asset allocation — not stock-picking — is the single most powerful decision you'll make as an investor. By Rakhi Jain, Kalpvriksh Global."/>
+<title>Asset Allocation | Kalpvriksh Global — Rakhi Jain</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET & BASE ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --navy:       #1B2A4A;
+  --navy-deep:  #0F1E36;
+  --gold:       #C09B3A;
+  --gold-light: #D4AF55;
+  --gold-pale:  #F5EDD6;
+  --cream:      #FAFAF7;
+  --white:      #FFFFFF;
+  --ink:        #2C3344;
+  --muted:      #6B7280;
+  --rule:       #E2DDD4;
+  --card-bg:    #F7F5F0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--ink);
+  background: var(--cream);
+}
+
+/* ─── READING PROGRESS ───────────────────────────── */
+.progress-bar {
+  position: fixed; top: 0px; left: 0; right: 0;
+  height: 3px; background: transparent; z-index: 99;
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition: width 0.1s;
+}
+
+/* ─── HERO ───────────────────────────────────────── */
+.hero {
+  background: var(--navy-deep);
+  padding: 80px 48px 90px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 55%; height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(192,155,58,0.07) 100%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
+}
+.hero-inner { max-width: 860px; margin: 0 auto; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
+}
+.hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 700; line-height: 1.15;
+  color: var(--white); margin-bottom: 16px;
+}
+.hero-title em { color: var(--gold-light); font-style: italic; }
+.hero-sub {
+  font-size: 17px; color: rgba(255,255,255,0.6);
+  max-width: 620px; line-height: 1.7; font-style: italic; margin-top: 16px;
+}
+.hero-meta {
+  margin-top: 40px; display: flex; align-items: center; gap: 20px;
+  padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.hero-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--gold); display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700; color: var(--navy-deep); flex-shrink: 0;
+}
+.hero-author-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 600; color: var(--white);
+}
+.hero-author-cred {
+  font-size: 12px; color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em; margin-top: 2px;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────── */
+.page-wrap {
+  display: grid;
+  grid-template-columns: 1fr min(720px, 100%) 1fr;
+}
+.article-body { grid-column: 2; padding: 64px 24px 80px; }
+
+/* ─── TYPOGRAPHY ─────────────────────────────────── */
+p { margin-bottom: 24px; }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--navy); line-height: 1.3;
+  margin: 60px 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gold-pale);
+  position: relative;
+}
+h2::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0;
+  width: 48px; height: 2px; background: var(--gold);
+}
+
+/* ─── PULL QUOTE ─────────────────────────────────── */
+.pullquote {
+  margin: 44px -24px;
+  padding: 28px 40px;
+  background: var(--navy);
+  border-left: 4px solid var(--gold);
+}
+.pullquote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-style: italic;
+  color: var(--white); line-height: 1.6; margin: 0;
+}
+
+/* ─── ANALOGY BOX ────────────────────────────────── */
+.analogy-box {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px; padding: 28px 32px; margin: 40px 0;
+}
+.analogy-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.analogy-label::after { content: ''; flex: 1; height: 1px; background: var(--gold-pale); }
+.analogy-box p {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; font-style: italic;
+  color: var(--navy); line-height: 1.75; margin: 0;
+}
+
+/* ─── ASSET CLASS GRID ───────────────────────────── */
+.asset-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 32px 0; }
+.asset-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 8px; padding: 22px 20px;
+  transition: box-shadow 0.25s, border-color 0.25s;
+}
+.asset-card:hover { box-shadow: 0 6px 24px rgba(27,42,74,0.1); border-color: var(--gold); }
+.asset-icon { font-size: 24px; margin-bottom: 10px; }
+.asset-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px;
+}
+.asset-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+/* ─── RULE OF THUMB BOX ──────────────────────────── */
+.rule-box {
+  background: var(--navy);
+  border-radius: 8px; padding: 36px 40px; margin: 36px 0; text-align: center;
+  position: relative; overflow: hidden;
+}
+.rule-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+.rule-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+}
+.rule-formula {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px; font-weight: 700; color: var(--white); margin-bottom: 14px;
+}
+.rule-note { font-size: 14px; color: rgba(255,255,255,0.55); font-style: italic; max-width: 440px; margin: 0 auto; }
+
+/* ─── STYLED LISTS ───────────────────────────────── */
+.styled-list { list-style: none; margin: 20px 0 28px; }
+.styled-list li {
+  padding: 16px 0 16px 28px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 16px; line-height: 1.75; position: relative;
+}
+.styled-list li:first-child { border-top: 1px solid var(--rule); }
+.styled-list li::before {
+  content: '';
+  position: absolute; left: 0; top: 25px;
+  width: 8px; height: 8px;
+  border: 2px solid var(--gold); border-radius: 50%;
+}
+
+/* ─── SAMPLE PORTFOLIO ───────────────────────────── */
+.portfolio-list { margin: 24px 0; }
+.portfolio-item {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 18px 0; border-bottom: 1px solid var(--rule);
+}
+.portfolio-item:first-child { border-top: 1px solid var(--rule); }
+.portfolio-pct {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px; font-weight: 700; color: var(--gold);
+  flex-shrink: 0; width: 54px; text-align: right;
+  line-height: 1.2; padding-top: 2px;
+}
+.portfolio-detail strong {
+  font-size: 15px; font-weight: 700; color: var(--navy);
+  display: block; margin-bottom: 3px;
+}
+.portfolio-detail span { font-size: 14px; color: var(--muted); }
+
+/* ─── CTA ────────────────────────────────────────── */
+.cta-block {
+  background: var(--navy-deep);
+  border-radius: 10px; padding: 52px 44px;
+  margin-top: 72px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-block::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+.cta-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+}
+.cta-block h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; color: var(--white);
+  border: none; padding: 0; margin: 0 0 14px;
+}
+.cta-block h2::after { display: none; }
+.cta-block > p {
+  color: rgba(255,255,255,0.55); max-width: 480px;
+  margin: 0 auto 32px; font-style: italic;
+}
+.cta-buttons { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-bottom: 8px; }
+.btn-primary {
+  display: inline-block;
+  background: var(--gold); color: var(--navy-deep);
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 15px 32px; border-radius: 3px; text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-block;
+  background: transparent; color: var(--white);
+  font-family: 'Lato', sans-serif; font-weight: 400;
+  font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 3px; text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-secondary:hover { border-color: var(--gold); background: rgba(192,155,58,0.1); }
+.cta-website {
+  font-size: 13px; color: var(--gold); margin-top: 20px;
+  display: block; text-decoration: none; opacity: 0.8; letter-spacing: 0.06em;
+}
+.cta-website:hover { opacity: 1; }
+
+/* ─── DISCLAIMER ─────────────────────────────────── */
+.disclaimer {
+  margin-top: 56px; padding: 20px 24px;
+  border: 1px solid var(--rule); border-radius: 6px;
+  background: var(--card-bg);
+}
+.disclaimer p {
+  font-size: 12.5px; color: var(--muted);
+  font-style: italic; margin: 0; line-height: 1.6;
+}
+.disclaimer strong { font-weight: 700; color: var(--navy); font-style: normal; }
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer {
+  background: var(--navy-deep);
+  padding: 28px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 600; color: var(--gold);
+}
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 12px; color: rgba(255,255,255,0.4);
+  text-decoration: none; letter-spacing: 0.06em;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* ─── FADE-IN ANIMATION ──────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-inner > * { animation: fadeUp 0.6s ease both; }
+.hero-tag        { animation-delay: 0.1s; }
+.hero-title      { animation-delay: 0.2s; }
+.hero-sub        { animation-delay: 0.3s; }
+.hero-meta       { animation-delay: 0.4s; }
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 700px) {
+  .hero { padding: 52px 20px 64px; }
+  .article-body { padding: 44px 20px 60px; }
+  .asset-grid { grid-template-columns: 1fr; }
+  .pullquote { margin: 36px -20px; padding: 24px 24px; }
+  .rule-box { padding: 28px 24px; }
+  .rule-formula { font-size: 22px; }
+  .cta-block { padding: 36px 24px; }
+  footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+  .portfolio-pct { width: 44px; font-size: 19px; }
+}
+</style>
+</head>
+<body>
+
+<!-- READING PROGRESS BAR -->
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Weekly Insight &nbsp;·&nbsp; Personal Finance</div>
+    <h1 class="hero-title">
+      Don't Put All Your Eggs in One Basket,<br>
+      <em>or All Your Money in One Asset</em>
+    </h1>
+    <p class="hero-sub">Why asset allocation and not stock-picking is the single most powerful decision you'll make as an investor.</p>
+    <div class="hero-meta">
+      <div class="hero-avatar">RJ</div>
+      <div>
+        <div class="hero-author-name">Rakhi Jain</div>
+        <div class="hero-author-cred">Chartered Accountant &nbsp;/&nbsp; Chartered Wealth Manager (CWM®) &nbsp;·&nbsp; Dubai</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="page-wrap">
+<article class="article-body">
+
+  <p>A few months ago, a client of mine, a successful entrepreneur based in Singapore called me in a mild panic. His portfolio had dropped nearly 22% in a matter of weeks. When I looked at his holdings, the reason was immediately clear: over 80% of his wealth was sitting in a handful of Indian small and micro-cap stocks, bought during the 2024 euphoria. He had trusted his instincts, followed the market buzz, and poured money into what was "working." Until it stopped working.</p>
+
+  <p>This is not an unusual story. I hear versions of it regularly from tech professionals in California, business families in Dubai, and retired executives in Mumbai. Brilliant, capable people who have built significant wealth, yet carry enormous, invisible risk in their financial lives simply because they never thought carefully about <strong>asset allocation</strong>.</p>
+
+  <p>Today, I want to change that. Let's talk about the concept that Nobel Prize winning economist Harry Markowitz famously called <em>"the only free lunch in finance."</em></p>
+
+  <div class="pullquote">
+    <p>"Your return on investment is largely determined not by which stocks you pick, but by how you divide your money across different asset classes."</p>
+  </div>
+
+  <h2>What Is Asset Allocation, Really?</h2>
+
+  <p>Asset allocation is the strategy of dividing your investment portfolio among different asset categories i.e. equities, fixed income, gold, real estate, cash, and alternatives in a way that balances your <strong>risk tolerance, time horizon, and financial goals</strong>.</p>
+
+  <p>In simple terms: it's deciding <em>how much of your money goes where</em>.</p>
+
+  <p>A landmark study by Brinson, Hood & Beebower, still cited in finance textbooks decades later, found that <strong>over 90% of a portfolio's variability in returns can be explained by asset allocation alone</strong>, not by individual security selection or market timing. Let that sink in. The stocks you pick matter far less than the categories you invest in.</p>
+
+  <div class="analogy-box">
+    <div class="analogy-label">The Cricket Team</div>
+    <p>Think of asset allocation like building a cricket team. You wouldn't field eleven batsmen and expect to win. You need a balanced line-up of aggressive openers (equities for growth), reliable middle-order players (debt for stability), an all-rounder (gold as a hedge), and a solid wicketkeeper (cash for liquidity). Each player has a specific role, and the team's strength comes from how they complement one another and not from any single player's brilliance.</p>
+  </div>
+
+  <h2>The Key Asset Classes and What They Do For You</h2>
+
+  <p>Before you can allocate wisely, you need to understand your options. Here are the primary building blocks of a well-constructed portfolio:</p>
+
+  <div class="asset-grid">
+    <div class="asset-card">
+      <div class="asset-icon">📈</div>
+      <div class="asset-name">Equities (Stocks & Equity Funds)</div>
+      <div class="asset-desc">The growth engine. Highest long-term returns, but also the most volatile. Essential for wealth creation over 5+ year horizons. Includes Indian markets (Nifty 50, mid/small caps) and global equities.</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-icon">🏦</div>
+      <div class="asset-name">Fixed Income (Bonds & Debt Funds)</div>
+      <div class="asset-desc">The stabiliser. Provides predictable income and cushions the portfolio during equity downturns. Includes government bonds, corporate bonds, FDs, debt and arbitrage mutual funds.</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-icon">🪙</div>
+      <div class="asset-name">Gold</div>
+      <div class="asset-desc">The ancient hedge. Performs well during geopolitical uncertainty, currency depreciation, and inflation. For Indian investors especially, gold has cultural resonance and financial merit to match.</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-icon">🏢</div>
+      <div class="asset-name">Real Estate & REITs</div>
+      <div class="asset-desc">Tangible, inflation-linked returns. Physical property for those who prefer it; REITs for liquid, professionally managed exposure without the landlord headaches.</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-icon">💵</div>
+      <div class="asset-name">Cash & Cash Equivalents</div>
+      <div class="asset-desc">Liquidity and optionality. Not idle money, rather it's your ability to seize opportunity when markets correct. Savings accounts, liquid funds, and short-term instruments serve this role.</div>
+    </div>
+    <div class="asset-card">
+      <div class="asset-icon">🌐</div>
+      <div class="asset-name">International Assets</div>
+      <div class="asset-desc">Currency diversification and access to global growth stories. For HNIs and NRIs, investing in US equities, global ETFs, or offshore structures adds a powerful layer of geographic diversification.</div>
+    </div>
+  </div>
+
+  <h2>The Classic Framework and Why It Needs Nuance</h2>
+
+  <p>The most widely quoted rule in asset allocation is the <strong>age-based equity formula:</strong></p>
+
+  <div class="rule-box">
+    <div class="rule-label">The Classic Rule of Thumb</div>
+    <div class="rule-formula">% in Equity = 100 minus Your Age</div>
+    <div class="rule-note">A 40-year-old investor would hold 60% in equities and 40% in bonds. Simple. Intuitive. But increasingly outdated.</div>
+  </div>
+
+  <p>Why outdated? Because we are living longer. A 50-year-old today may have a 35-year investment horizon ahead. Shifting aggressively into bonds at 50 could mean decades of sub-par returns, eroding wealth in real terms. Many modern advisors have updated the formula to <strong>110 or even 120 minus age</strong> to account for greater longevity.</p>
+
+  <p>But here's what the formula entirely misses: your <strong>risk tolerance is not just a function of age</strong>. It's also shaped by your income stability, the nature of your business, your family's financial needs, your debt obligations, and perhaps most importantly your psychological relationship with money.</p>
+
+  <p>A 45-year-old with stable employment, a paid-off home, and no dependants can afford far more equity exposure than a 35-year-old with a variable income, a growing family, and significant liabilities. <strong><em>Asset allocation is personal. It always has been.</em></strong></p>
+
+  <h2>A Special Note for HNI and NRI Investors</h2>
+
+  <p>If you are an HNI investor, especially an NRI managing wealth across geographies, then your asset allocation challenge is more layered than most. You are simultaneously managing:</p>
+
+  <ul class="styled-list">
+    <li><strong>Currency risk:</strong> Your income might be in AED or USD, while your liabilities and lifestyle aspirations may be denominated in INR. A weakening rupee can silently erode your India-based returns when converted back to your base currency or work powerfully in your favour if structured wisely.</li>
+    <li><strong>Regulatory complexity:</strong> NRI investments in India come with specific rules like FEMA regulations, NRE vs NRO account structures, repatriation rules, and tax treaties between countries. Ignoring these isn't just financially costly; it can have compliance consequences.</li>
+    <li><strong>Home country bias:</strong> Indian investors, regardless of where they live, tend to concentrate heavily in Indian equities because of familiarity. But India represents only about 4% of global market capitalisation. By ignoring the other 96%, you are leaving an enormous universe of opportunity and diversification benefit on the table.</li>
+    <li><strong>Illiquid asset concentration:</strong> A significant portion of HNI wealth in India is often locked in real estate or a family business. This means liquid financial assets must be structured to compensate, with higher allocation to growth assets and adequate liquidity buffers.</li>
+  </ul>
+
+  <h2>The Five Most Common Asset Allocation Mistakes</h2>
+
+  <ul class="styled-list">
+    <li><strong>Treating asset allocation as a one-time decision.</strong> Markets move. Life changes. The allocation you set at 35 will almost certainly be wrong at 45. Annual portfolio reviews and rebalancing are not optional. They are the discipline that makes the strategy work.</li>
+    <li><strong>Chasing last year's best performer.</strong> The asset class that delivered 40% returns last year is often the one that delivers the most pain next year. Disciplined allocation means buying into underperformers, which would be uncomfortable, but mathematically sound.</li>
+    <li><strong>Confusing diversification with owning many funds.</strong> Holding 12 different large-cap mutual funds is not diversification. If they all own the same 50 stocks, you have concentration masquerading as diversification. True diversification is across asset classes and geographies.</li>
+    <li><strong>Ignoring tax efficiency in allocation decisions.</strong> Where you hold an asset matters as much as what you hold. ELSS funds for equity exposure with 80C benefits, sovereign gold bonds over physical gold, mutual funds over PMS, debt plus arbitrage over pure debt funds, Gift City funds over domestic mutual funds for NRIs are some of the tax-smart allocations that can significantly improve net returns.</li>
+    <li><strong>Letting emotions override the strategy during volatility.</strong> The investor who systematically maintained their equity allocation during the COVID crash of March 2020 and stayed invested saw their portfolio more than double in 18 months. Those who fled to cash locked in their losses and missed the recovery entirely.</li>
+  </ul>
+
+  <h2>What a Thoughtful Allocation Might Look Like</h2>
+
+  <p>Let me illustrate with a hypothetical profile — a 42-year-old NRI professional based in Dubai, earning in AED, with a moderate-to-high risk appetite, a 15-year investment horizon, and aspirations to retire partially in India:</p>
+
+  <div class="portfolio-list">
+    <div class="portfolio-item">
+      <div class="portfolio-pct">30%</div>
+      <div class="portfolio-detail">
+        <strong>Indian Equities (Large + Mid Cap Mutual Funds)</strong>
+        <span>Core long-term growth, benefits from India's structural growth story, INR-denominated to naturally hedge against eventual India lifestyle costs.</span>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-pct">20%</div>
+      <div class="portfolio-detail">
+        <strong>International Equities (US + Global ETFs / Funds of Funds)</strong>
+        <span>Geographic diversification, exposure to US tech and global innovation, USD denominated tax-free returns.</span>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-pct">15%</div>
+      <div class="portfolio-detail">
+        <strong>Indian Debt (Short-Duration Debt / Arbitrage Funds)</strong>
+        <span>Stability layer with tax-efficient debt fund exposure.</span>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-pct">10%</div>
+      <div class="portfolio-detail">
+        <strong>Gold (Digital Gold ETFs)</strong>
+        <span>Inflation hedge, crisis buffer, and a nod to the role gold plays in Indian wealth psychology and backed by financial discipline. Held offshore in USD for tax free returns.</span>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-pct">10%</div>
+      <div class="portfolio-detail">
+        <strong>Real Estate (via REITs)</strong>
+        <span>Real estate exposure without concentration in a single physical property; quarterly income distributions add a cash flow dimension.</span>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-pct">10%</div>
+      <div class="portfolio-detail">
+        <strong>Cash & Liquid Funds</strong>
+        <span>Emergency reserve and dry powder for opportunistic deployment during market corrections.</span>
+      </div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-pct">5%</div>
+      <div class="portfolio-detail">
+        <strong>Alternative Investments (PE Funds, Startups, Structured Products)</strong>
+        <span>For qualified investors, a small allocation to alternatives can meaningfully enhance risk-adjusted returns over the long term.</span>
+      </div>
+    </div>
+  </div>
+
+  <p>This is, of course, illustrative. The right allocation for you will look different, shaped by your unique circumstances, goals, risk profile, tax situation, and life stage. <strong><em>Which is precisely why great financial planning is not a product. It is a relationship.</em></strong></p>
+
+  <div class="pullquote">
+    <p>"The best time to build the right asset allocation was yesterday. The second best time is today, before the next market event forces the decision upon you."</p>
+  </div>
+
+  <h2>Rebalancing is the Discipline That Makes It All Work</h2>
+
+  <p>Here's something most investors overlook: even a perfectly designed asset allocation drifts over time. Equities outperform in bull markets, and before long, your 60% equity portfolio becomes an 80% equity portfolio with concentrated risk you never intended to take.</p>
+
+  <p>Rebalancing is the act of periodically trimming your winners and adding to your laggards to restore your target allocation. It sounds counterintuitive to sell what's going up and buy what's going down but it is mathematically equivalent to <strong>systematically buying low and selling high</strong>. It is the portfolio equivalent of good habits: boring, consistent, and enormously effective over time.</p>
+
+  <p>At Kalpvriksh Global, we recommend reviewing your asset allocation at least annually or whenever a significant life event occurs (a major financial windfall, a change in employment, marriage, a large planned expenditure, or approaching retirement).</p>
+
+  <!-- CTA BLOCK -->
+  <div class="cta-block">
+    <div class="cta-tag">Ready for a Conversation?</div>
+    <h2>What Does Your Portfolio Actually Look Like?</h2>
+    <p>Take five minutes to map where your wealth is currently sitting. If you find more than 60% concentrated in one asset class or one geography, it may be time for a conversation.</p>
+    <div class="cta-buttons">
+      <a href="https://calendly.com/rakhi-jain-fermatprime/30min?month=2026-02" class="btn-primary">Schedule a 1-on-1 Consult</a>
+      <a href="https://wa.me/919886980120" class="btn-secondary">Join WhatsApp Community</a>
+    </div>
+    <a href="https://www.kalpvrikshglobal.com/" class="cta-website">www.kalpvrikshglobal.com</a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> This article is for educational purposes only and does not constitute personalised financial advice. Please consult a qualified financial advisor for guidance tailored to your specific situation.</p>
+  </div>
+
+</article>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Kalpvriksh Global</div>
+  <div class="footer-links">
+    <a href="https://www.kalpvrikshglobal.com/">Home</a>
+    <a href="https://www.kalpvrikshglobal.com/">Insights</a>
+    <a href="https://calendly.com/rakhi-jain-fermatprime/30min?month=2026-02">Book a Call</a>
+    <a href="https://wa.me/919886980120">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+  const fill = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    fill.style.width = Math.min((doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100, 100) + '%';
+  });
+</script>
+
+</body>
+</html>
