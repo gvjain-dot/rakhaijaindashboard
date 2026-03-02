@@ -897,16 +897,16 @@ const KalpavrikshCapital = () => {
                   onClick={() => changePage('salary-article')}
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col text-left w-full"
                 >
-                  <div className="p-5 flex items-center gap-3" style={{ background: 'linear-gradient(135deg, #1E5631, #2d7a47)' }}>
+                  <div className="p-5 flex items-center gap-3" style={{ background: 'linear-gradient(135deg, #1B2A4A, #2a3f6b)' }}>
                     <span className="text-3xl">💼</span>
-                    <span className="text-xs font-semibold px-2 py-1 rounded-full" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Retirement Planning</span>
+                    <span className="text-xs font-semibold px-2 py-1 rounded-full" style={{ backgroundColor: '#C09B3A', color: '#1B2A4A' }}>Retirement Planning</span>
                   </div>
                   <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-base font-bold mb-2 leading-snug" style={{ color: '#1E5631' }}>What Will Replace Your Salary in 5 Years?</h3>
+                    <h3 className="text-base font-bold mb-2 leading-snug" style={{ color: '#1B2A4A' }}>What Will Replace Your Salary in 5 Years?</h3>
                     <p className="text-sm text-gray-600 mb-3 leading-relaxed flex-1">
                       Decoupling your lifestyle from your time — a practical guide to building passive income before retirement.
                     </p>
-                    <p className="text-xs font-semibold" style={{ color: '#C4A747' }}>by Rakhi Jain · Feb 23, 2026 →</p>
+                    <p className="text-xs font-semibold" style={{ color: '#C09B3A' }}>by Rakhi Jain · Feb 23, 2026 →</p>
                   </div>
                 </button>
                 {/* Article 2 */}
@@ -1236,18 +1236,18 @@ const KalpavrikshCapital = () => {
                   onClick={() => changePage('salary-article')}
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col text-left animate-fade-in-up"
                 >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
+                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1B2A4A 0%, #2a3f6b 100%)' }}>
+                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C09B3A', transform: 'translate(30%, -30%)' }}></div>
                     <div className="relative z-10">
                       <div className="text-4xl mb-3">💼</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Retirement Planning</span>
+                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C09B3A', color: '#1B2A4A' }}>Retirement Planning</span>
                       <h3 className="text-base sm:text-lg font-bold text-white leading-snug">What Will Replace Your Salary in 5 Years?</h3>
                       <p className="text-white/60 text-xs mt-2">Rakhi Jain · Feb 23, 2026</p>
                     </div>
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <p className="text-sm text-gray-600 leading-relaxed flex-1">Retirement isn't about stopping work — it's about decoupling your lifestyle from your time. Build passive income before you need it.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#C4A747' }}>Read Article →</p>
+                    <p className="text-xs font-semibold mt-4" style={{ color: '#C09B3A' }}>Read Article →</p>
                   </div>
                 </button>
 
