@@ -393,7 +393,7 @@ const KalpavrikshCapital = () => {
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#FAF7F2' }}>
       {/* Navigation - DARK GREEN BACKGROUND */}
-      {currentPage !== 'asset-allocation' && <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+      {currentPage !== 'asset-allocation' && currentPage !== 'salary-article' && <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'shadow-lg' : 'shadow-md'
       } backdrop-blur-lg`}  style={{ paddingTop: 'env(safe-area-inset-top)', backgroundColor: '#1E5631'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
@@ -520,7 +520,7 @@ const KalpavrikshCapital = () => {
       </div>
 
       {/* Main Content */}
-      <div className={currentPage === 'asset-allocation' ? '' : 'pt-24 sm:pt-28 md:pt-32'}>
+      <div className={(currentPage === 'asset-allocation' || currentPage === 'salary-article') ? '' : 'pt-24 sm:pt-28 md:pt-32'}>
         {/* Home Page */}
         {currentPage === 'home' && (
           <div className="space-y-16">
@@ -893,11 +893,9 @@ const KalpavrikshCapital = () => {
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 {/* Latest Article */}
-                <a
-                  href="https://www.linkedin.com/pulse/what-replace-your-salary-5-years-rakhi-jain-uyicf/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col"
+                <button
+                  onClick={() => changePage('salary-article')}
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col text-left w-full"
                 >
                   <div className="p-5 flex items-center gap-3" style={{ background: 'linear-gradient(135deg, #1E5631, #2d7a47)' }}>
                     <span className="text-3xl">💼</span>
@@ -910,7 +908,7 @@ const KalpavrikshCapital = () => {
                     </p>
                     <p className="text-xs font-semibold" style={{ color: '#C4A747' }}>by Rakhi Jain · Feb 23, 2026 →</p>
                   </div>
-                </a>
+                </button>
                 {/* Article 2 */}
                 <button
                   onClick={() => changePage('asset-allocation')}
@@ -1234,11 +1232,9 @@ const KalpavrikshCapital = () => {
 
               <div className="grid sm:grid-cols-2 gap-6">
                 {/* Article 1: Salary Replacement */}
-                <a
-                  href="https://www.linkedin.com/pulse/what-replace-your-salary-5-years-rakhi-jain-uyicf/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
+                <button
+                  onClick={() => changePage('salary-article')}
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col text-left animate-fade-in-up"
                 >
                   <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
                     <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
@@ -1251,9 +1247,9 @@ const KalpavrikshCapital = () => {
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <p className="text-sm text-gray-600 leading-relaxed flex-1">Retirement isn't about stopping work — it's about decoupling your lifestyle from your time. Build passive income before you need it.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#C4A747' }}>Read on LinkedIn →</p>
+                    <p className="text-xs font-semibold mt-4" style={{ color: '#C4A747' }}>Read Article →</p>
                   </div>
-                </a>
+                </button>
 
                 {/* Article 2: Asset Allocation */}
                 <button
@@ -1535,6 +1531,28 @@ const KalpavrikshCapital = () => {
             <iframe
               src="/asset-allocation-article_1.html"
               title="Don't Put All Your Eggs in One Basket"
+              className="flex-1 w-full border-0"
+              style={{ minHeight: '80vh' }}
+            />
+          </div>
+        )}
+
+        {/* Salary Replacement Article Page */}
+        {currentPage === 'salary-article' && (
+          <div className="flex flex-col" style={{ height: 'calc(100vh - 80px)' }}>
+            <div className="px-4 py-3 flex items-center gap-3 border-b" style={{ backgroundColor: '#F8F5F0', borderColor: '#E5E7EB' }}>
+              <button
+                onClick={() => changePage('blogs')}
+                className="flex items-center gap-2 text-sm font-semibold px-3 py-1.5 rounded-lg transition-all duration-200 hover:scale-105"
+                style={{ color: '#1E5631', backgroundColor: 'white', border: '1px solid #1E5631' }}
+              >
+                ← Back to Learning
+              </button>
+              <span className="text-sm text-gray-500">Retirement Planning · Rakhi Jain</span>
+            </div>
+            <iframe
+              src="/salary-replace-article.html"
+              title="What Will Replace Your Salary in 5 Years?"
               className="flex-1 w-full border-0"
               style={{ minHeight: '80vh' }}
             />

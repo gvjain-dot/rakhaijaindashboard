@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="What will replace your salary when you retire in 5 years? A practical framework for building sustainable passive income. By Rakhi Jain, Kalpvriksh Global."/>
+<title>What Will Replace Your Salary in 5 Years? | Kalpvriksh Global — Rakhi Jain</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+/* ─── RESET & BASE ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --navy:       #1B2A4A;
+  --navy-deep:  #0F1E36;
+  --gold:       #C09B3A;
+  --gold-light: #D4AF55;
+  --gold-pale:  #F5EDD6;
+  --cream:      #FAFAF7;
+  --white:      #FFFFFF;
+  --ink:        #2C3344;
+  --muted:      #6B7280;
+  --rule:       #E2DDD4;
+  --card-bg:    #F7F5F0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--ink);
+  background: var(--cream);
+}
+
+/* ─── READING PROGRESS ───────────────────────────── */
+.progress-bar {
+  position: fixed; top: 0px; left: 0; right: 0;
+  height: 3px; background: transparent; z-index: 99;
+}
+.progress-fill {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  transition: width 0.1s;
+}
+
+/* ─── HERO ───────────────────────────────────────── */
+.hero {
+  background: var(--navy-deep);
+  padding: 80px 48px 90px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; right: 0;
+  width: 55%; height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(192,155,58,0.07) 100%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
+}
+.hero-inner { max-width: 860px; margin: 0 auto; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
+}
+.hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 700; line-height: 1.15;
+  color: var(--white); margin-bottom: 16px;
+}
+.hero-title em { color: var(--gold-light); font-style: italic; }
+.hero-sub {
+  font-size: 17px; color: rgba(255,255,255,0.6);
+  max-width: 620px; line-height: 1.7; font-style: italic; margin-top: 16px;
+}
+.hero-meta {
+  margin-top: 40px; display: flex; align-items: center; gap: 20px;
+  padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+}
+.hero-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--gold); display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; font-weight: 700; color: var(--navy-deep); flex-shrink: 0;
+}
+.hero-author-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 600; color: var(--white);
+}
+.hero-author-cred {
+  font-size: 12px; color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em; margin-top: 2px;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────── */
+.page-wrap {
+  display: grid;
+  grid-template-columns: 1fr min(720px, 100%) 1fr;
+}
+.article-body { grid-column: 2; padding: 64px 24px 80px; }
+
+/* ─── TYPOGRAPHY ─────────────────────────────────── */
+p { margin-bottom: 24px; }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700;
+  color: var(--navy); line-height: 1.3;
+  margin: 60px 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gold-pale);
+  position: relative;
+}
+h2::after {
+  content: '';
+  position: absolute; bottom: -2px; left: 0;
+  width: 48px; height: 2px; background: var(--gold);
+}
+
+/* ─── PULL QUOTE ─────────────────────────────────── */
+.pullquote {
+  margin: 44px -24px;
+  padding: 28px 40px;
+  background: var(--navy);
+  border-left: 4px solid var(--gold);
+}
+.pullquote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; font-style: italic;
+  color: var(--white); line-height: 1.6; margin: 0;
+}
+
+/* ─── ANALOGY BOX ────────────────────────────────── */
+.analogy-box {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px; padding: 28px 32px; margin: 40px 0;
+}
+.analogy-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.analogy-label::after { content: ''; flex: 1; height: 1px; background: var(--gold-pale); }
+.analogy-box p {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px; font-style: italic;
+  color: var(--navy); line-height: 1.75; margin: 0;
+}
+
+/* ─── THREE BUCKETS ──────────────────────────────── */
+.bucket-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 32px 0; }
+.bucket-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 8px; padding: 24px 20px;
+  transition: box-shadow 0.25s, border-color 0.25s;
+  position: relative; overflow: hidden;
+}
+.bucket-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+}
+.bucket-card.guaranteed::before { background: var(--gold); }
+.bucket-card.core::before { background: #4A90D9; }
+.bucket-card.inflation::before { background: #2ECC71; }
+.bucket-card:hover { box-shadow: 0 6px 24px rgba(27,42,74,0.1); border-color: var(--gold); }
+.bucket-icon { font-size: 24px; margin-bottom: 10px; }
+.bucket-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px;
+}
+.bucket-desc { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+/* ─── STAT BOX ───────────────────────────────────── */
+.stat-box {
+  background: var(--navy);
+  border-radius: 8px; padding: 36px 40px; margin: 36px 0; text-align: center;
+  position: relative; overflow: hidden;
+}
+.stat-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+.stat-label {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+}
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px; font-weight: 700; color: var(--white); margin-bottom: 10px;
+  line-height: 1;
+}
+.stat-number span { font-size: 28px; vertical-align: top; margin-top: 6px; display: inline-block; }
+.stat-note { font-size: 14px; color: rgba(255,255,255,0.55); font-style: italic; max-width: 440px; margin: 0 auto; }
+
+/* ─── STYLED LISTS ───────────────────────────────── */
+.styled-list { list-style: none; margin: 20px 0 28px; }
+.styled-list li {
+  padding: 16px 0 16px 28px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 16px; line-height: 1.75; position: relative;
+}
+.styled-list li:first-child { border-top: 1px solid var(--rule); }
+.styled-list li::before {
+  content: '';
+  position: absolute; left: 0; top: 25px;
+  width: 8px; height: 8px;
+  border: 2px solid var(--gold); border-radius: 50%;
+}
+
+/* ─── TIMELINE ───────────────────────────────────── */
+.timeline { margin: 32px 0; }
+.timeline-item {
+  display: flex; align-items: flex-start; gap: 20px;
+  padding: 18px 0; border-bottom: 1px solid var(--rule);
+}
+.timeline-item:first-child { border-top: 1px solid var(--rule); }
+.timeline-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px; font-weight: 700; color: var(--gold);
+  flex-shrink: 0; width: 76px; text-align: right;
+  line-height: 1.4; padding-top: 2px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.timeline-detail strong {
+  font-size: 15px; font-weight: 700; color: var(--navy);
+  display: block; margin-bottom: 3px;
+}
+.timeline-detail span { font-size: 14px; color: var(--muted); }
+
+/* ─── CTA ────────────────────────────────────────── */
+.cta-block {
+  background: var(--navy-deep);
+  border-radius: 10px; padding: 52px 44px;
+  margin-top: 72px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-block::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+.cta-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+}
+.cta-block h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; color: var(--white);
+  border: none; padding: 0; margin: 0 0 14px;
+}
+.cta-block h2::after { display: none; }
+.cta-block > p {
+  color: rgba(255,255,255,0.55); max-width: 480px;
+  margin: 0 auto 32px; font-style: italic;
+}
+.cta-buttons { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-bottom: 8px; }
+.btn-primary {
+  display: inline-block;
+  background: var(--gold); color: var(--navy-deep);
+  font-family: 'Lato', sans-serif; font-weight: 700;
+  font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 15px 32px; border-radius: 3px; text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+.btn-secondary {
+  display: inline-block;
+  background: transparent; color: var(--white);
+  font-family: 'Lato', sans-serif; font-weight: 400;
+  font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 14px 28px; border-radius: 3px; text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-secondary:hover { border-color: var(--gold); background: rgba(192,155,58,0.1); }
+.cta-website {
+  font-size: 13px; color: var(--gold); margin-top: 20px;
+  display: block; text-decoration: none; opacity: 0.8; letter-spacing: 0.06em;
+}
+.cta-website:hover { opacity: 1; }
+
+/* ─── DISCLAIMER ─────────────────────────────────── */
+.disclaimer {
+  margin-top: 56px; padding: 20px 24px;
+  border: 1px solid var(--rule); border-radius: 6px;
+  background: var(--card-bg);
+}
+.disclaimer p {
+  font-size: 12.5px; color: var(--muted);
+  font-style: italic; margin: 0; line-height: 1.6;
+}
+.disclaimer strong { font-weight: 700; color: var(--navy); font-style: normal; }
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer {
+  background: var(--navy-deep);
+  padding: 28px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px; font-weight: 600; color: var(--gold);
+}
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 12px; color: rgba(255,255,255,0.4);
+  text-decoration: none; letter-spacing: 0.06em;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* ─── FADE-IN ANIMATION ──────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-inner > * { animation: fadeUp 0.6s ease both; }
+.hero-tag        { animation-delay: 0.1s; }
+.hero-title      { animation-delay: 0.2s; }
+.hero-sub        { animation-delay: 0.3s; }
+.hero-meta       { animation-delay: 0.4s; }
+
+/* ─── RESPONSIVE ─────────────────────────────────── */
+@media (max-width: 700px) {
+  .hero { padding: 52px 20px 64px; }
+  .article-body { padding: 44px 20px 60px; }
+  .bucket-grid { grid-template-columns: 1fr; }
+  .pullquote { margin: 36px -20px; padding: 24px 24px; }
+  .stat-box { padding: 28px 24px; }
+  .stat-number { font-size: 38px; }
+  .cta-block { padding: 36px 24px; }
+  footer { padding: 24px 20px; flex-direction: column; text-align: center; }
+  .timeline-year { width: 60px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- READING PROGRESS BAR -->
+<div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Weekly Insight &nbsp;·&nbsp; Retirement Planning</div>
+    <h1 class="hero-title">
+      What Will Replace<br>
+      <em>Your Salary in 5 Years?</em>
+    </h1>
+    <p class="hero-sub">A practical framework for high-achieving professionals to transition from active income to sustainable passive income — without ever feeling the paycheck stop.</p>
+    <div class="hero-meta">
+      <div class="hero-avatar">RJ</div>
+      <div>
+        <div class="hero-author-name">Rakhi Jain</div>
+        <div class="hero-author-cred">Chartered Accountant &nbsp;/&nbsp; Chartered Wealth Manager (CWM®) &nbsp;·&nbsp; Dubai</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="page-wrap">
+<article class="article-body">
+
+  <p>I recently had a client — a senior executive at a multinational in Dubai — walk into our session and say something that stayed with me: <em>"Rakhi, I have more money than I expected at this stage of life. But I have no idea what pays me next month if I stop working tomorrow."</em></p>
+
+  <p>He is not alone. I meet this exact profile regularly: professionals who have spent two decades building wealth — through savings, real estate, stock options, and equity in a business — but who have never designed a <strong>replacement income system</strong> for the day their salary stops.</p>
+
+  <p>If you are five years or fewer from retiring, this article is for you. Let's talk about building the architecture that keeps money flowing — sustainably, tax-efficiently, and with the psychological confidence that the salary mindset demands.</p>
+
+  <div class="pullquote">
+    <p>"The hardest part of retirement is not financial. It is psychological. It is watching an empty inbox where the salary notification used to arrive."</p>
+  </div>
+
+  <h2>The Empty Mailbox Syndrome</h2>
+
+  <p>There is a phenomenon I call <strong>Empty Mailbox Syndrome</strong>. It afflicts many retirees in the first eighteen months of leaving work — not because their investments have failed, but because the <em>rhythm of regular income</em> has disappeared.</p>
+
+  <p>For decades, on the last working day of every month, something arrived. A salary slip. A transfer notification. A sense of financial momentum. When that stops — even if your net worth is substantial — the brain registers it as loss. Many retirees pull back on spending entirely, even though they can afford not to. Others develop anxiety about their portfolios that they never had when the salary was flowing.</p>
+
+  <p>The solution is not to wait and hope. The solution is to <strong>engineer your own monthly paycheck before you leave work</strong> — so the transition feels less like a cliff and more like a gentle slope.</p>
+
+  <div class="analogy-box">
+    <div class="analogy-label">The Thali Framework</div>
+    <p>Think of your retirement income like a good thali — a complete Indian meal. A thali is not just one dish. It has a guaranteed base (the rice or roti that is always there), a core flavourful element (the dal or curry that forms the heart of the meal), and something that adds variety and nutrition over time (the vegetables and accompaniments). Each component has a role, and together they create a satisfying, complete experience. Your retirement income should be designed the same way.</p>
+  </div>
+
+  <h2>The Three Buckets of Retirement Income</h2>
+
+  <p>Every robust retirement income plan is built on three layers, each serving a distinct purpose. Getting the balance right between these three buckets is the heart of retirement income planning.</p>
+
+  <div class="bucket-grid">
+    <div class="bucket-card guaranteed">
+      <div class="bucket-icon">🔒</div>
+      <div class="bucket-name">Bucket 1: The Guaranteed Floor</div>
+      <div class="bucket-desc">Pensions, annuities, and NPS payouts. This is income that arrives regardless of what markets do. It covers your non-negotiable expenses — housing, healthcare, utilities. It is not exciting, but it is the foundation everything else rests on.</div>
+    </div>
+    <div class="bucket-card core">
+      <div class="bucket-icon">📊</div>
+      <div class="bucket-name">Bucket 2: The Core Income Engine</div>
+      <div class="bucket-desc">Systematic Withdrawal Plans (SWPs) from well-structured balanced portfolios. Tax-efficient, flexible, and capable of generating monthly income that grows over time. This replaces the feel of the salary — regular, predictable, in your account.</div>
+    </div>
+    <div class="bucket-card inflation">
+      <div class="bucket-icon">🏠</div>
+      <div class="bucket-name">Bucket 3: Inflation Protection</div>
+      <div class="bucket-desc">Real estate rental income and REITs. These provide yield that rises with inflation over time, protecting your purchasing power across a retirement that may span 25–35 years.</div>
+    </div>
+  </div>
+
+  <h2>Why Inflation Is the Retirement Villain Nobody Warns You About</h2>
+
+  <p>Most retirement conversations focus on corpus size. Very few focus on what that corpus actually buys over time. This is where the real danger lies.</p>
+
+  <div class="stat-box">
+    <div class="stat-label">The Inflation Math No One Shows You</div>
+    <div class="stat-number"><span>₹</span>58,000</div>
+    <div class="stat-note">What ₹1,00,000 per month buys in today's money after 15 years of retirement, assuming 6% annual inflation. Nearly half your purchasing power — gone.</div>
+  </div>
+
+  <p>This is why a retirement plan built only on fixed deposits or traditional annuities is a slow financial emergency. At 6% inflation, the cost of living doubles approximately every twelve years. A retiree at 60 who expects to live until 85 is navigating a 25-year gauntlet in which their expenses, in nominal terms, will roughly <em>quadruple</em>.</p>
+
+  <p>The income sources in Bucket 1 (guaranteed floor) need to be supplemented by sources that <strong>grow faster than inflation</strong> — which is precisely what Buckets 2 and 3 are designed to do. Equity-linked SWPs, when properly structured, can deliver returns of 9–11% annually over long periods, comfortably outpacing inflation and sustaining your lifestyle.</p>
+
+  <h2>The Death Overs: The Most Dangerous Period of Your Financial Life</h2>
+
+  <p>In cricket, the Death Overs — the final five overs of an innings — are the most high-pressure period. A single poor delivery can change the entire match. In personal finance, there is an equivalent: the <strong>five years immediately before and after retirement</strong>.</p>
+
+  <p>Financial planners call this the <em>sequence of returns risk</em>. If markets fall sharply in the first few years after you retire — before you've had time to build momentum from compounding — the damage to your portfolio can be permanent. Unlike a working professional who can ride out a downturn by continuing to invest, a retiree drawing down assets during a crash is <strong>selling low when they can least afford to</strong>.</p>
+
+  <p>The Death Overs demand a specific defensive strategy:</p>
+
+  <ul class="styled-list">
+    <li><strong>Begin de-risking three to five years before your target retirement date.</strong> Gradually shift a portion of equity gains into more stable instruments. This does not mean abandoning equities entirely — it means protecting recent gains from a sudden reversal.</li>
+    <li><strong>Build a two-year cash buffer before you retire.</strong> If you can fund two years of expenses from liquid, stable instruments (short-duration funds, high-quality debt), you give your equity portfolio time to recover from any early-retirement downturn without being forced to liquidate at depressed prices.</li>
+    <li><strong>Set your SWP rate conservatively.</strong> A withdrawal rate of 4–5% annually from a balanced portfolio has historically proven sustainable across multiple market cycles. Going above 6% materially increases the risk of running out of money.</li>
+    <li><strong>Do not retire 100% from equities.</strong> Maintaining 40–50% equity exposure even in retirement is essential for the inflation-beating growth your portfolio needs over a 25-year horizon. De-risking too aggressively is itself a financial risk.</li>
+  </ul>
+
+  <h2>Active Income in Retirement: The Underrated Option</h2>
+
+  <p>Not all retirement income needs to be passive. For many high-achieving professionals, a consulting role, advisory board seat, or passion project in the early years of retirement can provide two things that money alone cannot: <strong>optional income and psychological meaning</strong>.</p>
+
+  <p>I have seen clients who resisted the idea of working at all in retirement — only to discover eighteen months in that they missed the mental stimulation and structure that a professional role provided. Designing a light-touch active income source early, on <em>your own terms</em>, is categorically different from needing to work out of financial necessity.</p>
+
+  <p>Even ₹1–2 lakhs per month from consulting in the first five years of retirement can meaningfully reduce the pressure on your investment portfolio — allowing it to compound without heavy early drawdowns, which dramatically improves long-term sustainability.</p>
+
+  <div class="pullquote">
+    <p>"The goal is not to stop working because you have to. It is to design a life where every day you work, it is entirely by choice."</p>
+  </div>
+
+  <h2>The Technical Considerations You Cannot Ignore</h2>
+
+  <p>Beyond the philosophy, the mechanics of retirement income planning involve several layers of complexity that require professional guidance. These are not optional details — they are the difference between a plan that looks good on paper and one that actually delivers in practice.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">Tax Optimisation</div>
+      <div class="timeline-detail">
+        <strong>Structure income sources for minimum tax drag</strong>
+        <span>SWPs from equity mutual funds held for over a year attract long-term capital gains tax at 12.5% — far more efficient than interest income from FDs taxed at your slab rate. For NRIs, DTAA (Double Taxation Avoidance Agreements) between India and your country of residence can significantly reduce effective tax rates. These structures must be planned before retirement, not after.</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Estate Planning</div>
+      <div class="timeline-detail">
+        <strong>Ensure wealth transfers efficiently to the next generation</strong>
+        <span>A will is necessary but not sufficient. Nomination updates, joint account structures, a Private Trust for larger estates, and clear documentation of assets across geographies are all essential. An estate without a plan is an estate that creates family conflict and tax inefficiency simultaneously.</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Global Diversification</div>
+      <div class="timeline-detail">
+        <strong>Reduce single-country and single-currency concentration</strong>
+        <span>For NRI clients, the question of whether retirement will happen in India, the country of current residence, or somewhere else entirely shapes every allocation decision. Currency exposure, repatriation rules, and offshore structuring via GIFT City or international platforms all play a role in a globally coherent retirement income plan.</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">Healthcare Buffer</div>
+      <div class="timeline-detail">
+        <strong>Plan for the expense that compounds faster than inflation</strong>
+        <span>Healthcare costs in India have been inflating at 12–15% annually — double the general inflation rate. A robust health insurance policy is non-negotiable, but so is a dedicated healthcare corpus outside your income-generating portfolio, sized to handle a major medical event without disrupting your monthly income engine.</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Where to Begin: The Five-Year Countdown</h2>
+
+  <p>If retirement is five years away, here is a practical starting framework for each year of the countdown:</p>
+
+  <ul class="styled-list">
+    <li><strong>Year 5 (Now):</strong> Map every asset you own — its value, liquidity, and the income it currently generates or could generate. Most people are shocked to discover their net worth when they actually list it carefully. You cannot plan a retirement income system without first knowing what you are working with.</li>
+    <li><strong>Year 4:</strong> Define your retirement income target in today's money. What does a comfortable, secure, fulfilling retirement actually cost per month — not in theory, but in your specific life, in your specific geography, with your specific aspirations? Build your corpus target backwards from this number.</li>
+    <li><strong>Year 3:</strong> Begin structuring Bucket 2 — start SWPs in a balanced portfolio so you understand the mechanics and have real data on what the income looks like monthly, before your livelihood depends on it.</li>
+    <li><strong>Year 2:</strong> Begin the Death Overs de-risking. Start accumulating a cash buffer. Finalise estate planning documents. Update all nominations across accounts, insurance policies, and mutual funds.</li>
+    <li><strong>Year 1:</strong> Rehearse retirement. For three months, live on your planned retirement income while your salary continues. This is the most powerful exercise I know. It shows you exactly where the plan works, where it needs adjustment, and whether your spending assumptions were realistic.</li>
+  </ul>
+
+  <!-- CTA BLOCK -->
+  <div class="cta-block">
+    <div class="cta-tag">Ready to Build Your Retirement Blueprint?</div>
+    <h2>Your Salary Has an Expiry Date. Your Lifestyle Shouldn't.</h2>
+    <p>Every high-achieving professional deserves a retirement income plan as carefully designed as the career that funded it. Let's map yours together.</p>
+    <div class="cta-buttons">
+      <a href="https://calendly.com/rakhi-jain-fermatprime/30min?month=2026-02" class="btn-primary">Schedule a 1-on-1 Consult</a>
+      <a href="https://wa.me/919886980120" class="btn-secondary">Join WhatsApp Community</a>
+    </div>
+    <a href="https://www.kalpvrikshglobal.com/" class="cta-website">www.kalpvrikshglobal.com</a>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> This article is for educational purposes only and does not constitute personalised financial advice. Please consult a qualified financial advisor for guidance tailored to your specific situation.</p>
+  </div>
+
+</article>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Kalpvriksh Global</div>
+  <div class="footer-links">
+    <a href="https://www.kalpvrikshglobal.com/">Home</a>
+    <a href="https://www.kalpvrikshglobal.com/">Insights</a>
+    <a href="https://calendly.com/rakhi-jain-fermatprime/30min?month=2026-02">Book a Call</a>
+    <a href="https://wa.me/919886980120">WhatsApp</a>
+  </div>
+</footer>
+
+<script>
+  const fill = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    fill.style.width = Math.min((doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100, 100) + '%';
+  });
+</script>
+
+</body>
+</html>
