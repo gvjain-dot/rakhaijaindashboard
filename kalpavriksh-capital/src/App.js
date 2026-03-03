@@ -87,9 +87,17 @@ const KalpavrikshCapital = () => {
 
   // Handle browser back button - go to home instead of closing
   useEffect(() => {
+    // On initial load, check if URL hash matches an article page
+    const articlePages = ['asset-allocation', 'salary-article'];
+    const hash = window.location.hash.replace('#', '');
+    if (articlePages.includes(hash)) {
+      setCurrentPage(hash);
+    }
+
     const handlePopState = (event) => {
       event.preventDefault();
-      setCurrentPage('home');
+      const h = window.location.hash.replace('#', '');
+      setCurrentPage(articlePages.includes(h) ? h : 'home');
       window.scrollTo(0, 0);
     };
 
@@ -106,12 +114,14 @@ const KalpavrikshCapital = () => {
 
 
   // Scroll to top when changing pages
+  const articlePages = ['asset-allocation', 'salary-article'];
   const changePage = (page) => {
     setCurrentPage(page);
     setNavOpen(false);
     window.scrollTo(0, 0);
-    // Push state for browser navigation
-    window.history.pushState({ page: page }, '', '');
+    // Article pages get a shareable hash URL; all other pages clear the hash
+    const url = articlePages.includes(page) ? '#' + page : window.location.pathname;
+    window.history.pushState({ page: page }, '', url);
   };
 
   // Handle testimonial navigation with pause/restart
