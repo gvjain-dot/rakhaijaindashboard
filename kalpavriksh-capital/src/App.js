@@ -903,8 +903,10 @@ const KalpavrikshCapital = () => {
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 {/* Latest Article */}
-                <button
-                  onClick={() => changePage('salary-article')}
+                <a
+                  href="https://www.linkedin.com/pulse/what-replace-your-salary-5-years-rakhi-jain-uyicf/?trackingId=6NCoDOVDSjuOPUtfC%2BawfQ%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col text-left w-full"
                 >
                   <div className="p-5 flex items-center gap-3" style={{ background: 'linear-gradient(135deg, #1B2A4A, #2a3f6b)' }}>
@@ -918,7 +920,7 @@ const KalpavrikshCapital = () => {
                     </p>
                     <p className="text-xs font-semibold" style={{ color: '#C09B3A' }}>by Rakhi Jain · Feb 23, 2026 →</p>
                   </div>
-                </button>
+                </a>
                 {/* Article 2 */}
                 <button
                   onClick={() => changePage('asset-allocation')}
@@ -1242,9 +1244,11 @@ const KalpavrikshCapital = () => {
 
               <div className="grid sm:grid-cols-2 gap-6">
                 {/* Article 1: Salary Replacement */}
-                <button
-                  onClick={() => changePage('salary-article')}
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col text-left animate-fade-in-up"
+                <a
+                  href="https://www.linkedin.com/pulse/what-replace-your-salary-5-years-rakhi-jain-uyicf/?trackingId=6NCoDOVDSjuOPUtfC%2BawfQ%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
                 >
                   <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1B2A4A 0%, #2a3f6b 100%)' }}>
                     <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C09B3A', transform: 'translate(30%, -30%)' }}></div>
@@ -1257,9 +1261,9 @@ const KalpavrikshCapital = () => {
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <p className="text-sm text-gray-600 leading-relaxed flex-1">Retirement isn't about stopping work — it's about decoupling your lifestyle from your time. Build passive income before you need it.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#C09B3A' }}>Read Article →</p>
+                    <p className="text-xs font-semibold mt-4" style={{ color: '#C09B3A' }}>Read on LinkedIn →</p>
                   </div>
-                </button>
+                </a>
 
                 {/* Article 2: Asset Allocation */}
                 <button
