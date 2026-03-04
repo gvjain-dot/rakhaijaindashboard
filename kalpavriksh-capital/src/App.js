@@ -87,22 +87,21 @@ const KalpavrikshCapital = () => {
 
   // Handle browser back button - go to home instead of closing
   useEffect(() => {
-    // On initial load, check if URL hash matches an article page
-    const articlePages = ['asset-allocation', 'salary-article'];
-    const hash = window.location.hash.replace('#', '');
-    if (articlePages.includes(hash)) {
-      setCurrentPage(hash);
+    // On initial load, check if URL pathname matches an article page
+    const articlePages = ['asset-allocation'];
+    const path = window.location.pathname.replace('/', '');
+    if (articlePages.includes(path)) {
+      setCurrentPage(path);
     }
 
-    const handlePopState = (event) => {
-      event.preventDefault();
-      const h = window.location.hash.replace('#', '');
-      setCurrentPage(articlePages.includes(h) ? h : 'home');
+    const handlePopState = () => {
+      const p = window.location.pathname.replace('/', '');
+      setCurrentPage(articlePages.includes(p) ? p : 'home');
       window.scrollTo(0, 0);
     };
 
     // Push initial state
-    window.history.pushState({ page: currentPage }, '', '');
+    window.history.pushState({ page: currentPage }, '', window.location.pathname);
 
     window.addEventListener('popstate', handlePopState);
 
@@ -114,13 +113,12 @@ const KalpavrikshCapital = () => {
 
 
   // Scroll to top when changing pages
-  const articlePages = ['asset-allocation', 'salary-article'];
   const changePage = (page) => {
     setCurrentPage(page);
     setNavOpen(false);
     window.scrollTo(0, 0);
-    // Article pages get a shareable hash URL; all other pages clear the hash
-    const url = articlePages.includes(page) ? '#' + page : window.location.pathname;
+    // Asset allocation gets a clean path URL; all other pages go to root
+    const url = page === 'asset-allocation' ? '/asset-allocation' : '/';
     window.history.pushState({ page: page }, '', url);
   };
 
@@ -403,7 +401,7 @@ const KalpavrikshCapital = () => {
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#FAF7F2' }}>
       {/* Navigation - DARK GREEN BACKGROUND */}
-      {currentPage !== 'asset-allocation' && currentPage !== 'salary-article' && <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+      {currentPage !== 'asset-allocation' && <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         isScrolled ? 'shadow-lg' : 'shadow-md'
       } backdrop-blur-lg`}  style={{ paddingTop: 'env(safe-area-inset-top)', backgroundColor: '#1E5631'}}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
@@ -530,7 +528,7 @@ const KalpavrikshCapital = () => {
       </div>
 
       {/* Main Content */}
-      <div className={(currentPage === 'asset-allocation' || currentPage === 'salary-article') ? '' : 'pt-24 sm:pt-28 md:pt-32'}>
+      <div className={currentPage === 'asset-allocation' ? '' : 'pt-24 sm:pt-28 md:pt-32'}>
         {/* Home Page */}
         {currentPage === 'home' && (
           <div className="space-y-16">

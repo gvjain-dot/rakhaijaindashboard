@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/((?!asset-allocation-article_1\\.html|salary-replace-article\\.html|static|favicon|logo|manifest|robots).*)", "destination": "/index.html" }
+  ]
+}
