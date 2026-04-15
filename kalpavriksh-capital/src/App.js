@@ -1241,39 +1241,39 @@ const KalpavrikshCapital = () => {
               </div>
 
               <div className="grid sm:grid-cols-2 gap-6">
-                {/* Article 1: Salary Replacement */}
+                {/* Article 1: Salary Replacement — teal/green */}
                 <a
                   href="https://www.linkedin.com/pulse/what-replace-your-salary-5-years-rakhi-jain-uyicf/?trackingId=6NCoDOVDSjuOPUtfC%2BawfQ%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
                 >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1B2A4A 0%, #2a3f6b 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C09B3A', transform: 'translate(30%, -30%)' }}></div>
+                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
+                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
                     <div className="relative z-10">
                       <div className="text-4xl mb-3">💼</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C09B3A', color: '#1B2A4A' }}>Retirement Planning</span>
+                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Retirement Planning</span>
                       <h3 className="text-base sm:text-lg font-bold text-white leading-snug">What Will Replace Your Salary in 5 Years?</h3>
                       <p className="text-white/60 text-xs mt-2">Rakhi Jain · Feb 23, 2026</p>
                     </div>
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <p className="text-sm text-gray-600 leading-relaxed flex-1">Retirement isn't about stopping work — it's about decoupling your lifestyle from your time. Build passive income before you need it.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#C09B3A' }}>Read on LinkedIn →</p>
+                    <p className="text-xs font-semibold mt-4" style={{ color: '#1E5631' }}>Read on LinkedIn →</p>
                   </div>
                 </a>
 
-                {/* Article 2: Asset Allocation */}
+                {/* Article 2: Asset Allocation — navy/gold */}
                 <button
                   onClick={() => changePage('asset-allocation')}
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col text-left animate-fade-in-up"
                   style={{ animationDelay: '0.1s' }}
                 >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1B2A4A 0%, #2a3f6b 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C09B3A', transform: 'translate(30%, -30%)' }}></div>
+                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
+                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
                     <div className="relative z-10">
                       <div className="text-4xl mb-3">📊</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C09B3A', color: '#1B2A4A' }}>Asset Allocation</span>
+                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Asset Allocation</span>
                       <h3 className="text-base sm:text-lg font-bold text-white leading-snug">Don't Put All Your Eggs in One Basket</h3>
                       <p className="text-white/60 text-xs mt-2">Rakhi Jain · Weekly Insight</p>
                     </div>
@@ -1284,7 +1284,7 @@ const KalpavrikshCapital = () => {
                   </div>
                 </button>
 
-                {/* Article 3: When the World Is on Fire */}
+                {/* Article 3: When the World Is on Fire — deep red */}
                 <a
                   href="https://www.linkedin.com/pulse/when-world-fire-how-keep-your-investments-from-burning-rakhi-jain-ausgf?utm_source=share&utm_medium=member_android&utm_campaign=share_via"
                   target="_blank"
@@ -1292,22 +1292,22 @@ const KalpavrikshCapital = () => {
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
                   style={{ animationDelay: '0.2s' }}
                 >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1B2A4A 0%, #2a3f6b 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C09B3A', transform: 'translate(30%, -30%)' }}></div>
+                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
+                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
                     <div className="relative z-10">
                       <div className="text-4xl mb-3">🌍</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C09B3A', color: '#1B2A4A' }}>Behavioural Finance</span>
+                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Behavioural Finance</span>
                       <h3 className="text-base sm:text-lg font-bold text-white leading-snug">When the World Is on Fire: How to Keep Your Investments from Burning</h3>
                       <p className="text-white/60 text-xs mt-2">Rakhi Jain · LinkedIn Pulse</p>
                     </div>
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <p className="text-sm text-gray-600 leading-relaxed flex-1">Navigating geopolitical crises as an investor — without letting fear or greed make the decisions for you.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#C09B3A' }}>Read on LinkedIn →</p>
+                    <p className="text-xs font-semibold mt-4" style={{ color: '#7B2D2D' }}>Read on LinkedIn →</p>
                   </div>
                 </a>
 
-                {/* Article 4: The Smart Person's Blind Spot */}
+                {/* Article 4: The Smart Person's Blind Spot — deep purple */}
                 <a
                   href="https://www.linkedin.com/posts/rakhi-jain-7658328_the-smart-persons-blind-spot-activity-7447508527922937858-J7CC?utm_source=share&utm_medium=member_android&rcm=ACoAAAGL5L0BfkH6vXR1Iycc5cDAVgdrfN4jrtE"
                   target="_blank"
@@ -1315,18 +1315,18 @@ const KalpavrikshCapital = () => {
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
                   style={{ animationDelay: '0.3s' }}
                 >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1B2A4A 0%, #2a3f6b 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C09B3A', transform: 'translate(30%, -30%)' }}></div>
+                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
+                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
                     <div className="relative z-10">
                       <div className="text-4xl mb-3">🧠</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C09B3A', color: '#1B2A4A' }}>Financial Planning</span>
+                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Financial Planning</span>
                       <h3 className="text-base sm:text-lg font-bold text-white leading-snug">The Smart Person's Blind Spot</h3>
                       <p className="text-white/60 text-xs mt-2">Rakhi Jain · LinkedIn</p>
                     </div>
                   </div>
                   <div className="p-5 flex flex-col flex-1">
                     <p className="text-sm text-gray-600 leading-relaxed flex-1">Why brilliant, disciplined professionals who manage enormous complexity at work quietly let their own financial planning drift.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#C09B3A' }}>Read on LinkedIn →</p>
+                    <p className="text-xs font-semibold mt-4" style={{ color: '#3D2B6B' }}>Read on LinkedIn →</p>
                   </div>
                 </a>
               </div>
