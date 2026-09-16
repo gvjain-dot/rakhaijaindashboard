@@ -63,7 +63,7 @@ const KalpavrikshCapital = () => {
   }, [currentPage, pageOrder]);
 
   // Auto-play testimonials carousel on home page
-  const testimonialsLength = 4; // Must match testimonials array length
+  const testimonialsLength = 5; // Must match testimonials array length
   useEffect(() => {
     if (currentPage === 'home' && !isAutoScrollPaused) {
       const interval = setInterval(() => {
@@ -167,6 +167,16 @@ const KalpavrikshCapital = () => {
         "I've known Rakhi since our 10+2 days, and one thing that has always stood out is how grounded, pragmatic, and practical she is. These same qualities now shine through in her work as a financial advisor.",
         "Reconnecting with her for financial advice has been a real blessing. She has a clear understanding of different life stages and the kind of financial support needed both for the present and the future, in alignment with family goals.",
         "What I value most is her transparent approach and her ability to balance portfolios with both caution and opportunity. With Rakhi, you know your financial planning is in steady, trustworthy hands."
+      ]
+    },
+    {
+      name: "Prakash K",
+      role: "Senior Director, Flipkart",
+      rating: 5,
+      image: "/testimonials/prakash.jpg",
+      content: [
+        "Working with Rakhi on my financial planning and investments has brought clarity and structure which was my immediate need. In a short time, she brought the much needed change with directness and balanced outlook tying in the actions for my larger long term financial goals. Now I finally have a portfolio that's actually working for me.",
+        "Most important for me has been her honesty and mentoring as a financial advisor instilling confidence throughout. Would strongly recommend her as a long term wealth advisor and partner for all financial and investment related decisions."
       ]
     },
     {
