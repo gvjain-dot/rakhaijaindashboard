@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Concept A · The Drawer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+Devanagari:wght@500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="film.css">
+<style>
+.film-a{grid-template-rows:minmax(0,1fr) auto auto;gap:28px;padding:72px clamp(16px,5vw,64px) 76px}
+.field{position:relative;min-height:50svh}
+.film-a .soil{position:relative}
+
+/* tiles start scattered; --x/--y place them, the matching negative translate keeps them on-screen */
+.tile{position:absolute;left:var(--x);top:var(--y);transform:translate(calc(var(--x) * -1),calc(var(--y) * -1));display:flex;align-items:baseline;gap:10px;white-space:nowrap;padding:8px 12px;font-size:14px;color:var(--ivory);border:1px solid rgba(244,238,223,.22);border-radius:2px;background:rgba(255,255,255,.025);opacity:0;
+  transition:opacity .6s ease,left .95s var(--ease),top .95s var(--ease),transform .95s var(--ease),border-color .6s,background .6s,width .95s var(--ease);transition-delay:0ms,var(--ld,0ms),var(--ld,0ms),var(--ld,0ms),0ms,0ms,var(--ld,0ms)}
+.tile.in{opacity:1}
+.tile.old{opacity:.38}
+.tile em{font-style:normal;font-size:12px;letter-spacing:.04em;max-width:0;overflow:hidden;opacity:0;transition:max-width .7s var(--ease),opacity .5s}
+.tile em.act{display:none}
+.tile.flagged{border-color:var(--ox);opacity:1}
+.tile.flagged em.warn{max-width:20em;opacity:1;color:#E7B4BC}
+
+/* the turn: same tiles, one page */
+.field.ledger .tile{--ld:calc(var(--i) * 45ms);left:50%;top:calc(2% + var(--i) * 7.6%);transform:translate(-50%,0);width:min(440px,100%);opacity:1;justify-content:space-between;border-color:transparent;border-bottom-color:var(--line);background:none;padding:6px 2px}
+.field.ledger .tile em.warn{display:none}
+.field.ledger .tile em.act{display:inline;max-width:20em;opacity:1;color:var(--gold)}
+
+.resolve{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;pointer-events:none}
+.resolve .mark{width:min(200px,40vw);aspect-ratio:200/240}
+.resolve .wm{align-items:center;text-align:center}
+.field.resolved .tile{opacity:0;transition-delay:0ms}
+.capwrap{max-width:24ch}
+@media (max-width:640px){.tile{font-size:12.5px;padding:6px 9px}.field.ledger .tile{top:calc(1% + var(--i) * 8%)}}
+</style>
+</head>
+<body>
+<div class="gb-bar"><span><b>Grey-box · Concept A, The drawer</b> · placeholder copy, no footage</span>
+  <nav><a href="concept-b.html">Concept B →</a><a href="?speed=0.5">½ speed</a><a href="?final">End frame</a><a href="index.html">All</a></nav></div>
+
+<section class="lander film-a" aria-label="Introduction">
+  <div class="field">
+    <div class="tile" style="--x:6%;--y:4%;--i:0" data-flag><span>Fixed deposit · SBI</span><em class="warn">matured 2022, sitting idle</em><em class="act">Renew or move · Q1</em></div>
+    <div class="tile" style="--x:58%;--y:2%;--i:1"><span>Demat · Zerodha</span><em class="act">Reviewed</em></div>
+    <div class="tile" style="--x:94%;--y:14%;--i:2" data-old><span>Flat · Pune</span><em class="act">Sale plan · 2027</em></div>
+    <div class="tile" style="--x:30%;--y:26%;--i:3" data-old><span>Demat · ICICI Direct</span><em class="act">Merge into one</em></div>
+    <div class="tile" style="--x:78%;--y:38%;--i:4"><span>PPF · opened 2011</span><em class="act">Extend at maturity</em></div>
+    <div class="tile" style="--x:2%;--y:48%;--i:5" data-flag data-old><span>LIC · 2009</span><em class="warn">nominee never updated</em><em class="act">Update nominee · this month</em></div>
+    <div class="tile" style="--x:46%;--y:56%;--i:6"><span>LIC · 2014</span><em class="act">Reviewed</em></div>
+    <div class="tile" style="--x:96%;--y:66%;--i:7" data-old><span>NRO account</span><em class="act">Repatriation limit noted</em></div>
+    <div class="tile" style="--x:18%;--y:80%;--i:8"><span>NRE account</span><em class="act">Reviewed</em></div>
+    <div class="tile" style="--x:62%;--y:90%;--i:9" data-old><span>Gold · bank locker</span><em class="act">Listed in will</em></div>
+    <div class="tile" style="--x:4%;--y:100%;--i:10"><span>Health cover · employer</span><em class="act">Add family floater</em></div>
+    <div class="tile" style="--x:88%;--y:100%;--i:11"><span>Mutual funds · 3 AMCs</span><em class="act">Consolidated</em></div>
+    <div class="resolve"><div class="mark" data-mark></div>
+      <div class="wm"><span class="name">KalpaVriksh Capital</span><span class="deva">कल्पवृक्ष</span><span class="who">Rakhi Jain, CA</span></div></div>
+  </div>
+  <div class="soil"></div>
+  <div class="capwrap"><div class="cap">
+    <span><b>Most families’ money lives in a dozen places.</b></span>
+    <span><b>Each was a good decision, once.</b></span>
+    <span><b>Nobody looks at them together, until a move, a loss, or a tax notice.</b></span>
+    <span><b>Same family. One page, reviewed with you every quarter.</b></span>
+  </div></div>
+  <div class="ctrl"><button type="button" data-replay>Replay</button><button type="button" data-skip>Skip</button></div>
+  <div class="hold"><i></i></div>
+</section>
+
+<section class="hero" id="hero">
+  <p class="kicker">Placeholder · the site continues here</p>
+  <h1>Twenty years in corporate finance, now working for one family at a time.</h1>
+  <p class="sub">Rakhi Jain, Chartered Accountant. Mutual fund distribution and financial guidance for families in India and the UAE. AMFI ARN [ARN].</p>
+  <a class="btn" href="#">Book a 20-minute call</a>
+  <div class="review"><h2>What to judge</h2><ul>
+    <li>Watch it once, then try to say what this firm does and for whom.</li>
+    <li>Is each caption on screen long enough to read? Try it at ½ speed too.</li>
+    <li>Does the ledger moment (the turn) feel earned, or just busy?</li>
+    <li>Ignore the colours and fonts for now. This is about story and rhythm.</li>
+  </ul></div>
+</section>
+
+<script src="film.js"></script>
+<script>
+Film({
+  end: 13600, handoff: 15500,
+  script: function (at, api) {
+    var field = api.$('.field');
+    at(0, function () { api.$('.soil').classList.add('on'); });
+    api.$$('.tile').forEach(function (t, i) { at(500 + i * 130, function () { t.classList.add('in'); }); });
+    at(600, function () { api.cap(0); });
+    at(3600, function () { api.cap(1); api.$$('.tile[data-old]').forEach(function (t) { t.classList.add('old'); }); });
+    at(6600, function () { api.cap(2); });
+    api.$$('.tile[data-flag]').forEach(function (t, k) { at(7000 + k * 600, function () { t.classList.add('flagged'); }); });
+    at(9600, function () { api.cap(3); api.$$('.tile').forEach(function (t) { t.classList.remove('old'); }); field.classList.add('ledger'); });
+    at(11800, function () { field.classList.add('resolved'); api.$('.mark').classList.add('on'); });
+    at(12700, function () { api.$('.wm').classList.add('on'); });
+  },
+  final: function (api) {
+    api.$('.soil').classList.add('on');
+    api.$$('.tile').forEach(function (t) { t.classList.add('in'); });
+    api.$('.field').classList.add('ledger', 'resolved');
+    api.$('.mark').classList.add('on');
+    api.$('.wm').classList.add('on');
+    api.cap(3);
+  }
+});
+</script>
+</body>
+</html>
