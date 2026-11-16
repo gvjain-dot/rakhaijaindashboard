@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+// Pages that can be opened directly with /?page=<key> (used by links from the blog pages).
+const DEEP_LINK_PAGES = ['home', 'services', 'workshops', 'testimonials', 'book-summaries', 'contact', 'disclosures'];
+
+const getInitialPage = () => {
+  const requested = new URLSearchParams(window.location.search).get('page');
+  return DEEP_LINK_PAGES.includes(requested) ? requested : 'home';
+};
 
 const KalpavrikshCapital = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(getInitialPage);
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
@@ -13,7 +23,7 @@ const KalpavrikshCapital = () => {
 
 
   // Page order for infinite scrolling
-  const pageOrder = React.useMemo(() => ['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact', 'disclosures'], []);
+  const pageOrder = React.useMemo(() => ['home', 'services', 'workshops', 'testimonials', 'book-summaries', 'contact', 'disclosures'], []);
 
   // Reset transition flag when page changes
   useEffect(() => {
@@ -101,7 +111,10 @@ const KalpavrikshCapital = () => {
     };
 
     // Push initial state
-    window.history.pushState({ page: currentPage }, '', window.location.pathname);
+    if (window.location.search) {
+      window.history.replaceState(window.history.state, '', window.location.pathname);
+    }
+    window.history.pushState({ ...(window.history.state || {}), page: currentPage }, '', window.location.pathname);
 
     window.addEventListener('popstate', handlePopState);
 
@@ -114,12 +127,18 @@ const KalpavrikshCapital = () => {
 
   // Scroll to top when changing pages
   const changePage = (page) => {
+    // The blog lives on its own routes (/blogs, /blogs/:slug)
+    if (page === 'blogs') {
+      setNavOpen(false);
+      navigate('/blogs');
+      return;
+    }
     setCurrentPage(page);
     setNavOpen(false);
     window.scrollTo(0, 0);
     // Asset allocation gets a clean path URL; all other pages go to root
     const url = page === 'asset-allocation' ? '/asset-allocation' : '/';
-    window.history.pushState({ page: page }, '', url);
+    window.history.pushState({ ...(window.history.state || {}), page }, '', url);
   };
 
   // Handle testimonial navigation with pause/restart
@@ -418,15 +437,20 @@ const KalpavrikshCapital = () => {
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 sm:gap-3">
               <img
-                src="/logo.png"
-                alt="Kalpvriksh Global Logo"
-                className="h-12 sm:h-14 md:h-16 lg:h-20 w-12 sm:w-14 md:w-16 lg:w-20 transition-transform duration-300 hover:scale-110 rounded-full"
-                style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '2px solid #C4A747' }}
-                loading="lazy"
+                src="/icon.svg"
+                alt="Kalpvriksh Global"
+                className="sm:hidden h-10 w-auto rounded-md px-1.5 py-1"
+                style={{ backgroundColor: '#F5EDE4' }}
                 decoding="async"
-                onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
-              <span className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold whitespace-nowrap" style={{ color: '#F5EDE4' }}>Kalpvriksh Global</span>
+              <span className="sm:hidden text-sm font-bold whitespace-nowrap" style={{ color: '#F5EDE4' }}>Kalpvriksh Global</span>
+              <img
+                src="/logo-full.svg"
+                alt="Kalpvriksh Global"
+                className="hidden sm:block h-12 md:h-14 lg:h-16 w-auto rounded-lg px-3 py-1 transition-transform duration-300 hover:scale-105"
+                style={{ backgroundColor: '#F5EDE4', border: '2px solid #C4A747' }}
+                decoding="async"
+              />
             </div>
 
             {/* Desktop Menu */}
@@ -1229,8 +1253,8 @@ const KalpavrikshCapital = () => {
           </div>
         )}
 
-        {/* Blogs Page */}
-        {currentPage === 'blogs' && (
+        {/* Book Summaries Page (articles now live at /blogs) */}
+        {currentPage === 'book-summaries' && (
           <div className="space-y-12 sm:space-y-16 px-3 sm:px-4 py-6 sm:py-8">
             <section className="text-center max-w-4xl mx-auto animate-fade-in-up">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2" style={{ color: '#1E5631' }}>
@@ -1242,106 +1266,6 @@ const KalpavrikshCapital = () => {
               </p>
             </section>
             
-            {/* My Articles Section */}
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-6">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2" style={{ color: '#1E5631' }}>My Articles</h2>
-                <div className="w-16 h-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747' }}></div>
-                <p className="text-sm text-gray-500">Weekly insights on personal finance, investing, and wealth building</p>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-6">
-                {/* Article 1: Salary Replacement — teal/green */}
-                <a
-                  href="https://www.linkedin.com/pulse/what-replace-your-salary-5-years-rakhi-jain-uyicf/?trackingId=6NCoDOVDSjuOPUtfC%2BawfQ%3D%3D"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
-                >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
-                    <div className="relative z-10">
-                      <div className="text-4xl mb-3">💼</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Retirement Planning</span>
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">What Will Replace Your Salary in 5 Years?</h3>
-                      <p className="text-white/60 text-xs mt-2">Rakhi Jain · Feb 23, 2026</p>
-                    </div>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-sm text-gray-600 leading-relaxed flex-1">Retirement isn't about stopping work — it's about decoupling your lifestyle from your time. Build passive income before you need it.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#1E5631' }}>Read on LinkedIn →</p>
-                  </div>
-                </a>
-
-                {/* Article 2: Asset Allocation — navy/gold */}
-                <button
-                  onClick={() => changePage('asset-allocation')}
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col text-left animate-fade-in-up"
-                  style={{ animationDelay: '0.1s' }}
-                >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
-                    <div className="relative z-10">
-                      <div className="text-4xl mb-3">📊</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Asset Allocation</span>
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">Don't Put All Your Eggs in One Basket</h3>
-                      <p className="text-white/60 text-xs mt-2">Rakhi Jain · Weekly Insight</p>
-                    </div>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-sm text-gray-600 leading-relaxed flex-1">Why asset allocation — not stock-picking — is the single most powerful decision you'll make as an investor.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#C09B3A' }}>Read Article →</p>
-                  </div>
-                </button>
-
-                {/* Article 3: When the World Is on Fire — deep red */}
-                <a
-                  href="https://www.linkedin.com/pulse/when-world-fire-how-keep-your-investments-from-burning-rakhi-jain-ausgf?utm_source=share&utm_medium=member_android&utm_campaign=share_via"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
-                  style={{ animationDelay: '0.2s' }}
-                >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
-                    <div className="relative z-10">
-                      <div className="text-4xl mb-3">🌍</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Behavioural Finance</span>
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">When the World Is on Fire: How to Keep Your Investments from Burning</h3>
-                      <p className="text-white/60 text-xs mt-2">Rakhi Jain · LinkedIn Pulse</p>
-                    </div>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-sm text-gray-600 leading-relaxed flex-1">Navigating geopolitical crises as an investor — without letting fear or greed make the decisions for you.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#7B2D2D' }}>Read on LinkedIn →</p>
-                  </div>
-                </a>
-
-                {/* Article 4: The Smart Person's Blind Spot — deep purple */}
-                <a
-                  href="https://www.linkedin.com/posts/rakhi-jain-7658328_the-smart-persons-blind-spot-activity-7447508527922937858-J7CC?utm_source=share&utm_medium=member_android&rcm=ACoAAAGL5L0BfkH6vXR1Iycc5cDAVgdrfN4jrtE"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
-                  style={{ animationDelay: '0.3s' }}
-                >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
-                    <div className="relative z-10">
-                      <div className="text-4xl mb-3">🧠</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Financial Planning</span>
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">The Smart Person's Blind Spot</h3>
-                      <p className="text-white/60 text-xs mt-2">Rakhi Jain · LinkedIn</p>
-                    </div>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-sm text-gray-600 leading-relaxed flex-1">Why brilliant, disciplined professionals who manage enormous complexity at work quietly let their own financial planning drift.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#3D2B6B' }}>Read on LinkedIn →</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-
             {/* Book Summaries */}
             <div className="max-w-4xl mx-auto">
               <div className="mb-6 border-t pt-8" style={{ borderColor: '#E5E7EB' }}>
@@ -1848,13 +1772,12 @@ const KalpavrikshCapital = () => {
             <div className="animate-fade-in-up text-center sm:text-left">
               <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4 justify-center sm:justify-start">
                 <img
-                  src="/logo.png"
-                  alt="Kalpvriksh Global Logo"
-                  className="h-14 sm:h-16 md:h-20 lg:h-24 w-14 sm:w-16 md:w-20 lg:w-24 transition-transform duration-300 hover:scale-110 rounded-full"
-                  style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '2px solid #C4A747' }}
+                  src="/logo-full.svg"
+                  alt="Kalpvriksh Global"
+                  className="h-16 sm:h-20 md:h-24 w-auto rounded-lg px-3 py-1 transition-transform duration-300 hover:scale-105"
+                  style={{ backgroundColor: '#F5EDE4', border: '2px solid #C4A747' }}
                   loading="lazy"
                   decoding="async"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
                 />
                 <span className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#F5EDE4' }}>Kalpvriksh Global</span>
               </div>

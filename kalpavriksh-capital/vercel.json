@@ -1,5 +1,23 @@
 {
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/api/admin/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+    }
+  ],
   "rewrites": [
-    { "source": "/((?!asset-allocation-article_1\\.html|salary-replace-article\\.html|static|favicon|logo|manifest|robots).*)", "destination": "/index.html" }
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
+    { "source": "/rss.xml", "destination": "/api/rss" },
+    { "source": "/blogs/:slug", "destination": "/api/post-page?slug=:slug" },
+    { "source": "/((?!api/|asset-allocation-article_1\\.html|salary-replace-article\\.html|static|favicon|logo|icon|apple-touch-icon|manifest|robots).*)", "destination": "/index.html" }
   ]
 }
