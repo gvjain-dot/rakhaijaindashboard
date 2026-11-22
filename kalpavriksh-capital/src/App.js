@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const KalpavrikshCapital = () => {
-  const [currentPage, setCurrentPage] = useState('home');
+  const [currentPage, setCurrentPage] = useState(() => (window.location.pathname === '/asset-allocation' ? 'asset-allocation' : 'home'));
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [navOpen, setNavOpen] = useState(false);
@@ -18,6 +18,23 @@ const KalpavrikshCapital = () => {
   // Reset transition flag when page changes
   useEffect(() => {
     isTransitioning.current = false;
+  }, [currentPage]);
+
+  // Send a Google Analytics page view for each section (the initial load is tracked by the gtag config)
+  const lastTrackedPage = React.useRef(currentPage);
+  const lastTrackedPath = React.useRef(null);
+  useEffect(() => {
+    if (lastTrackedPath.current === null) lastTrackedPath.current = window.location.pathname;
+    if (currentPage === lastTrackedPage.current) return;
+    lastTrackedPage.current = currentPage;
+    // When the URL itself changes (to/from /asset-allocation), GA4's history-change tracking already sends the page view
+    const urlChanged = window.location.pathname !== lastTrackedPath.current;
+    lastTrackedPath.current = window.location.pathname;
+    if (urlChanged || typeof window.gtag !== 'function') return;
+    window.gtag('event', 'page_view', {
+      page_title: currentPage.charAt(0).toUpperCase() + currentPage.slice(1).replace(/-/g, ' '),
+      page_location: window.location.origin + (currentPage === 'home' ? '/' : '/' + currentPage),
+    });
   }, [currentPage]);
 
   // Handle scroll effect for navbar and infinite scroll
@@ -705,7 +722,7 @@ const KalpavrikshCapital = () => {
               <div className="bg-white rounded-xl p-6 sm:p-8 shadow-sm">
                 <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
                   <img
-                    src="/profile-rakhi.png"
+                    src="/profile-rakhi.jpg"
                     alt="Rakhi Jain"
                     className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 flex-shrink-0"
                     style={{ borderColor: '#1E5631' }}

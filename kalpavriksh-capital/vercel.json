@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/((?!asset-allocation-article_1\\.html|salary-replace-article\\.html|static|favicon|logo|manifest|robots).*)", "destination": "/index.html" }
+    { "source": "/((?!asset-allocation-article_1\\.html|salary-replace-article\\.html|static|favicon|logo|manifest|robots|profile-rakhi|apple-touch-icon|og-image).*)", "destination": "/index.html" }
   ]
 }
