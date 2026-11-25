@@ -1,0 +1,100 @@
+/* ======================================================================
+   KALPVRIKSH JOURNAL — base: tokens, resets, type, buttons.
+   Fonts and colors match the main site. Every class is .kj- prefixed; the
+   element-level resets are scoped under .kj-root so the main site is
+   never affected.
+   ====================================================================== */
+
+/* ---------- Tokens (scoped to the blog; never :root) ---------- */
+.kj-root {
+  --kj-forest: #1E5631;        /* brand green: headings, buttons, dark panels */
+  --kj-green: #163822;         /* darker green: hover, focus ring */
+  --kj-gold: #C4A747;          /* brand gold: large marks and rules */
+  --kj-gold-ink: #7A5F0E;      /* small gold text (AA on cream) */
+  --kj-ivory: #FAF7F2;         /* page background */
+  --kj-paper: #FFFFFF;
+  --kj-stone: #F0EBE5;
+  --kj-rule: #E5E7EB;
+  --kj-antique: #C4A747;
+  --kj-charcoal: #374151;
+  --kj-muted: #4B5563;         /* secondary text (AA on cream) */
+  --kj-champagne: #C4A747;     /* gold on dark green */
+  --kj-cream: #F5EDE4;         /* text on dark green */
+
+  /* Same system font stack as the main site (see body in index.css) */
+  --kj-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --kj-serif: var(--kj-sans);
+
+  --kj-display: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+  --kj-h1: clamp(1.875rem, 1.4rem + 2vw, 3rem);
+  --kj-h2: clamp(1.5rem, 1.25rem + 1.1vw, 2.25rem);
+  --kj-h3: clamp(1.25rem, 1.15rem + .5vw, 1.5rem);
+  --kj-body: 1rem;
+  --kj-read: 1.0625rem;
+  --kj-small: .875rem;
+  --kj-label: .75rem;
+
+  --kj-wide: 1240px;
+  --kj-read-w: 740px;
+  --kj-gutter: clamp(1.25rem, 4vw, 3rem);
+  --kj-header-h: 64px;         /* height of the fixed site header */
+  --kj-ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+/* The main site hides horizontal overflow on html/body/#root, which turns each into a scroll container and breaks
+   position: sticky (header, reading rail). On blog pages `clip` hides overflow without creating one. */
+html:has(.kj-root), body:has(.kj-root), #root:has(.kj-root) { overflow-x: clip; }
+
+/* ---------- Scoped base ---------- */
+.kj-root { background: var(--kj-ivory); color: var(--kj-charcoal); font: 400 var(--kj-body)/1.65 var(--kj-sans);
+           -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip; }
+/* The site header is fixed, so the content starts below it. Heights follow the header's logo breakpoints. */
+.kj-page { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; background: #FAF7F2; }
+.kj-page > .kj-root { flex: 1; padding-top: calc(var(--kj-header-h) + env(safe-area-inset-top)); }
+@media (min-width: 640px) { .kj-root { --kj-header-h: 80px; } }
+@media (min-width: 768px) { .kj-root { --kj-header-h: 88px; } }
+@media (min-width: 1024px) { .kj-root { --kj-header-h: 96px; } }
+/* Inside the admin preview: same tokens and prose styles, but not a full-page shell */
+.kj-root--embedded { background: var(--kj-ivory); }
+.kj-root *, .kj-root *::before, .kj-root *::after { box-sizing: border-box; }
+.kj-root [hidden] { display: none !important; }
+:where(.kj-root) img, :where(.kj-root) svg { max-width: 100%; display: block; }
+:where(.kj-root) a { color: inherit; }
+:where(.kj-root) button, :where(.kj-root) input, :where(.kj-root) select { font: inherit; color: inherit; }
+:where(.kj-root) h1, :where(.kj-root) h2, :where(.kj-root) h3, :where(.kj-root) h4 { font-family: var(--kj-serif); font-weight: 700; color: var(--kj-forest); margin: 0; line-height: 1.2; }
+:where(.kj-root) p { margin: 0; }
+:where(.kj-root) ul, :where(.kj-root) ol { margin: 0; }
+.kj-root :focus-visible { outline: 2px solid var(--kj-green); outline-offset: 3px; border-radius: 1px; }
+.kj-sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.kj-skip { position: absolute; left: 1rem; top: -60px; background: #163822; color: #fff; padding: .6rem 1rem; z-index: 100; text-decoration: none; }
+.kj-skip:focus { top: 1rem; }
+.kj-wrap { width: min(100% - 2 * var(--kj-gutter), var(--kj-wide)); margin-inline: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kj-root *, .kj-root *::before, .kj-root *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- Utility type ---------- */
+.kj-label { font: 600 var(--kj-label)/1.2 var(--kj-sans); letter-spacing: .18em; text-transform: uppercase; color: var(--kj-gold-ink); }
+.kj-label a { text-decoration: none; }
+.kj-label a:hover { color: var(--kj-green); }
+.kj-meta { font-size: var(--kj-small); color: var(--kj-muted); display: flex; flex-wrap: wrap; gap: .35rem .9rem; align-items: center; }
+.kj-meta span + span::before { content: ""; display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--kj-antique); margin-right: .9rem; vertical-align: middle; }
+
+/* Text link with understated motion */
+.kj-link { display: inline-flex; align-items: center; gap: .6rem; font: 500 .95rem/1 var(--kj-sans); color: var(--kj-forest);
+           text-decoration: none; padding: .35rem 0; border-bottom: 1px solid var(--kj-antique); transition: gap .3s var(--kj-ease), border-color .3s; }
+.kj-link svg { width: 16px; transition: transform .3s var(--kj-ease); }
+.kj-link:hover { border-color: var(--kj-forest); }
+.kj-link:hover svg { transform: translateX(4px); }
+
+/* Buttons */
+.kj-root .kj-btn { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-height: 48px; padding: 0 1.6rem;
+          font: 600 .95rem/1 var(--kj-sans); text-decoration: none; cursor: pointer;
+          border: 2px solid var(--kj-forest); background: var(--kj-forest); color: var(--kj-paper); border-radius: .5rem; transition: background .25s, color .25s; }
+.kj-root .kj-btn:hover { background: var(--kj-green); border-color: var(--kj-green); }
+.kj-root .kj-btn--ghost { background: transparent; color: var(--kj-forest); }
+.kj-root .kj-btn--ghost:hover { background: var(--kj-forest); color: var(--kj-paper); }
+.kj-root .kj-btn--light { background: var(--kj-paper); color: var(--kj-forest); border-color: var(--kj-paper); }
+.kj-root .kj-btn--light:hover { background: transparent; color: var(--kj-paper); }
+.kj-root .kj-btn:disabled { opacity: .6; cursor: not-allowed; }

@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { validatePost, escapeLike, parsePositiveInt, readingMinutes, SLUG_PATTERN } = require('./validate');
+const { validatePost, validateEmail, escapeLike, parsePositiveInt, readingMinutes, SLUG_PATTERN } = require('./validate');
 
 const validInput = () => ({
   title: 'Asset Allocation 101',
@@ -71,4 +71,76 @@ test('rejects plain http, credentials and encoded or backslash paths', () => {
   assert.ok(validatePost({ ...validInput(), external_url: '/%2f%2fevil.com' }).errors);
   assert.ok(validatePost({ ...validInput(), external_url: '/\\evil.com' }).errors);
   assert.ok(validatePost({ ...validInput(), feature_image: 'https://abc.public.blob.vercel-storage.com/blog/x.png' }).value);
+});
+
+// ---- SEO and blog-feature fields ------------------------------------------------------------
+
+test('accepts and normalises the SEO fields', () => {
+  const result = validatePost({
+    ...validInput(),
+    feature_image_alt: '  A growing tree  ',
+    social_image: 'https://example.com/share.png',
+    canonical_url: 'https://www.example.com/original',
+    noindex: true,
+    focus_keyword: ' asset allocation ',
+  });
+  assert.equal(result.value.feature_image_alt, 'A growing tree');
+  assert.equal(result.value.social_image, 'https://example.com/share.png');
+  assert.equal(result.value.canonical_url, 'https://www.example.com/original');
+  assert.equal(result.value.noindex, true);
+  assert.equal(result.value.focus_keyword, 'asset allocation');
+});
+
+test('SEO fields are optional and default to empty', () => {
+  const { value } = validatePost(validInput());
+  assert.equal(value.feature_image_alt, null);
+  assert.equal(value.social_image, null);
+  assert.equal(value.canonical_url, null);
+  assert.equal(value.noindex, false);
+  assert.equal(value.focus_keyword, null);
+  assert.deepEqual(value.tags, []);
+  assert.equal(value.published_at, null);
+});
+
+test('noindex is only true for a real boolean true', () => {
+  assert.equal(validatePost({ ...validInput(), noindex: 'true' }).value.noindex, false);
+  assert.equal(validatePost({ ...validInput(), noindex: 1 }).value.noindex, false);
+});
+
+test('rejects insecure social image and canonical urls', () => {
+  assert.ok(validatePost({ ...validInput(), social_image: 'http://example.com/a.png' }).errors);
+  assert.ok(validatePost({ ...validInput(), canonical_url: 'javascript:alert(1)' }).errors);
+  assert.ok(validatePost({ ...validInput(), canonical_url: '/relative/path' }).errors);
+});
+
+test('normalises tags: trims, lowercases, de-duplicates and drops blanks', () => {
+  const { value } = validatePost({ ...validInput(), tags: [' Retirement ', 'retirement', 'Tax   Planning', '', '  '] });
+  assert.deepEqual(value.tags, ['retirement', 'tax planning']);
+});
+
+test('rejects too many tags, over-long tags and non-array tags', () => {
+  const tooMany = Array.from({ length: 11 }, (_, index) => `tag${index}`);
+  assert.ok(validatePost({ ...validInput(), tags: tooMany }).errors);
+  assert.ok(validatePost({ ...validInput(), tags: ['x'.repeat(31)] }).errors);
+  assert.ok(validatePost({ ...validInput(), tags: 'a,b' }).errors);
+  assert.ok(validatePost({ ...validInput(), tags: [42] }).errors);
+});
+
+test('published_at accepts an ISO date and rejects nonsense', () => {
+  const iso = '2026-12-01T09:30:00.000Z';
+  assert.equal(validatePost({ ...validInput(), published_at: iso }).value.published_at, iso);
+  assert.equal(validatePost({ ...validInput(), published_at: '' }).value.published_at, null);
+  assert.ok(validatePost({ ...validInput(), published_at: 'not-a-date' }).errors);
+  assert.ok(validatePost({ ...validInput(), published_at: '1850-01-01T00:00:00Z' }).errors);
+  assert.ok(validatePost({ ...validInput(), published_at: 12345 }).errors);
+});
+
+test('validateEmail trims, lowercases and rejects malformed addresses', () => {
+  assert.equal(validateEmail('  Rakhi@Example.COM '), 'rakhi@example.com');
+  assert.equal(validateEmail('nope'), null);
+  assert.equal(validateEmail('a@b'), null);
+  assert.equal(validateEmail('has space@example.com'), null);
+  assert.equal(validateEmail(`${'a'.repeat(250)}@example.com`), null);
+  assert.equal(validateEmail(undefined), null);
+  assert.equal(validateEmail(42), null);
 });

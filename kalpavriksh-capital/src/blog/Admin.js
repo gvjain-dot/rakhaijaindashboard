@@ -1,8 +1,28 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PostEditor from './PostEditor';
-import { deletePost, getStoredToken, listAdminPosts, login, storeToken, UnauthorizedError } from './api';
-import { formatDate } from './format';
+import LoginForm from './admin/LoginForm';
+import DashboardPanel from './admin/DashboardPanel';
+import TaxonomyPanel from './admin/TaxonomyPanel';
+import useAdminShortcuts from './admin/useAdminShortcuts';
+import './styles/kj-base.css';
+import './styles/kj-admin.css';
+import { clearAllDrafts } from './admin/draftStorage';
+import PostList from './admin/PostList';
+import SubscribersPanel from './admin/SubscribersPanel';
+import ConfirmDialog from './admin/ConfirmDialog';
+import Toasts from './admin/Toasts';
+import useToasts from './admin/useToasts';
+import useTaxonomyNames, { mergeNames } from './admin/useTaxonomyNames';
+import { bulkPosts, deletePost, duplicatePost, getStoredToken, listAdminPosts, storeToken, UnauthorizedError } from './api';
+
+const plural = (count, word) => `${count} ${word}${count === 1 ? '' : 's'}`;
+const BULK_MESSAGES = {
+  publish: (count) => `Published ${plural(count, 'article')}`,
+  unpublish: (count) => `Unpublished ${plural(count, 'article')}`,
+  delete: (count) => `Deleted ${plural(count, 'article')}`,
+  feature: () => 'Featured article updated',
+};
 
 function useNoIndex() {
   useEffect(() => {
@@ -19,83 +39,86 @@ function useNoIndex() {
   }, []);
 }
 
-function LoginForm({ onLoggedIn }) {
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [busy, setBusy] = useState(false);
-
-  const submit = async (event) => {
-    event.preventDefault();
-    setBusy(true);
-    setError('');
-    try {
-      const { token } = await login(password);
-      onLoggedIn(token);
-    } catch (caught) {
-      setError(caught.message);
-    } finally {
-      setBusy(false);
-    }
-  };
-
+function AdminHeader({ onLogout }) {
   return (
-    <form onSubmit={submit} className="mx-auto mt-16 w-full max-w-sm space-y-4 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-black/5">
-      <img src="/logo-full.svg" alt="Kalpvriksh Global" className="mx-auto h-16 w-auto" />
-      <h1 className="text-center text-xl font-bold text-[#1E5631]">Blog admin</h1>
-      {error && <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}</p>}
-      <label className="block">
-        <span className="mb-1 block text-sm font-semibold text-gray-700">Password</span>
-        <input
-          type="password"
-          autoComplete="current-password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base outline-none focus:border-[#1E5631] focus:ring-2 focus:ring-[#1E5631]/20"
-          required
-        />
-      </label>
-      <button type="submit" disabled={busy} className="w-full rounded-lg bg-[#1E5631] py-3 font-semibold text-white disabled:opacity-50">
-        {busy ? 'Signing in…' : 'Sign in'}
-      </button>
-    </form>
+    <header className="kj-admin__header">
+      <div className="kj-admin__header-in">
+        <Link to="/blogs" className="kj-admin__brand" aria-label="Kalpvriksh Global blog">
+          <img src="/kj/logo-full-color-trim.svg" alt="" height="38" />
+          <span className="kj-admin__brand-label">Journal admin</span>
+        </Link>
+        <nav aria-label="Admin" className="kj-admin__links">
+          <a href="/blogs" target="_blank" rel="noopener noreferrer" className="kj-admin__link kj-admin__link--outline">
+            View site ↗
+          </a>
+          <button type="button" onClick={onLogout} className="kj-admin__link">Sign out</button>
+        </nav>
+      </div>
+    </header>
   );
 }
 
-function PostRow({ post, onEdit, onDelete }) {
+const SECTIONS = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'articles', label: 'Articles' },
+  { id: 'taxonomy', label: 'Categories & tags' },
+  { id: 'subscribers', label: 'Subscribers' },
+];
+
+function SectionTabs({ section, onChange }) {
   return (
-    <li className="flex flex-col gap-3 rounded-xl bg-white p-4 ring-1 ring-black/5 sm:flex-row sm:items-center sm:justify-between">
-      <div className="min-w-0">
-        <p className="truncate font-semibold text-[#1E5631]">{post.title}</p>
-        <p className="mt-1 text-xs text-gray-500">
-          <span className={`mr-2 rounded-full px-2 py-0.5 font-semibold ${post.published ? 'bg-green-100 text-green-800' : 'bg-amber-100 text-amber-800'}`}>
-            {post.published ? 'Published' : 'Draft'}
-          </span>
-          {post.category && `${post.category} · `}
-          {formatDate(post.published_at || post.created_at)}
-        </p>
-      </div>
-      <div className="flex shrink-0 gap-2">
-        {post.published && !post.external_url && (
-          <Link to={`/blogs/${post.slug}`} className="rounded-lg px-3 py-2 text-sm font-semibold text-[#1E5631] ring-1 ring-[#1E5631]/30">View</Link>
-        )}
-        <button type="button" onClick={() => onEdit(post)} aria-label={`Edit ${post.title}`} className="rounded-lg bg-[#1E5631] px-3 py-2 text-sm font-semibold text-white">Edit</button>
-        <button type="button" onClick={() => onDelete(post)} aria-label={`Delete ${post.title}`} className="rounded-lg px-3 py-2 text-sm font-semibold text-red-700 ring-1 ring-red-200">Delete</button>
-      </div>
-    </li>
+    <nav aria-label="Admin sections" className="mb-6 flex gap-1 overflow-x-auto border-b border-[#E2DDD4] sm:gap-2">
+      {SECTIONS.map(({ id, label }) => (
+        <button
+          key={id}
+          type="button"
+          onClick={() => onChange(id)}
+          aria-current={section === id ? 'page' : undefined}
+          className={`-mb-px shrink-0 whitespace-nowrap border-b-2 px-3 py-2.5 sm:px-4 text-sm font-bold transition-colors ${
+            section === id ? 'border-[#C4A747] text-[#1E5631]' : 'border-transparent text-[#6B7280] hover:text-[#1E5631]'
+          }`}
+        >
+          {label}
+        </button>
+      ))}
+    </nav>
   );
 }
 
 export default function Admin() {
   useNoIndex();
+  const { toasts, notify, dismiss } = useToasts();
   const [token, setToken] = useState(getStoredToken);
   const [view, setView] = useState({ name: 'list', post: null });
   const [state, setState] = useState({ status: 'idle', posts: [], error: '' });
+  const [pendingDelete, setPendingDelete] = useState(null);
+  const [deleting, setDeleting] = useState(false);
+  const [section, setSection] = useState('overview');
+  const searchRef = useRef(null);
+  const [focusSearch, setFocusSearch] = useState(false);
 
-  const logout = useCallback(() => {
-    storeToken('');
-    setToken('');
-    setView({ name: 'list', post: null });
-  }, []);
+  const logout = useCallback(
+    (message) => {
+      storeToken('');
+      // Only an explicit sign-out wipes local drafts. When the session merely expired (a message is passed), they
+      // are exactly what the writer needs back after signing in again.
+      if (typeof message !== 'string') {
+        try {
+          clearAllDrafts(window.localStorage);
+        } catch (error) {
+          // storage blocked: nothing to clear
+        }
+      }
+      setToken('');
+      setView({ name: 'list', post: null });
+      if (typeof message === 'string') notify(message, 'error');
+    },
+    [notify]
+  );
+
+  const sessionExpired = useCallback(() => logout('Your session expired. Please sign in again.'), [logout]);
+
+  const taxonomy = useTaxonomyNames(token, sessionExpired);
 
   const load = useCallback(async () => {
     setState((current) => ({ ...current, status: 'loading', error: '' }));
@@ -103,10 +126,10 @@ export default function Admin() {
       const data = await listAdminPosts(token);
       setState({ status: 'ready', posts: data.posts, error: '' });
     } catch (caught) {
-      if (caught instanceof UnauthorizedError) return logout();
+      if (caught instanceof UnauthorizedError) return sessionExpired();
       setState((current) => ({ ...current, status: 'error', error: caught.message }));
     }
-  }, [token, logout]);
+  }, [token, sessionExpired]);
 
   useEffect(() => {
     if (token) load();
@@ -117,66 +140,135 @@ export default function Admin() {
     setToken(newToken);
   };
 
-  const handleDelete = async (post) => {
-    if (!window.confirm(`Delete "${post.title}"? This cannot be undone.`)) return;
+  const confirmDelete = async () => {
+    const post = pendingDelete;
+    setDeleting(true);
     try {
       await deletePost(token, post.id);
+      setPendingDelete(null);
+      notify(`Deleted “${post.title}”`);
       await load();
     } catch (caught) {
-      if (caught instanceof UnauthorizedError) return logout();
-      setState((current) => ({ ...current, error: caught.message }));
+      if (caught instanceof UnauthorizedError) {
+        setPendingDelete(null);
+        return sessionExpired();
+      }
+      notify(caught.message, 'error');
+    } finally {
+      setDeleting(false);
     }
   };
 
-  const backToList = () => {
+  // PostList clears its selection only when this resolves, so failures are reported here and re-thrown.
+  const handleBulk = async (action, ids) => {
+    try {
+      const data = await bulkPosts(token, action, ids);
+      notify(BULK_MESSAGES[action](data.affected));
+      await load();
+    } catch (caught) {
+      if (caught instanceof UnauthorizedError) sessionExpired();
+      else notify(caught.message, 'error');
+      throw caught;
+    }
+  };
+
+  const handleDuplicate = async (post) => {
+    try {
+      await duplicatePost(token, post.id);
+      notify(`Duplicated “${post.title}” as a draft`);
+      await load();
+    } catch (caught) {
+      if (caught instanceof UnauthorizedError) return sessionExpired();
+      notify(caught.message, 'error');
+    }
+    return undefined;
+  };
+
+  const backToList = (message) => {
     setView({ name: 'list', post: null });
+    if (typeof message === 'string') notify(message);
     load();
   };
 
-  const categories = [...new Set(state.posts.map((post) => post.category).filter(Boolean))];
+  const startNew = useCallback(() => setView({ name: 'edit', post: null }), []);
+  const jumpToSearch = useCallback(() => {
+    setSection('articles');
+    setFocusSearch(true);
+  }, []);
+  useAdminShortcuts({ enabled: Boolean(token) && view.name === 'list', onNew: startNew, onSearch: jumpToSearch });
+
+  // The search box only exists once the Articles tab is showing, so focus it after that render.
+  useEffect(() => {
+    if (focusSearch && section === 'articles' && searchRef.current) {
+      searchRef.current.focus();
+      setFocusSearch(false);
+    }
+  }, [focusSearch, section, state.status]);
+
+  const editById = (id) => {
+    const post = state.posts.find((candidate) => candidate.id === id);
+    if (post) setView({ name: 'edit', post });
+  };
+
+  // Saved names (Categories & tags tab) plus anything articles already use.
+  const categories = mergeNames(taxonomy.names.categories, state.posts.map((post) => post.category));
+  const tagSuggestions = mergeNames(taxonomy.names.tags, state.posts.flatMap((post) => post.tags || []));
 
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-[#FAF7F2] px-4 py-6 sm:px-6">
+    <div className="kj-root kj-admin">
       {!token ? (
         <LoginForm onLoggedIn={handleLoggedIn} />
       ) : (
-        <div className="mx-auto max-w-5xl">
-          <header className="mb-6 flex flex-wrap items-center justify-between gap-3">
-            <Link to="/blogs" className="flex items-center gap-2 font-bold text-[#1E5631]">
-              <img src="/icon.svg" alt="" className="h-9 w-auto" /> Blog admin
-            </Link>
-            <button type="button" onClick={logout} className="text-sm font-semibold text-gray-600 hover:underline">Sign out</button>
-          </header>
-
-          {view.name === 'edit' ? (
-            <PostEditor
-              token={token}
-              post={view.post}
-              categories={categories}
-              onSaved={backToList}
-              onCancel={backToList}
-              onUnauthorized={logout}
-            />
-          ) : (
-            <>
-              <div className="mb-4 flex items-center justify-between gap-3">
-                <h1 className="text-2xl font-bold text-[#1E5631]">Articles</h1>
-                <button type="button" onClick={() => setView({ name: 'edit', post: null })} className="rounded-lg bg-[#C4A747] px-4 py-2.5 font-semibold text-[#1E5631]">
-                  + New article
-                </button>
-              </div>
-              {state.error && <p role="alert" className="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-700">{state.error}</p>}
-              {state.status === 'loading' && <p role="status" className="text-gray-500">Loading…</p>}
-              {state.status === 'ready' && state.posts.length === 0 && <p className="rounded-xl bg-white p-8 text-center text-gray-600">No articles yet. Create your first one.</p>}
-              <ul className="space-y-3">
-                {state.posts.map((post) => (
-                  <PostRow key={post.id} post={post} onEdit={(selected) => setView({ name: 'edit', post: selected })} onDelete={handleDelete} />
-                ))}
-              </ul>
-            </>
-          )}
-        </div>
+        <>
+          <AdminHeader onLogout={() => logout()} />
+          <main id="main" className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+            {view.name === 'edit' ? (
+              <PostEditor
+                token={token}
+                post={view.post}
+                categories={categories}
+                tagSuggestions={tagSuggestions}
+                onSaved={backToList}
+                onCancel={() => backToList()}
+                onUnauthorized={sessionExpired}
+              />
+            ) : (
+              <>
+                <SectionTabs section={section} onChange={setSection} />
+                {section === 'overview' && <DashboardPanel token={token} onUnauthorized={sessionExpired} onEditPost={editById} />}
+                {section === 'taxonomy' && <TaxonomyPanel token={token} onUnauthorized={sessionExpired} notify={notify} onChanged={() => { load(); taxonomy.refresh(); }} />}
+                {section === 'subscribers' && <SubscribersPanel token={token} onUnauthorized={sessionExpired} notify={notify} />}
+                {section === 'articles' && (
+                  <PostList
+                    posts={state.posts}
+                    status={state.status}
+                    error={state.error}
+                    onRetry={load}
+                    onNew={startNew}
+                    searchRef={searchRef}
+                    onEdit={(post) => setView({ name: 'edit', post })}
+                    onDelete={setPendingDelete}
+                    onBulk={handleBulk}
+                    onDuplicate={handleDuplicate}
+                  />
+                )}
+              </>
+            )}
+          </main>
+        </>
       )}
+
+      <ConfirmDialog
+        open={Boolean(pendingDelete)}
+        title="Delete this article?"
+        message={pendingDelete ? `“${pendingDelete.title}” will be permanently removed from the website. This cannot be undone.` : ''}
+        confirmLabel="Delete article"
+        tone="danger"
+        busy={deleting}
+        onConfirm={confirmDelete}
+        onCancel={() => setPendingDelete(null)}
+      />
+      <Toasts toasts={toasts} onDismiss={dismiss} />
     </div>
   );
 }

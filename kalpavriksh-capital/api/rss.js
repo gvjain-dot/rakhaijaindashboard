@@ -30,7 +30,8 @@ module.exports = async function handler(req, res) {
     const posts = await sql`
       SELECT slug, title, excerpt, category, external_url, published_at
       FROM posts
-      WHERE published = true
+      WHERE published = true AND noindex = false
+        AND (published_at IS NULL OR published_at <= now())
       ORDER BY published_at DESC NULLS LAST
       LIMIT ${FEED_LIMIT}`;
 

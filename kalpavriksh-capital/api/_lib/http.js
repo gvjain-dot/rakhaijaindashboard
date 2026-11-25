@@ -11,6 +11,10 @@ function methodNotAllowed(res, allowed) {
 /** Logs the real error server-side and returns a generic message to the client. */
 function serverError(res, error) {
   console.error('[api] unhandled error:', error);
+  // 42703 = missing column, 42P01 = missing table: the database is behind the code.
+  if (error && (error.code === '42703' || error.code === '42P01')) {
+    console.error('[api] HINT: the database schema is out of date. Run db/migrations/003_blog_redesign.sql in the Neon SQL editor.');
+  }
   send(res, 500, null, 'Something went wrong. Please try again later.');
 }
 

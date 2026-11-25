@@ -31,7 +31,8 @@ module.exports = async function handler(req, res) {
     const posts = await sql`
       SELECT slug, updated_at
       FROM posts
-      WHERE published = true AND external_url IS NULL
+      WHERE published = true AND external_url IS NULL AND noindex = false
+        AND (published_at IS NULL OR published_at <= now())
       ORDER BY published_at DESC NULLS LAST`;
 
     const entries = [

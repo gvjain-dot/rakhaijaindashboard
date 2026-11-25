@@ -1,0 +1,33 @@
+/* ======================================================================
+   KALPVRIKSH JOURNAL — admin dashboard skin. Uses the blog's tokens and
+   fonts (kj-base.css) so the admin looks like the site it manages.
+   ====================================================================== */
+
+.kj-admin { min-height: 100vh; min-height: 100dvh; display: block; background: var(--kj-ivory); color: var(--kj-charcoal); }
+.kj-admin .kj-serif { font-family: var(--kj-serif); font-weight: 700; }
+.kj-admin h1.kj-serif { font-size: clamp(2rem, 1.5rem + 1.6vw, 2.75rem); line-height: 1.05; }
+
+/* Header: ivory like the public site, forest accents */
+.kj-admin__header { position: sticky; top: 0; z-index: 40; background: rgba(250, 247, 242, .94); backdrop-filter: saturate(1.2) blur(8px); border-bottom: 1px solid var(--kj-rule); }
+.kj-admin__header-in { width: min(100% - 2rem, 72rem); margin-inline: auto; min-height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.kj-admin__brand { display: flex; align-items: center; gap: .9rem; min-width: 0; text-decoration: none; }
+.kj-admin__brand img { height: 38px; width: auto; }
+.kj-admin__brand-label { font: 600 .7rem/1 var(--kj-sans); letter-spacing: .18em; text-transform: uppercase; color: var(--kj-gold-ink); padding-left: .9rem; border-left: 1px solid var(--kj-rule); white-space: nowrap; }
+.kj-admin__links { display: flex; align-items: center; gap: .5rem; }
+.kj-admin__link { background: none; border: 1px solid transparent; padding: .5rem .9rem; font: 500 .875rem/1 var(--kj-sans); color: var(--kj-forest); text-decoration: none; cursor: pointer; transition: background .2s, color .2s; }
+.kj-admin__link:hover { background: var(--kj-forest); color: var(--kj-paper); }
+.kj-admin__link--outline { border-color: var(--kj-forest); }
+@media (max-width: 479px) { .kj-admin__brand-label { display: none; } .kj-admin__link { padding: .5rem .6rem; } }
+
+/* Square-ish, flat surfaces like the prototype */
+.kj-admin .rounded-lg { border-radius: 4px; }
+.kj-admin .rounded-md { border-radius: 2px; }
+.kj-admin .shadow-sm, .kj-admin .shadow-md { box-shadow: none; }
+.kj-admin .bg-white { background-color: var(--kj-paper); }
+.kj-admin input, .kj-admin textarea, .kj-admin select { font-family: var(--kj-sans); }
+.kj-admin input[type="search"], .kj-admin input:not([type]), .kj-admin input[type="text"], .kj-admin textarea, .kj-admin select { background-color: var(--kj-paper); }
+.kj-admin :focus-visible { outline: 2px solid var(--kj-green); outline-offset: 2px; }
+.kj-admin .kj-skel { display: none; }
+
+/* Sticky article editor bar sits under the sticky admin header */
+.kj-admin form > .sticky { top: 64px; }
