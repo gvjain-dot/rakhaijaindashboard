@@ -24,6 +24,6 @@
     { "source": "/rss.xml", "destination": "/api/rss" },
     { "source": "/blogs", "destination": "/api/post-page?list=1" },
     { "source": "/blogs/:slug", "destination": "/api/post-page?slug=:slug" },
-    { "source": "/((?!api/|kj/|static|favicon|logo|icon|apple-touch-icon|manifest|robots).*)", "destination": "/index.html" }
+    { "source": "/((?!api/|kj/|static|favicon|logo|icon|apple-touch-icon|manifest|robots|profile-rakhi|og-image).*)", "destination": "/index.html" }
   ]
 }
