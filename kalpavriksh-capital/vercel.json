@@ -1,4 +1,5 @@
 {
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
@@ -15,6 +16,7 @@
     }
   ],
   "redirects": [
+    { "source": "/blog", "destination": "/blogs", "permanent": true },
     { "source": "/asset-allocation", "destination": "/blogs/dont-put-all-your-eggs-in-one-basket", "permanent": true },
     { "source": "/asset-allocation-article_1.html", "destination": "/blogs/dont-put-all-your-eggs-in-one-basket", "permanent": true },
     { "source": "/salary-replace-article.html", "destination": "/blogs/what-will-replace-your-salary-in-5-years", "permanent": true }
@@ -24,6 +26,20 @@
     { "source": "/rss.xml", "destination": "/api/rss" },
     { "source": "/blogs", "destination": "/api/post-page?list=1" },
     { "source": "/blogs/:slug", "destination": "/api/post-page?slug=:slug" },
-    { "source": "/((?!api/|kj/|static|favicon|logo|icon|apple-touch-icon|manifest|robots|profile-rakhi|og-image).*)", "destination": "/index.html" }
+    { "source": "/about-us", "destination": "/about-us/index.html" },
+    { "source": "/services", "destination": "/services/index.html" },
+    { "source": "/goal-based-financial-planning", "destination": "/goal-based-financial-planning/index.html" },
+    { "source": "/investment-solutions", "destination": "/investment-solutions/index.html" },
+    { "source": "/insurance-planning", "destination": "/insurance-planning/index.html" },
+    { "source": "/income-tax-planning", "destination": "/income-tax-planning/index.html" },
+    { "source": "/estate-planning", "destination": "/estate-planning/index.html" },
+    { "source": "/financial-learning-academy", "destination": "/financial-learning-academy/index.html" },
+    { "source": "/faqs", "destination": "/faqs/index.html" },
+    { "source": "/contact-us", "destination": "/contact-us/index.html" },
+    { "source": "/workshops", "destination": "/workshops/index.html" },
+    { "source": "/testimonials", "destination": "/testimonials/index.html" },
+    { "source": "/book-summaries", "destination": "/book-summaries/index.html" },
+    { "source": "/disclosures", "destination": "/disclosures/index.html" },
+    { "source": "/admin", "destination": "/index.html" }
   ]
 }

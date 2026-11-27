@@ -47,6 +47,18 @@ beforeEach(() => {
   fetchPosts.mockResolvedValue(respond());
 });
 
+test('sets the blog list title and description', async () => {
+  const tag = document.createElement('meta');
+  tag.setAttribute('name', 'description');
+  document.head.appendChild(tag);
+  const { unmount } = renderList();
+  await screen.findByRole('button', { name: 'Asset Allocation' });
+  expect(document.title).toBe('Wealth Management & Financial Planning Insights | Blog');
+  expect(tag).toHaveAttribute('content', 'Explore wealth management insights, financial planning strategies, investment knowledge and expert perspectives to make informed financial decisions.');
+  unmount();
+  tag.remove();
+});
+
 // --- categories ----------------------------------------------------------------------------------
 test('offers categories as tabs, with "All articles" first', async () => {
   renderList();

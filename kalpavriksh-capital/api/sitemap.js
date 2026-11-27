@@ -1,11 +1,15 @@
 const { getSql } = require('./_lib/db');
 const { methodNotAllowed, serverError } = require('./_lib/http');
 const { siteUrl, escapeXml } = require('./_lib/site');
+const { pages } = require('../src/site/routes.json');
 
 const STATIC_PATHS = [
-  { path: '/', priority: '1.0', changefreq: 'weekly' },
+  ...pages.map((page) => ({
+    path: page.path,
+    priority: page.path === '/' ? '1.0' : page.service || page.key === 'services' ? '0.8' : '0.6',
+    changefreq: page.path === '/' ? 'weekly' : 'monthly',
+  })),
   { path: '/blogs', priority: '0.8', changefreq: 'weekly' },
-  { path: '/asset-allocation', priority: '0.6', changefreq: 'monthly' },
 ];
 
 function urlEntry({ loc, lastmod, changefreq, priority }) {

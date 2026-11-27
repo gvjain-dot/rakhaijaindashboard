@@ -9,8 +9,8 @@ const ROBOTS_NOINDEX = 'noindex, nofollow';
 const MAX_HEADLINE = 110; // Google truncates BlogPosting headlines past ~110 characters
 const ROBOTS_PATTERN = /<meta\s+name="robots"[^>]*>/i;
 const IMAGE_DETAIL_PATTERN = /[ \t]*<meta\s+property="og:image:(?:width|height|alt)"[^>]*>\n?/gi;
-const LIST_TITLE = `Insights & Articles | ${BRAND}`;
-const LIST_DESCRIPTION = 'Articles on personal finance, investing and wealth building by Rakhi Jain, Chartered Accountant.';
+const LIST_TITLE = 'Wealth Management & Financial Planning Insights | Blog';
+const LIST_DESCRIPTION = 'Explore wealth management insights, financial planning strategies, investment knowledge and expert perspectives to make informed financial decisions.';
 
 const AUTHOR = {
   '@type': 'Person',

@@ -16,8 +16,8 @@ export default function BlogList() {
   const list = useBlogList();
 
   useDocumentMeta({
-    title: 'Insights & Articles | Kalpvriksh Global',
-    description: 'Articles on personal finance, investing and wealth building by Rakhi Jain, Chartered Accountant.',
+    title: 'Wealth Management & Financial Planning Insights | Blog',
+    description: 'Explore wealth management insights, financial planning strategies, investment knowledge and expert perspectives to make informed financial decisions.',
   });
 
   return (

@@ -18,7 +18,7 @@ const renderLayout = () => render(
 test('uses the main site header, with Journal marked as the current page', () => {
   renderLayout();
   const nav = screen.getByRole('navigation', { name: 'Main' });
-  expect(within(nav).getAllByRole('link', { name: 'Workshops' })[0]).toHaveAttribute('href', '/?page=workshops');
+  expect(within(nav).getAllByRole('link', { name: 'Workshops' })[0]).toHaveAttribute('href', '/workshops');
   expect(within(nav).getAllByRole('link', { name: 'Journal' })[0]).toHaveAttribute('aria-current', 'page');
 });
 
@@ -26,13 +26,13 @@ test('header links move to the matching main site page', () => {
   renderLayout();
   const nav = screen.getByRole('navigation', { name: 'Main' });
   fireEvent.click(within(nav).getAllByRole('link', { name: 'Services' })[0]);
-  expect(screen.getByTestId('location')).toHaveTextContent('/?page=services');
+  expect(screen.getByTestId('location')).toHaveTextContent('/services');
 });
 
 test('uses the main site footer and keeps the regulatory notice', () => {
   renderLayout();
   const footer = screen.getByRole('contentinfo');
   expect(within(footer).getByText('Empowering decisions, Enriching Journeys')).toBeInTheDocument();
-  expect(within(footer).getByRole('link', { name: 'Disclosures' })).toHaveAttribute('href', '/?page=disclosures');
+  expect(within(footer).getByRole('link', { name: 'Disclosures' })).toHaveAttribute('href', '/disclosures');
   expect(screen.getByText(/ARN 313560/)).toBeInTheDocument();
 });

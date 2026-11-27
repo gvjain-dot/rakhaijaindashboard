@@ -140,7 +140,8 @@ test('injectRobots marks a page noindex without touching anything else', () => {
 // --- /blogs list page ---------------------------------------------------------------------------
 test('the list page gets its own title, description and a canonical pointing at /blogs', () => {
   const html = injectListSeo(SHELL, { base: BASE });
-  assert.match(html, /<title>Insights &amp; Articles \| Kalpvriksh Global<\/title>/);
+  assert.match(html, /<title>Wealth Management &amp; Financial Planning Insights \| Blog<\/title>/);
+  assert.ok(html.includes('content="Explore wealth management insights, financial planning strategies, investment knowledge and expert perspectives to make informed financial decisions."'));
   assert.match(html, /<link rel="canonical" href="https:\/\/www\.example\.com\/blogs" \/>/);
   assert.equal((html.match(/name="description"/g) || []).length, 1);
 });

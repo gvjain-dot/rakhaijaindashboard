@@ -1,0 +1,116 @@
+{
+  "siteUrl": "https://www.kalpvrikshglobal.com",
+  "pages": [
+    {
+      "key": "home",
+      "path": "/",
+      "label": "Home",
+      "title": "Financial Planning & Wealth Management | Kalp Vriksh Global",
+      "description": "Kalp Vriksh Global offers financial planning, wealth management and investment planning solutions to help individuals and families build and secure their wealth."
+    },
+    {
+      "key": "about",
+      "path": "/about-us",
+      "label": "About",
+      "title": "About Kalp Vriksh Global | Wealth Management",
+      "description": "Learn about Kalp Vriksh Global, our approach to wealth management, financial planning and helping individuals and families make informed financial decisions."
+    },
+    {
+      "key": "services",
+      "path": "/services",
+      "label": "Services",
+      "title": "Wealth Management & Financial Planning Services | Kalp Vriksh",
+      "description": "Explore wealth management, investment planning, financial planning, insurance, tax and estate planning services designed to help you manage and grow your wealth."
+    },
+    {
+      "key": "goal-based",
+      "path": "/goal-based-financial-planning",
+      "label": "Goal Based Solutions",
+      "title": "Goal-Based Financial Planning & Wealth Management | Kalpvriksh",
+      "description": "Plan for your financial goals with personalised wealth management and financial planning strategies. Build a roadmap for major life milestones, retirement and long-term wealth creation.",
+      "service": true
+    },
+    {
+      "key": "investments",
+      "path": "/investment-solutions",
+      "label": "Investments",
+      "title": "Investment Planning & Wealth Management Solutions | Kalpvriksh",
+      "description": "Explore personalised investment solutions and expert investment planning services to build, manage and diversify your portfolio while aligning investments with your financial goals.",
+      "service": true
+    },
+    {
+      "key": "insurance",
+      "path": "/insurance-planning",
+      "label": "Insurance",
+      "title": "Insurance Planning & Wealth Protection Services | Kalpvriksh",
+      "description": "Protect your family and financial future with strategic insurance planning. Explore personalised protection solutions to manage financial risks and safeguard your wealth.",
+      "service": true
+    },
+    {
+      "key": "income-tax",
+      "path": "/income-tax-planning",
+      "label": "Income Tax Planning",
+      "title": "Income Tax Planning & Tax Management Services | Kalpvriksh",
+      "description": "Discover effective income tax planning and tax-saving strategies to manage your tax liabilities. Align tax planning with your financial goals and long-term wealth management strategy.",
+      "service": true
+    },
+    {
+      "key": "estate",
+      "path": "/estate-planning",
+      "label": "Estate Planning",
+      "title": "Estate & Succession Planning for Family Wealth | Kalpvriksh",
+      "description": "Preserve and transfer your wealth with strategic estate and succession planning. Explore family wealth management, wealth structuring and intergenerational wealth planning.",
+      "service": true
+    },
+    {
+      "key": "learning",
+      "path": "/financial-learning-academy",
+      "label": "Learning Academy",
+      "title": "Financial Learning Academy | Wealth & Investment Education",
+      "description": "Enhance your financial knowledge with insights on wealth management, investment planning, financial literacy and personal finance to make informed financial decisions.",
+      "service": true
+    },
+    {
+      "key": "faqs",
+      "path": "/faqs",
+      "label": "FAQs",
+      "title": "Frequently Asked Questions | Kalpvriksh Global",
+      "description": "Answers about working with Kalpvriksh Global, how consultations work, mutual fund distribution, fees and services for clients outside India."
+    },
+    {
+      "key": "contact",
+      "path": "/contact-us",
+      "label": "Contact",
+      "title": "Contact Kalp Vriksh Global | Financial Planning",
+      "description": "Connect with Kalp Vriksh Global for personalised financial planning, investment planning and wealth management guidance. Get in touch with our team."
+    },
+    {
+      "key": "workshops",
+      "path": "/workshops",
+      "label": "Workshops",
+      "title": "Wealth Building Workshop | Kalpvriksh Global",
+      "description": "Beyond Returns: a signature workshop that helps families and professionals build wealth with clarity, discipline and purpose."
+    },
+    {
+      "key": "testimonials",
+      "path": "/testimonials",
+      "label": "Testimonials",
+      "title": "Client Stories | Kalpvriksh Global",
+      "description": "Read what clients say about working with Rakhi Jain on financial planning and investing at Kalpvriksh Global."
+    },
+    {
+      "key": "book-summaries",
+      "path": "/book-summaries",
+      "label": "Book Summaries",
+      "title": "Personal Finance Book Summaries | Kalpvriksh Global",
+      "description": "Key lessons from The Psychology of Money and The Richest Man in Babylon, summarised by Kalpvriksh Global."
+    },
+    {
+      "key": "disclosures",
+      "path": "/disclosures",
+      "label": "Disclosures",
+      "title": "Disclosures & Regulatory Information | Kalpvriksh Global",
+      "description": "AMFI registration, services by country, conflicts of interest, privacy and website disclaimers for Kalpvriksh Global."
+    }
+  ]
+}

@@ -1,14 +1,26 @@
-export const NAV_PAGES = ['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact'];
+import routes from './routes.json';
 
-// Display names for page keys whose label differs from the key shown to visitors.
-const LABEL_OVERRIDES = { blogs: 'Journal' };
+export const NAV_PAGES = ['home', 'about', 'services', 'workshops', 'testimonials', 'blogs', 'faqs', 'contact'];
 
-// Pages with their own URL; every other page is opened on the home route via ?page=<key>.
-const PAGE_PATHS = { home: '/', blogs: '/blogs', 'asset-allocation': '/asset-allocation' };
+export const SERVICE_PAGES = routes.pages.filter((page) => page.service).map((page) => page.key);
 
-export const pageLabel = (page) => LABEL_OVERRIDES[page] || page.charAt(0).toUpperCase() + page.slice(1);
+// The blog keeps its own routes, so it is not listed in routes.json.
+const BLOG_PAGE = { key: 'blogs', path: '/blogs', label: 'Journal' };
 
-export const pageHref = (page) => PAGE_PATHS[page] || `/?page=${page}`;
+const PAGES_BY_KEY = new Map([...routes.pages, BLOG_PAGE].map((page) => [page.key, page]));
+
+export const pageByKey = (key) => PAGES_BY_KEY.get(key) || null;
+
+export const pageLabel = (key) => pageByKey(key)?.label || '';
+
+export const pageHref = (key) => pageByKey(key)?.path || '/';
+
+/** The new URL for an old `/?page=<key>` link, or null when there is nothing to redirect to. */
+export const legacyPath = (search) => {
+  const key = new URLSearchParams(search).get('page');
+  const page = key ? pageByKey(key) : null;
+  return page && page.path !== '/' ? page.path : null;
+};
 
 /** Link props: a real href for crawlers and new tabs, in-app navigation for a plain click. */
 export const pageLinkProps = (page, onNavigate) => ({
