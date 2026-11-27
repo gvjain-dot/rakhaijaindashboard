@@ -1,5 +1,29 @@
 {
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+      ]
+    },
+    {
+      "source": "/api/admin/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+    }
+  ],
+  "redirects": [
+    { "source": "/asset-allocation", "destination": "/blogs/dont-put-all-your-eggs-in-one-basket", "permanent": true },
+    { "source": "/asset-allocation-article_1.html", "destination": "/blogs/dont-put-all-your-eggs-in-one-basket", "permanent": true },
+    { "source": "/salary-replace-article.html", "destination": "/blogs/what-will-replace-your-salary-in-5-years", "permanent": true }
+  ],
   "rewrites": [
-    { "source": "/((?!asset-allocation-article_1\\.html|salary-replace-article\\.html|static|favicon|logo|manifest|robots|profile-rakhi|apple-touch-icon|og-image).*)", "destination": "/index.html" }
+    { "source": "/sitemap.xml", "destination": "/api/sitemap" },
+    { "source": "/rss.xml", "destination": "/api/rss" },
+    { "source": "/blogs", "destination": "/api/post-page?list=1" },
+    { "source": "/blogs/:slug", "destination": "/api/post-page?slug=:slug" },
+    { "source": "/((?!api/|kj/|static|favicon|logo|icon|apple-touch-icon|manifest|robots|profile-rakhi|og-image).*)", "destination": "/index.html" }
   ]
 }

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="title" width="285" height="392" viewBox="420 2 285 392" role="img">
+  <title id="title">Kalpavriksh Global – Icon</title>
+  <defs>
+    <radialGradient id="forest" gradientUnits="userSpaceOnUse" cx="579" cy="109" r="118" gradientTransform="translate(0 -10.9) scale(1 1.1)">
+      <stop stop-color="#096336" />
+      <stop offset=".37" stop-color="#095931" />
+      <stop offset=".75" stop-color="#074529" />
+      <stop offset="1" stop-color="#063c21" />
+    </radialGradient>
+    <radialGradient id="leaf" gradientUnits="userSpaceOnUse" cx="523" cy="151" r="203" gradientTransform="translate(0 -15.1) scale(1 1.1)">
+      <stop stop-color="#7db344" />
+      <stop offset=".32" stop-color="#70a63d" />
+      <stop offset=".7" stop-color="#568f37" />
+      <stop offset="1" stop-color="#478236" />
+    </radialGradient>
+    <linearGradient id="champagne" gradientUnits="userSpaceOnUse" x1="449" y1="209" x2="516" y2="392">
+      <stop stop-color="#f2cf9d" />
+      <stop offset=".48" stop-color="#e2bf8e" />
+      <stop offset="1" stop-color="#c09451" />
+    </linearGradient>
+    <radialGradient id="amber" gradientUnits="userSpaceOnUse" cx="635" cy="231" r="140" gradientTransform="translate(0 -34.65) scale(1 1.15)">
+      <stop stop-color="#f1b046" />
+      <stop offset=".36" stop-color="#e5a33d" />
+      <stop offset=".68" stop-color="#ce8d28" />
+      <stop offset="1" stop-color="#ac6d0d" />
+    </radialGradient>
+  </defs>
+  <g id="emblem">
+    <path fill="url(#forest)" d="M694.2 12.4 C671.5 38.2 639.8 50.8 609.5 67.5 C583.7 82.6 568.2 108.1 568.2 137.7 V384.2 H579.6 V282.8 C579.6 257.5 591.7 235.6 608.4 218 C622.5 203.1 646.8 185.1 666 165.5 C684.7 146.6 694.6 126.4 694.6 104.5 Z" />
+    <path fill="url(#leaf)" d="M469.8 111.9 C489 129.6 511.3 142.7 531.7 157.2 C548.3 169.3 556.5 184.6 556.5 204.5 V384.2 H546.2 V307.2 C546.2 287.1 538.7 273.7 527.8 260.2 C514.6 244.5 496.7 236.6 484.6 223.7 C474.8 213.1 469.7 200.4 469.7 185.8 Z" />
+    <path fill="url(#champagne)" d="M430.3 194.1 C447.8 225 476 245.2 502.5 266.1 C520.3 280.1 530.8 298.5 530.8 319.5 V384.2 H444.8 C436.8 384.2 430.3 377.8 430.3 369.8 Z" />
+    <path fill="url(#amber)" d="M694.6 161.3 C674.7 190 645.2 211.7 621.7 235 C602.6 253.9 593.9 278.3 593.9 301 V384.2 H681.3 C688.7 384.2 694.8 378.2 694.8 370.8 Z" />
+  </g>
+</svg>

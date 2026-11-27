@@ -1,0 +1,58 @@
+/* ======================================================================
+   KALPVRIKSH JOURNAL — page chrome: regulatory note, newsletter panel (list + inline article variants).
+   ====================================================================== */
+
+/* ---------- Regulatory note (above the site footer) ---------- */
+.kj-regnote { margin-top: clamp(4rem, 8vw, 7rem); padding-top: 1.5rem; border-top: 1px solid var(--kj-rule); display: grid; gap: .6rem; font-size: .78rem; line-height: 1.6; color: var(--kj-muted); }
+.kj-regnote strong { color: var(--kj-forest); font-weight: 600; }
+
+/* ---------- Newsletter (panel + inline variant) ---------- */
+.kj-news { grid-column: 1 / -1; background: var(--kj-forest); color: var(--kj-ivory); padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 4.5rem);
+           display: grid; gap: 2rem; position: relative; overflow: hidden; margin: 1rem 0; }
+.kj-news::before { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(196, 167, 71, .35); pointer-events: none; }
+.kj-news .kj-label { color: var(--kj-champagne); }
+.kj-news h2 { color: var(--kj-ivory); font-size: var(--kj-h2); margin-top: .8rem; max-width: 18ch; }
+.kj-news p.kj-news__text { color: rgba(250, 247, 242, .82); font-weight: 300; margin-top: 1rem; max-width: 40ch; }
+@media (min-width: 900px) { .kj-news { grid-template-columns: 1fr 1fr; align-items: end; gap: 4rem; } }
+
+.kj-form { display: grid; gap: .9rem; position: relative; }
+.kj-form__row { display: flex; gap: 0; border-bottom: 1px solid rgba(250, 247, 242, .5); }
+.kj-form__row:focus-within { border-bottom-color: var(--kj-champagne); }
+.kj-form input[type="email"] { flex: 1; min-width: 0; height: 52px; border: 0; background: transparent; color: var(--kj-ivory); font-size: 1rem; padding: 0; border-radius: 0; }
+.kj-form input[type="email"]::placeholder { color: rgba(250, 247, 242, .55); }
+.kj-form input[type="email"]:focus { outline: none; }
+.kj-form .kj-btn { min-height: 52px; background: transparent; border: 0; color: var(--kj-champagne); padding: 0 0 0 1rem; font-weight: 500; }
+.kj-form .kj-btn:hover { color: var(--kj-ivory); background: transparent; }
+.kj-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; } /* honeypot */
+.kj-form__msg { font-size: .85rem; min-height: 1.2em; color: rgba(250, 247, 242, .82); }
+.kj-form__msg--error { color: #F3C9A8; }
+.kj-form__success { border-top: 1px solid rgba(196, 167, 71, .5); padding-top: 1.2rem; }
+.kj-form__success h3 { color: var(--kj-ivory); font-size: 1.7rem; }
+.kj-form__success p { color: rgba(250, 247, 242, .8); font-size: .92rem; margin-top: .5rem; font-weight: 300; }
+
+/* Inline (article) variant: light */
+.kj-news--inline { background: transparent; color: var(--kj-charcoal); padding: 2rem 0; margin: 3.5rem 0; border-top: 1px solid var(--kj-forest); border-bottom: 1px solid var(--kj-rule);
+                   display: grid; gap: 1.4rem; grid-template-columns: 1fr; font-size: 1rem; line-height: 1.6; }
+.kj-news--inline::before { display: none; }
+.kj-news--inline .kj-label { color: var(--kj-gold-ink); }
+.kj-news--inline h2 { color: var(--kj-forest); font-size: 1.9rem; margin-top: .5rem; max-width: none; }
+.kj-news--inline p.kj-news__text { color: var(--kj-muted); margin-top: .4rem; }
+.kj-news--inline .kj-form__row { border-bottom-color: var(--kj-antique); }
+.kj-news--inline .kj-form__row:focus-within { border-bottom-color: var(--kj-forest); }
+.kj-news--inline input[type="email"] { color: var(--kj-charcoal); }
+.kj-news--inline input[type="email"]::placeholder { color: #6B7280; }
+.kj-news--inline .kj-form .kj-btn { color: var(--kj-forest); }
+.kj-news--inline .kj-form .kj-btn:hover { color: var(--kj-green); }
+.kj-news--inline .kj-form__msg { color: var(--kj-muted); }
+.kj-news--inline .kj-form__msg--error { color: #9A3B1E; }
+.kj-news--inline .kj-form__success { border-top-color: var(--kj-rule); }
+.kj-news--inline .kj-form__success h3 { color: var(--kj-forest); }
+.kj-news--inline .kj-form__success p { color: var(--kj-muted); }
+@media (min-width: 700px) { .kj-news--inline { grid-template-columns: 1fr 1.1fr; gap: 2.5rem; align-items: end; } }
+
+@media (max-width: 599px) {
+  .kj-form__row { flex-direction: column; border-bottom: 0; }
+  .kj-form input[type="email"] { border-bottom: 1px solid rgba(250, 247, 242, .5); }
+  .kj-news--inline .kj-form input[type="email"] { border-bottom-color: var(--kj-antique); }
+  .kj-form .kj-btn { justify-content: flex-start; padding: 0; }
+}

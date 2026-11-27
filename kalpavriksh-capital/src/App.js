@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import SiteFooter from './site/SiteFooter';
+import SiteHeader from './site/SiteHeader';
+
+// Pages that can be opened directly with /?page=<key> (used by links from the blog pages).
+const DEEP_LINK_PAGES = ['home', 'services', 'workshops', 'testimonials', 'book-summaries', 'contact', 'disclosures'];
+
+const getInitialPage = () => {
+  const requested = new URLSearchParams(window.location.search).get('page');
+  return DEEP_LINK_PAGES.includes(requested) ? requested : 'home';
+};
 
 const KalpavrikshCapital = () => {
-  const [currentPage, setCurrentPage] = useState(() => (window.location.pathname === '/asset-allocation' ? 'asset-allocation' : 'home'));
-  const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(getInitialPage);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [navOpen, setNavOpen] = useState(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isAutoScrollPaused, setIsAutoScrollPaused] = useState(false);
   // eslint-disable-next-line no-unused-vars
@@ -13,7 +23,7 @@ const KalpavrikshCapital = () => {
 
 
   // Page order for infinite scrolling
-  const pageOrder = React.useMemo(() => ['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact', 'disclosures'], []);
+  const pageOrder = React.useMemo(() => ['home', 'services', 'workshops', 'testimonials', 'book-summaries', 'contact', 'disclosures'], []);
 
   // Reset transition flag when page changes
   useEffect(() => {
@@ -27,7 +37,7 @@ const KalpavrikshCapital = () => {
     if (lastTrackedPath.current === null) lastTrackedPath.current = window.location.pathname;
     if (currentPage === lastTrackedPage.current) return;
     lastTrackedPage.current = currentPage;
-    // When the URL itself changes (to/from /asset-allocation), GA4's history-change tracking already sends the page view
+    // When the URL itself changes, GA4's history-change tracking already sends the page view
     const urlChanged = window.location.pathname !== lastTrackedPath.current;
     lastTrackedPath.current = window.location.pathname;
     if (urlChanged || typeof window.gtag !== 'function') return;
@@ -42,8 +52,6 @@ const KalpavrikshCapital = () => {
     let scrollTimeout;
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-
       // Calculate scroll progress
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -118,7 +126,10 @@ const KalpavrikshCapital = () => {
     };
 
     // Push initial state
-    window.history.pushState({ page: currentPage }, '', window.location.pathname);
+    if (window.location.search) {
+      window.history.replaceState(window.history.state, '', window.location.pathname);
+    }
+    window.history.pushState({ ...(window.history.state || {}), page: currentPage }, '', window.location.pathname);
 
     window.addEventListener('popstate', handlePopState);
 
@@ -131,12 +142,16 @@ const KalpavrikshCapital = () => {
 
   // Scroll to top when changing pages
   const changePage = (page) => {
+    // The blog lives on its own routes (/blogs, /blogs/:slug)
+    if (page === 'blogs') {
+      navigate('/blogs');
+      return;
+    }
     setCurrentPage(page);
-    setNavOpen(false);
     window.scrollTo(0, 0);
     // Asset allocation gets a clean path URL; all other pages go to root
     const url = page === 'asset-allocation' ? '/asset-allocation' : '/';
-    window.history.pushState({ page: page }, '', url);
+    window.history.pushState({ ...(window.history.state || {}), page }, '', url);
   };
 
   // Handle testimonial navigation with pause/restart
@@ -427,132 +442,12 @@ const KalpavrikshCapital = () => {
   
   return (
     <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: '#FAF7F2' }}>
-      {/* Navigation - DARK GREEN BACKGROUND */}
-      {currentPage !== 'asset-allocation' && <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'shadow-lg' : 'shadow-md'
-      } backdrop-blur-lg`}  style={{ paddingTop: 'env(safe-area-inset-top)', backgroundColor: '#1E5631'}}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <img
-                src="/logo.png"
-                alt="Kalpvriksh Global Logo"
-                className="h-12 sm:h-14 md:h-16 lg:h-20 w-12 sm:w-14 md:w-16 lg:w-20 transition-transform duration-300 hover:scale-110 rounded-full"
-                style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '2px solid #C4A747' }}
-                loading="lazy"
-                decoding="async"
-                onError={(e) => { e.currentTarget.style.display = 'none'; }}
-              />
-              <span className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold whitespace-nowrap" style={{ color: '#F5EDE4' }}>Kalpvriksh Global</span>
-            </div>
-
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex gap-6">
-              {['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact'].map((page) => (
-                <button
-                  key={page}
-                  onClick={() => changePage(page)}
-                  className={`px-6 py-2 rounded-full font-medium transition-all duration-300 transform border-2 cursor-pointer ${
-                    currentPage === page
-                      ? 'bg-white shadow-lg scale-105'
-                      : 'hover:bg-white/20 hover:scale-105'
-                  }`}
-                  style={{
-                    color: currentPage === page ? '#1E5631' : '#F5EDE4',
-                    borderColor: '#C4A747',
-                    borderStyle: 'solid'
-                  }}
-                >
-                  {page.charAt(0).toUpperCase() + page.slice(1)}
-                </button>
-              ))}
-            </div>
-            
-            {/* Mobile Hamburger Button */}
-            <button
-              onClick={() => setNavOpen(!navOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-white/20 transition-all duration-300 transform active:scale-95"
-              style={{ color: '#F5EDE4' }}
-              aria-label="Toggle menu"
-            >
-              <svg className="w-6 h-6 transition-transform duration-300" style={{ transform: navOpen ? 'rotate(90deg)' : 'rotate(0deg)' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {navOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
-          </div>
-          
-          {/* Mobile Menu with slide animation */}
-          <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-            navOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
-          }`}>
-            <div className="pb-4 space-y-2">
-              {['home', 'services', 'workshops', 'testimonials', 'blogs', 'contact'].map((page, index) => (
-                <button
-                  key={page}
-                  onClick={() => changePage(page)}
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2 cursor-pointer ${
-                    currentPage === page
-                      ? 'bg-white shadow-md'
-                      : 'hover:bg-white/20'
-                  }`}
-                  style={currentPage === page ? {
-                    color: '#1E5631',
-                    animationDelay: `${index * 50}ms`,
-                    animation: navOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none'
-                  } : {
-                    color: '#F5EDE4',
-                    animationDelay: `${index * 50}ms`,
-                    animation: navOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none'
-                  }}
-                >
-                  {page.charAt(0).toUpperCase() + page.slice(1)}
-                </button>
-              ))}
-
-              {/* Disclosures at bottom of mobile menu */}
-              <div className="border-t pt-2 mt-2" style={{ borderColor: 'rgba(255, 255, 255, 0.2)' }}>
-                <button
-                  onClick={() => changePage('disclosures')}
-                  className={`w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2 ${
-                    currentPage === 'disclosures'
-                      ? 'bg-white shadow-md'
-                      : 'hover:bg-white/20'
-                  }`}
-                  style={currentPage === 'disclosures' ? {
-                    color: '#1E5631',
-                    animationDelay: '300ms',
-                    animation: navOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none'
-                  } : {
-                    color: '#F5EDE4',
-                    animationDelay: '300ms',
-                    animation: navOpen ? 'slideInLeft 0.3s ease-out forwards' : 'none',
-                    fontSize: '0.9rem',
-                    opacity: '0.8'
-                  }}
-                >
-                  Disclosures
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>}
-
-      {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 w-full h-1 z-50" style={{ backgroundColor: 'rgba(196, 167, 71, 0.2)' }}>
-        <div
-          className="h-full transition-all duration-150 ease-out"
-          style={{
-            width: `${scrollProgress}%`,
-            backgroundColor: '#C4A747',
-            boxShadow: '0 0 10px rgba(196, 167, 71, 0.5)'
-          }}
-        />
-      </div>
+      <SiteHeader
+        currentPage={currentPage}
+        onNavigate={changePage}
+        progress={scrollProgress}
+        showNav={currentPage !== 'asset-allocation'}
+      />
 
       {/* Main Content */}
       <div className={currentPage === 'asset-allocation' ? '' : 'pt-24 sm:pt-28 md:pt-32'}>
@@ -578,9 +473,9 @@ const KalpavrikshCapital = () => {
                 <div className="text-center relative z-10">
                   {/* Split heading with refined typography */}
                   <div className="mb-4 animate-fade-in-up">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-1 tracking-tight" style={{color: '#1E5631', fontWeight: 300, letterSpacing: '-0.02em'}}>
+                    <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-1 tracking-tight" style={{color: '#1E5631', fontWeight: 300, letterSpacing: '-0.02em'}}>
                       Welcome To
-                    </h1>
+                    </p>
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-3" style={{color: '#1E5631', fontWeight: 600, letterSpacing: '-0.01em'}}>
                       Kalpvriksh Global
                     </h1>
@@ -615,7 +510,7 @@ const KalpavrikshCapital = () => {
             </section>
 
             {/* Our Services & Process Combined */}
-            <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-4">
+            <section id="services" className="max-w-6xl mx-auto px-4 sm:px-6 pt-4">
               <div className="text-center mb-8">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1E5631' }}>
                   Our Services
@@ -708,7 +603,7 @@ const KalpavrikshCapital = () => {
             </section>
 
             {/* Meet Rakhi Jain */}
-            <section className="max-w-6xl mx-auto px-4 sm:px-6">
+            <section id="about" className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="text-center mb-10 sm:mb-12">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1E5631' }}>
                   Meet Rakhi Jain
@@ -757,7 +652,7 @@ const KalpavrikshCapital = () => {
             </section>
 
             {/* Testimonials Section */}
-            <section className="max-w-6xl mx-auto px-4 sm:px-6">
+            <section id="client-stories" className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="text-center mb-10 sm:mb-12">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1E5631' }}>
                   Client Stories
@@ -866,7 +761,7 @@ const KalpavrikshCapital = () => {
             </section>
 
             {/* Workshops Preview */}
-            <section className="max-w-6xl mx-auto px-4 sm:px-6">
+            <section id="workshops" className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="text-center mb-10 sm:mb-12">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1E5631' }}>
                   Workshops
@@ -915,7 +810,7 @@ const KalpavrikshCapital = () => {
             </section>
 
             {/* Blog Preview */}
-            <section className="max-w-6xl mx-auto px-4 sm:px-6">
+            <section id="insights" className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="text-center mb-10 sm:mb-12">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style={{ color: '#1E5631' }}>
                   Insights & Learning
@@ -948,7 +843,7 @@ const KalpavrikshCapital = () => {
                 </a>
                 {/* Article 2 */}
                 <button
-                  onClick={() => changePage('asset-allocation')}
+                  onClick={() => navigate('/blogs/dont-put-all-your-eggs-in-one-basket')}
                   className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col text-left w-full"
                 >
                   <div className="p-5 flex items-center gap-3" style={{ background: 'linear-gradient(135deg, #1E5631, #2d7a47)' }}>
@@ -1246,8 +1141,8 @@ const KalpavrikshCapital = () => {
           </div>
         )}
 
-        {/* Blogs Page */}
-        {currentPage === 'blogs' && (
+        {/* Book Summaries Page (articles now live at /blogs) */}
+        {currentPage === 'book-summaries' && (
           <div className="space-y-12 sm:space-y-16 px-3 sm:px-4 py-6 sm:py-8">
             <section className="text-center max-w-4xl mx-auto animate-fade-in-up">
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-2" style={{ color: '#1E5631' }}>
@@ -1259,106 +1154,6 @@ const KalpavrikshCapital = () => {
               </p>
             </section>
             
-            {/* My Articles Section */}
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-6">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2" style={{ color: '#1E5631' }}>My Articles</h2>
-                <div className="w-16 h-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747' }}></div>
-                <p className="text-sm text-gray-500">Weekly insights on personal finance, investing, and wealth building</p>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-6">
-                {/* Article 1: Salary Replacement — teal/green */}
-                <a
-                  href="https://www.linkedin.com/pulse/what-replace-your-salary-5-years-rakhi-jain-uyicf/?trackingId=6NCoDOVDSjuOPUtfC%2BawfQ%3D%3D"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
-                >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
-                    <div className="relative z-10">
-                      <div className="text-4xl mb-3">💼</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Retirement Planning</span>
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">What Will Replace Your Salary in 5 Years?</h3>
-                      <p className="text-white/60 text-xs mt-2">Rakhi Jain · Feb 23, 2026</p>
-                    </div>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-sm text-gray-600 leading-relaxed flex-1">Retirement isn't about stopping work — it's about decoupling your lifestyle from your time. Build passive income before you need it.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#1E5631' }}>Read on LinkedIn →</p>
-                  </div>
-                </a>
-
-                {/* Article 2: Asset Allocation — navy/gold */}
-                <button
-                  onClick={() => changePage('asset-allocation')}
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col text-left animate-fade-in-up"
-                  style={{ animationDelay: '0.1s' }}
-                >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
-                    <div className="relative z-10">
-                      <div className="text-4xl mb-3">📊</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Asset Allocation</span>
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">Don't Put All Your Eggs in One Basket</h3>
-                      <p className="text-white/60 text-xs mt-2">Rakhi Jain · Weekly Insight</p>
-                    </div>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-sm text-gray-600 leading-relaxed flex-1">Why asset allocation — not stock-picking — is the single most powerful decision you'll make as an investor.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#C09B3A' }}>Read Article →</p>
-                  </div>
-                </button>
-
-                {/* Article 3: When the World Is on Fire — deep red */}
-                <a
-                  href="https://www.linkedin.com/pulse/when-world-fire-how-keep-your-investments-from-burning-rakhi-jain-ausgf?utm_source=share&utm_medium=member_android&utm_campaign=share_via"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
-                  style={{ animationDelay: '0.2s' }}
-                >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
-                    <div className="relative z-10">
-                      <div className="text-4xl mb-3">🌍</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Behavioural Finance</span>
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">When the World Is on Fire: How to Keep Your Investments from Burning</h3>
-                      <p className="text-white/60 text-xs mt-2">Rakhi Jain · LinkedIn Pulse</p>
-                    </div>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-sm text-gray-600 leading-relaxed flex-1">Navigating geopolitical crises as an investor — without letting fear or greed make the decisions for you.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#7B2D2D' }}>Read on LinkedIn →</p>
-                  </div>
-                </a>
-
-                {/* Article 4: The Smart Person's Blind Spot — deep purple */}
-                <a
-                  href="https://www.linkedin.com/posts/rakhi-jain-7658328_the-smart-persons-blind-spot-activity-7447508527922937858-J7CC?utm_source=share&utm_medium=member_android&rcm=ACoAAAGL5L0BfkH6vXR1Iycc5cDAVgdrfN4jrtE"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02] flex flex-col animate-fade-in-up"
-                  style={{ animationDelay: '0.3s' }}
-                >
-                  <div className="relative p-6 text-center overflow-hidden" style={{ minHeight: '160px', background: 'linear-gradient(135deg, #1E5631 0%, #2d7a47 100%)' }}>
-                    <div className="absolute top-0 right-0 w-28 h-28 rounded-full opacity-10" style={{ backgroundColor: '#C4A747', transform: 'translate(30%, -30%)' }}></div>
-                    <div className="relative z-10">
-                      <div className="text-4xl mb-3">🧠</div>
-                      <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full mb-2" style={{ backgroundColor: '#C4A747', color: '#1E5631' }}>Financial Planning</span>
-                      <h3 className="text-base sm:text-lg font-bold text-white leading-snug">The Smart Person's Blind Spot</h3>
-                      <p className="text-white/60 text-xs mt-2">Rakhi Jain · LinkedIn</p>
-                    </div>
-                  </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <p className="text-sm text-gray-600 leading-relaxed flex-1">Why brilliant, disciplined professionals who manage enormous complexity at work quietly let their own financial planning drift.</p>
-                    <p className="text-xs font-semibold mt-4" style={{ color: '#3D2B6B' }}>Read on LinkedIn →</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-
             {/* Book Summaries */}
             <div className="max-w-4xl mx-auto">
               <div className="mb-6 border-t pt-8" style={{ borderColor: '#E5E7EB' }}>
@@ -1600,50 +1395,6 @@ const KalpavrikshCapital = () => {
         )}
 
         {/* Disclosures Page */}
-        {/* Asset Allocation Article Page */}
-        {currentPage === 'asset-allocation' && (
-          <div className="flex flex-col" style={{ height: 'calc(100vh - 80px)' }}>
-            <div className="px-4 py-3 flex items-center gap-3 border-b" style={{ backgroundColor: '#F8F5F0', borderColor: '#E5E7EB' }}>
-              <button
-                onClick={() => changePage('blogs')}
-                className="flex items-center gap-2 text-sm font-semibold px-3 py-1.5 rounded-lg transition-all duration-200 hover:scale-105"
-                style={{ color: '#1E5631', backgroundColor: 'white', border: '1px solid #1E5631' }}
-              >
-                ← Back to Learning
-              </button>
-              <span className="text-sm text-gray-500">Asset Allocation · Rakhi Jain</span>
-            </div>
-            <iframe
-              src="/asset-allocation-article_1.html"
-              title="Don't Put All Your Eggs in One Basket"
-              className="flex-1 w-full border-0"
-              style={{ minHeight: '80vh' }}
-            />
-          </div>
-        )}
-
-        {/* Salary Replacement Article Page */}
-        {currentPage === 'salary-article' && (
-          <div className="flex flex-col" style={{ height: 'calc(100vh - 80px)' }}>
-            <div className="px-4 py-3 flex items-center gap-3 border-b" style={{ backgroundColor: '#F8F5F0', borderColor: '#E5E7EB' }}>
-              <button
-                onClick={() => changePage('blogs')}
-                className="flex items-center gap-2 text-sm font-semibold px-3 py-1.5 rounded-lg transition-all duration-200 hover:scale-105"
-                style={{ color: '#1E5631', backgroundColor: 'white', border: '1px solid #1E5631' }}
-              >
-                ← Back to Learning
-              </button>
-              <span className="text-sm text-gray-500">Retirement Planning · Rakhi Jain</span>
-            </div>
-            <iframe
-              src="/salary-replace-article.html"
-              title="What Will Replace Your Salary in 5 Years?"
-              className="flex-1 w-full border-0"
-              style={{ minHeight: '80vh' }}
-            />
-          </div>
-        )}
-
         {currentPage === 'disclosures' && (
           <div className="px-4 sm:px-6 py-6 sm:py-8">
             <div className="max-w-4xl mx-auto bg-white p-6 sm:p-8 md:p-12 shadow-sm">
@@ -1858,81 +1609,7 @@ const KalpavrikshCapital = () => {
         )}
       </div>
 
-      {/* Footer */}
-      <footer className="text-white py-8 sm:py-10 md:py-12 mt-12 sm:mt-16 pb-24 sm:pb-8" style={{ paddingBottom: 'max(6rem, env(safe-area-inset-bottom))', backgroundColor: '#1E5631'}}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
-            <div className="animate-fade-in-up text-center sm:text-left">
-              <div className="flex flex-col sm:flex-row items-center sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4 justify-center sm:justify-start">
-                <img
-                  src="/logo.png"
-                  alt="Kalpvriksh Global Logo"
-                  className="h-14 sm:h-16 md:h-20 lg:h-24 w-14 sm:w-16 md:w-20 lg:w-24 transition-transform duration-300 hover:scale-110 rounded-full"
-                  style={{ objectFit: 'cover', objectPosition: '55% center', transform: 'scale(0.8)', border: '2px solid #C4A747' }}
-                  loading="lazy"
-                  decoding="async"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                />
-                <span className="text-lg sm:text-xl md:text-2xl font-bold" style={{ color: '#F5EDE4' }}>Kalpvriksh Global</span>
-              </div>
-              <p className="text-sm sm:text-base mb-3 sm:mb-4" style={{ color: '#F5EDE4' }}>Empowering decisions, Enriching Journeys</p>
-              <div className="text-xs sm:text-sm" style={{ color: '#F5EDE4' }}>
-                <p>📧 rakhijain@kalpvrikshglobal.com</p>
-              </div>
-            </div>
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#C4A747' }}>Quick Links</h4>
-              <div className="space-y-2 text-center sm:text-left">
-                {['Home', 'Services', 'Workshops', 'Testimonials', 'Blogs', 'Contact'].map((link) => (
-                  <button
-                    key={link}
-                    onClick={() => changePage(link.toLowerCase())}
-                    className="block text-sm sm:text-base transition-all duration-200 hover:translate-x-2 mx-auto sm:mx-0"
-                    style={{ cursor: 'pointer', color: '#F5EDE4' }}
-                    onMouseEnter={(e) => e.currentTarget.style.color = '#C4A747'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = '#F5EDE4'}
-                  >
-                    {link}
-                  </button>
-                ))}
-                <button
-                  onClick={() => changePage('disclosures')}
-                  className="block text-sm sm:text-base transition-all duration-200 hover:translate-x-2 mx-auto sm:mx-0"
-                  style={{ cursor: 'pointer', color: '#F5EDE4' }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#C4A747'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#F5EDE4'}
-                >
-                  Disclosures
-                </button>
-              </div>
-            </div>
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#C4A747' }}>Services</h4>
-              <div className="space-y-2 text-xs sm:text-sm text-center sm:text-left" style={{ color: '#F5EDE4' }}>
-                <p className="hover:translate-x-2 transition-transform duration-200">Investments & Mutual Funds</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">Goal Based Solutions</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">Insurance Planning</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">Tax & Estate Planning</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">Learning Academy</p>
-              </div>
-            </div>
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-center sm:text-left" style={{ color: '#C4A747' }}>Professional Info</h4>
-              <div className="space-y-2 text-xs sm:text-sm text-center sm:text-left" style={{ color: '#F5EDE4' }}>
-                <p className="hover:translate-x-2 transition-transform duration-200">Gold Medalist Chartered Accountant</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">Chartered Wealth Manager</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">20+ Years Experience</p>
-                <p className="hover:translate-x-2 transition-transform duration-200">Former Finance Director - Unilever</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t pt-4 text-center" style={{ borderColor: '#163822' }}>
-            <p className="text-xs" style={{ color: '#F5EDE4', opacity: '0.8' }}>
-              Designed by Gaurav Jain
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter onNavigate={changePage} />
 
       {/* Bottom Action Tabs */}
       <div className="fixed bottom-0 right-0 z-40 flex flex-col gap-0" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
